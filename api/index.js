@@ -10,7 +10,7 @@ router.use('/', async (req, res, next) => {
         const data =jwt.verify(token, process.env.JWT_SECRET);
         if(!data) {
         next({
-         error: "InvalidToken"
+         error: "InvalidToken",
          name: "InvalidToken",
          message: "Token is invalid"
         })

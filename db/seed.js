@@ -22,10 +22,8 @@ const seedProduct = [
         pokemonId: 1,
         name: "Bulbasaur",
         cost: 100.00,
-        type: {
-            type1: "plant",
-            type2: null
-        },
+        type1: "plant",
+        type2: null,
         quality: "used",
         rarity: "common",
         img_url: "https://m.media-amazon.com/images/I/410qBt1e7LL._AC_.jpg",
@@ -35,10 +33,8 @@ const seedProduct = [
         pokemonId: 7,
         name: "Squirtle",
         cost: 1.50,
-        type: {
             type1: "water",
-            type2: null
-        },
+            type2: null,
         quality: "fair to good",
         rarity: "common",
         img_url: "https://m.media-amazon.com/images/I/51TxlvrsoBL._AC_.jpg",
@@ -48,10 +44,8 @@ const seedProduct = [
         pokemonId: 94,
         name: "Ghastly",
         cost: 25.99,
-        type: {
-            type1: "psychic",
-            type2: null
-        },
+        type1: "psychic",
+        type2: null,
         quality: "reverse holo, good",
         rarity: "semi rare",
         img_url: "https://m.media-amazon.com/images/I/51TIWx7DDIL._AC_.jpg"
@@ -61,10 +55,8 @@ const seedProduct = [
         pokemonId: 150,
         name: "Mewto",
         cost: 150.25,
-        type: {
-            type1: "psychic",
-            type2: null
-        },
+        type1: "psychic",
+        type2: null,
         quality: "near mint",
         rarity: "rare",
         img_url: "https://m.media-amazon.com/images/I/51QO4llkk7L._AC_.jpg"
@@ -74,10 +66,8 @@ const seedProduct = [
         pokemonId: 144,
         name: "Articuno",
         cost: 5.76,
-        type: {
-            type1: "water",
-            type2: "flying"
-        },
+        type1: "water",
+        type2: "flying",
         quality: "fair",
         rarity: "common",
         img_url: "https://m.media-amazon.com/images/I/51PtkDlud4L._AC_.jpg"
@@ -87,10 +77,8 @@ const seedProduct = [
         pokemonId: 143,
         name: "Zapados",
         cost: 40.00,
-        type: {
-            type1: "electric",
-            type2: "flying"
-        },
+        type1: "electric",
+        type2: "flying",
         quality: "extra fine, first edition",
         rarity: "rare",
         img_url: "https://m.media-amazon.com/images/I/51l4OIDKQSL._AC_.jpg"
@@ -100,10 +88,8 @@ const seedProduct = [
         pokemonId: 653,
         name: "Fennekin",
         cost: 1.69,
-        type: {
-            type1: "fire",
-            type2: null
-        },
+        type1: "fire",
+        type2: null,
         quality: "reverse holo",
         rarity: "rare",
         img_url: "https://m.media-amazon.com/images/I/51Jr8J1R2-L._AC_.jpg"
@@ -113,10 +99,8 @@ const seedProduct = [
         pokemonId: 74,
         name: "Geodude",
         cost: 3.98,
-        type: {
-            type1: "fighting",
-            type2: null
-        },
+        type1: "fighting",
+        type2: null,
         quality: "mint",
         rarity: "common",
         img_url: "https://m.media-amazon.com/images/I/41DaseWiS4L._AC_.jpg"
@@ -126,10 +110,8 @@ const seedProduct = [
         pokemonId: 799,
         name: "Guzzlord",
         cost: 5.44,
-        type: {
-            type1: "dark",
-            type2: "psychic"
-        },
+        type1: "dark",
+        type2: "psychic",
         quality: "very good",
         rarity: "common",
         img_url: "https://m.media-amazon.com/images/I/51fJUJhWNBL._AC_.jpg"
@@ -139,10 +121,8 @@ const seedProduct = [
         pokemonId: 782,
         name: "Jangmo-o",
         cost: 10.11,
-        type: {
-            type1: "dragon",
-            type2: "electric"
-        },
+        type1: "dragon",
+        type2: "electric",
         quality: "extra fine",
         rarity: "common",
         img_url: "https://m.media-amazon.com/images/I/51Xd8iVTl7L._AC_.jpg"
@@ -154,7 +134,8 @@ const seedUsers = [
         id: 1,
         firstName: "Andrew",
         lastName: "Smith",
-        email: "a_wallenberg@yahoo.org",
+        emailAddress: "a_wallenberg@yahoo.org",
+        password: "iHa8PoekMen",
         address: {
             addressLine1: "150 Wallenberg Way",
             addressLine2: "Apt 2",
@@ -171,7 +152,8 @@ const seedUsers = [
         id: 2,
         firstName: "Jennifer",
         lastName: "Allensborough",
-        email: "jborough@hotmail.gov",
+        emailAddress: "jborough@hotmail.gov",
+        password: "What1nTheWorld.!",
         address: {
             addressLine1: "1250 Sidways Drive",
             addressLine2: null,
@@ -188,7 +170,8 @@ const seedUsers = [
         id: 3,
         firstName: "Devonte",
         lastName: "Jochik",
-        email: "theJoker45@gmail.comp",
+        emailAddress: "theJoker45@gmail.comp",
+        password: "theJokerIsBack123",
         address: {
             addressLine1: "18750 County Line Road 45",
             addressLine2: null,
@@ -205,7 +188,8 @@ const seedUsers = [
         id: 4,
         firstName: "Sarah",
         lastName: "Jessica-Parker",
-        email: "horseface2001@hotmail.web",
+        emailAddress: "horseface2001@hotmail.web",
+        password: "oneletters",
         address: {
             addressLine1: "300 West 42nd Street",
             addressLine2: "Unit 203",
@@ -222,7 +206,8 @@ const seedUsers = [
         id: 5,
         firstName: "Neo",
         lastName: null,
-        email: "the0ne@matrix.dev",
+        emailAddress: "the0ne@matrix.dev",
+        password: "passw0rd123!",
         address: {
             addressLine1: "Edge of the Way Lane",
             addressLine2: null,
@@ -239,7 +224,8 @@ const seedUsers = [
         id: 6,
         firstName: "Mr",
         lastName: "Anderson",
-        email: "thedirector@email.net",
+        emailAddress: "thedirector@email.net",
+        password: "Thi1sPasswordRocks@",
         address: {
             addressLine1: null,
             addressLine2: null,
@@ -256,7 +242,8 @@ const seedUsers = [
         id: 7,
         firstName: "Nicholas",
         lastName: "Worffen-Styme",
-        email: "not1that2wharf3@aol.org",
+        emailAddress: "not1that2wharf3@aol.org",
+        password: "password1234password",
         address: {
             addressLine1: "1204 Center Circle",
             addressLine2: null,

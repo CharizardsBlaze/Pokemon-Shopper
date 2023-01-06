@@ -64,6 +64,20 @@ const fetchAllProducts = async() => {
     }
 }
 
+const fetchOneProduct = async(productId) => {
+    try {
+        const {rows: OneProduct} = await client.query(`
+        SELECT * FROM products
+        WHERE id = $1
+        ;
+        `, [productId]);
+        return OneProduct;
+    } catch (error) {
+        console.log('there was an error in fetchOneProduct from database: ', error);
+        throw error;
+    }
+}
+
 module.exports = {
     dropTables, 
     createTables

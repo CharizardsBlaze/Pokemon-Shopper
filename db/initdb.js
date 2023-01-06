@@ -5,9 +5,8 @@ const dropTables = async () => {
     try {
     console.log("Starting to drop tables")
     await client.query(`
-    DROP TABLE IF EXISTS order_item;
     DROP TABLE IF EXISTS cart_item;
-    DROP TABLE IF EXISTS cart_session
+    DROP TABLE IF EXISTS cart_session;
     DROP TABLE IF EXISTS products;
     DROP TABLE IF EXISTS users;
     `)    

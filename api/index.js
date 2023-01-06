@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken')
-
+const usersRouter = require('./users')
 
 router.use('/', async (req, res, next) => {
     const auth = req.header('Authorization')
@@ -22,5 +22,6 @@ router.use('/', async (req, res, next) => {
         next()
     }
 })
+router.use('/users', usersRouter)
 
 module.exports = router;

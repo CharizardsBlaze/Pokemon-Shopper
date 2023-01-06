@@ -1,22 +1,19 @@
 const bcrypt = require('bcrypt')
 const client = require('.')
 
-const createUser = async ({username, firstName, lastName, password, email, address, sessionId}) => {
+const createUser = async ({username, firstName, lastName, password, emailAddress, phoneNumber}) => {
     const cryptedPassword = await bcrypt.hash(password, 10)
     try{
         const { rows: [user] } = await client.query(`
-        INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", address, "sessonId")
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
-        ON CONFLICT (email) DO NOTHING
+        INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", "phoneNumber")
+        VALUES ($1, $2, $3, $4, $5, $6)
+        ON CONFLICT ("emailAddress") DO NOTHING
         RETURNING *
         ;
-        `, [username, firstName, lastName, password, email, address, sessionId])
+        `, [username, firstName, lastName, cryptedPassword, emailAddress, phoneNumber])
         return user;
     }catch(error){
-        throw new Error({
-            error: 'UserNotCreated',
-            message: 'User was not created, please try again' 
-        })
+        throw new Error('Error creating user')
     }
 }
 const getUserById = async ({id}) => {
@@ -29,31 +26,25 @@ const getUserById = async ({id}) => {
         `, [id])
         return user;
     }catch(error){
-        throw new Error({
-            error: "NoUserWithId",
-            message: `No user found with Id#${id}`
-        })
+        throw new Error('Error getting user by Id')
     }
 }
-const getUserByEmail = async ({email}) => {
+const getUserByEmail = async ({emailAddress}) => {
     try{
         const {rows: [user]} = await client.query(`
             SELECT *
             FROM users
-            WHERE email = $1
+            WHERE "emailAddress" = $1
             ;
-        `, [email])
+        `, [emailAddress])
     }catch(error){
-        throw new Error({
-            error: 'NoUserWithEmail',
-            message: `No user found with an email of ${email}`
-        })
+        throw new Error('Error getting use by Email')
     }
 }
-const getUser = async ({email, password}) => {
+const getUser = async ({emailAddress, password}) => {
     try{
         // if no user is returned the try should fail and the error should be handled
-        const user = await getUserByEmail(email)
+        const user = await getUserByEmail({emailAddress})
         if(await bcrypt.compare(password, user.password)){
             const token = jwt.sign(user, process.env.JWT_SECRET, {
                 expiresIn: '1w'
@@ -62,10 +53,7 @@ const getUser = async ({email, password}) => {
             user.token = token
             return user
         }else{
-            throw new Error({
-                error: 'UnauthorizedAccess',
-                message: `Login was not successful, please check your usernme or password`
-            })
+            throw new Error('Could not Login in User')
         }
     }catch(error){
         throw new Error({

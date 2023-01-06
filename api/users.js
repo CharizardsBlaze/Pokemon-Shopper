@@ -1,30 +1,36 @@
+const e = require('express');
 const express = require('express')
 const usersRouter = express.Router();
 const {createUser, getUserByEmail, getUserById, getUser} = require('../db/users')
 
 usersRouter.post('/register', async (req, res, next) => {
-    if(!username, !password, !email, !sessionId){
+    console.log(req.body)
+    const {username, password, emailAddress} = req.body
+    if(!username || !password || !emailAddress){
         res.status(401).send({
             error: "MissingFields",
             message: "Please enter all required fields to register"
         })
-    try{
-        const userCheck = await getUserByEmail(email);
+        return
+    }else{
+        const userCheck = await getUserByEmail(req.body);
         if(userCheck){
             res.status(401).send({
                 error: "EmailTaken",
                 message: "Email is already in use, please choose another"
             })
             return
-        }else{
+        }
+    }
+    try{
             const newUser = await createUser(req.body)
-            const user = getUser(newUser);
+            // const user = await getUser(newUser);
             res.send({
-                user,
-                message: `Account for ${user.username} has been created`
+                newUser,
+                message: `Account has been created`
             })
+    }catch(error){
+        throw error
         }
-    }catch({name, message}){
-        throw {name, error}
-        }
-}})
+})
+module.exports = usersRouter;

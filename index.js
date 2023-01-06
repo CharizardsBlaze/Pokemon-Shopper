@@ -13,8 +13,7 @@ server.use(express.json());
 server.use('/api', apiRouter)
 
 
-server.use((error, req, res, next) => {
-    
+server.use((error, req, res, next) => {  
     console.error(error.stack)
     res.status(500).send({
         error: error.error,

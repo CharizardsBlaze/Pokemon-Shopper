@@ -1,5 +1,5 @@
 const client = require('./index')
-
+const {dropTables, createTables} = require('./initdb')
 // should use classes for the seed data? probably not
 // class pokemonCard = {
 //     constructor(id, pokemonId, name, type, type1, type2, quality, rarity, img_url){
@@ -257,3 +257,11 @@ const seedUsers = [
         role: 2, //user role, admin role?
     }
 ]
+const rebuildDB = async () => {
+    dropTables();
+    createTables();
+}
+client.connect();
+
+rebuildDB().catch(console.error).finally(() => client.end)
+

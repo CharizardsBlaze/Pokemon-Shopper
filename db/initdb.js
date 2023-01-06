@@ -25,7 +25,7 @@ const createTables = async() => {
         username VARCHAR(255) UNIQUE NOT NULL,
         "firstName" VARCHAR(255) NOT NULL,
         "lastName" VARCHAR(255),
-        password VARCHAR(2550) NO NULL,
+        password VARCHAR(2550) NOT NULL,
         "emailAddress" VARCHAR(255) UNIQUE NOT NULL,
         "phoneNumber" VARCHAR(255) UNIQUE
         );

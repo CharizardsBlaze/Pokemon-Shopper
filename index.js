@@ -4,13 +4,13 @@ const server = express();
 const cors = require('cors');
 const morgan = require('morgan');
 const client = require('./db/index');
-
+const apiRouter = require('./api/index')
 client.connect();
 
 server.use(cors());
 server.use(morgan('dev'))
 server.use(express.json());
-
+server.use('/api', apiRouter)
 
 
 server.use((error, req, res, next) => {

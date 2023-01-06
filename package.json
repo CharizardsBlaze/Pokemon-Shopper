@@ -1,4 +1,26 @@
 {
+
+  "name": "pokemon-shopper",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "server:dev": "nodemon index.js",
+    "db:build": "node db/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharizardsBlaze/Pokemon-Shopper.git"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
@@ -9,25 +31,6 @@
     "morgan": "^1.10.0",
     "pg": "^8.8.0"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
-  },
-  "name": "pokemon-shopper",
-  "description": "",
-  "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CharizardsBlaze/Pokemon-Shopper.git"
-  },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/CharizardsBlaze/Pokemon-Shopper/issues"
   },

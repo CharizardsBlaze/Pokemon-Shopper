@@ -148,3 +148,125 @@ const seedProduct = [
         img_url: "https://m.media-amazon.com/images/I/51Xd8iVTl7L._AC_.jpg"
     },
 ]
+
+const seedUsers = [
+    {
+        id: 1,
+        firstName: "Andrew",
+        lastName: "Smith",
+        email: "a_wallenberg@yahoo.org",
+        address: {
+            addressLine1: "150 Wallenberg Way",
+            addressLine2: "Apt 2",
+            city: "Orlando",
+            state: "FL",
+            zip: 90956,
+        },
+        cart: {
+            products: [1, 2, 3] // references productNumber
+        },
+        role: 1, //user role, admin role?
+    },
+    {
+        id: 2,
+        firstName: "Jennifer",
+        lastName: "Allensborough",
+        email: "jborough@hotmail.gov",
+        address: {
+            addressLine1: "1250 Sidways Drive",
+            addressLine2: null,
+            city: "Allentown",
+            state: "WV",
+            zip: 40740,
+        },
+        cart: {
+            products: [8] // references productNumber
+        },
+        role: 1, //user role, admin role?
+    },
+    {
+        id: 3,
+        firstName: "Devonte",
+        lastName: "Jochik",
+        email: "theJoker45@gmail.comp",
+        address: {
+            addressLine1: "18750 County Line Road 45",
+            addressLine2: null,
+            city: "Second Junction",
+            state: "OH",
+            zip: 60556,
+        },
+        cart: {
+            products: [] // references productNumber
+        },
+        role: 1, //user role, admin role?
+    },
+    {
+        id: 4,
+        firstName: "Sarah",
+        lastName: "Jessica-Parker",
+        email: "horseface2001@hotmail.web",
+        address: {
+            addressLine1: "300 West 42nd Street",
+            addressLine2: "Unit 203",
+            city: "New York",
+            state: "NY",
+            zip: 12042,
+        },
+        cart: {
+            products: [1, 2, 3, 4, 5, 6, 7, 8, 9] // references productNumber
+        },
+        role: 1, //user role, admin role?
+    },
+    {
+        id: 5,
+        firstName: "Neo",
+        lastName: null,
+        email: "the0ne@matrix.dev",
+        address: {
+            addressLine1: "Edge of the Way Lane",
+            addressLine2: null,
+            city: "Las Vegas",
+            state: "NV",
+            zip: 70707,
+        },
+        cart: {
+            products: [1] // references productNumber
+        },
+        role: 2, //user role, admin role?
+    },
+    {
+        id: 6,
+        firstName: "Mr",
+        lastName: "Anderson",
+        email: "thedirector@email.net",
+        address: {
+            addressLine1: null,
+            addressLine2: null,
+            city: null,
+            state: null,
+            zip: null,
+        },
+        cart: {
+            products: [5] // references productNumber
+        },
+        role: 1, //user role, admin role?
+    },
+    {
+        id: 7,
+        firstName: "Nicholas",
+        lastName: "Worffen-Styme",
+        email: "not1that2wharf3@aol.org",
+        address: {
+            addressLine1: "1204 Center Circle",
+            addressLine2: null,
+            city: "White Fish",
+            state: "ID",
+            zip: 78430,
+        },
+        cart: {
+            products: [1, 9] // references productNumber
+        },
+        role: 2, //user role, admin role?
+    }
+]

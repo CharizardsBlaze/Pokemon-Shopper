@@ -33,6 +33,18 @@ router.get('/products', async (request, response, next) => {
         console.log('there was an error getting all productS: ', error);
         throw error;
     }
+});
+
+router.get('/products/:productId', async (request, response, next) => {
+    try {
+        const productId = request.params;
+        const response = await fetch(`${BASE_URL}/products/${productId}`);
+        const oneProduct = await response.json();
+        response.send(oneProduct);
+    } catch (error) {
+        console.log('there was an error fetching products by productId: ', error);
+        throw error;
+    }
 })
 
 module.exports = router;

@@ -19,7 +19,7 @@ const client = require('./index')
 const seedProduct = [
     {
         id: 1,
-        pokemonId: 1,
+        pokedexId: 1,
         name: "Bulbasaur",
         cost: 100.00,
         type1: "plant",
@@ -30,7 +30,7 @@ const seedProduct = [
     },
     {
         id: 2,
-        pokemonId: 7,
+        pokedexId: 7,
         name: "Squirtle",
         cost: 1.50,
             type1: "water",
@@ -41,7 +41,7 @@ const seedProduct = [
     },
     {
         id: 3,
-        pokemonId: 94,
+        pokedexId: 94,
         name: "Ghastly",
         cost: 25.99,
         type1: "psychic",
@@ -52,7 +52,7 @@ const seedProduct = [
     },
     {
         id: 4,
-        pokemonId: 150,
+        pokedexId: 150,
         name: "Mewto",
         cost: 150.25,
         type1: "psychic",
@@ -63,7 +63,7 @@ const seedProduct = [
     },
     {
         id: 5,
-        pokemonId: 144,
+        pokedexId: 144,
         name: "Articuno",
         cost: 5.76,
         type1: "water",
@@ -74,7 +74,7 @@ const seedProduct = [
     },
     {
         id: 6,
-        pokemonId: 143,
+        pokedexId: 143,
         name: "Zapados",
         cost: 40.00,
         type1: "electric",
@@ -85,7 +85,7 @@ const seedProduct = [
     },
     {
         id: 7,
-        pokemonId: 653,
+        pokedexId: 653,
         name: "Fennekin",
         cost: 1.69,
         type1: "fire",
@@ -96,7 +96,7 @@ const seedProduct = [
     },
     {
         id: 8,
-        pokemonId: 74,
+        pokedexId: 74,
         name: "Geodude",
         cost: 3.98,
         type1: "fighting",
@@ -107,7 +107,7 @@ const seedProduct = [
     },
     {
         id: 9,
-        pokemonId: 799,
+        pokedexId: 799,
         name: "Guzzlord",
         cost: 5.44,
         type1: "dark",
@@ -118,7 +118,7 @@ const seedProduct = [
     },
     {
         id: 10,
-        pokemonId: 782,
+        pokedexId: 782,
         name: "Jangmo-o",
         cost: 10.11,
         type1: "dragon",

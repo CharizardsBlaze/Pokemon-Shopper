@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&family=Kalam&family=Merienda:wght@400;600;700&family=Monoton&family=Permanent+Marker&family=Righteous&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #adacac;
+  color: #fff;
+  line-height: 1.6;
+}
+
+button.ui.button,
+.green.ui.button,
+.blue.ui.button {
+  font-family: "Righteous", cursive;
+  font-weight: 400;
+}
+
+.container {
+  max-width: 768px;
+  margin: auto;
+  padding: 0 20px;
+  margin-top: 100px;
+}
+
+#nav-bar {
+  /* min-width: min-content; */
+  width: 100vw;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 3px;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  background-color: #101010e7;
+  padding-bottom: 3px;
+  /* box-shadow: #1010103e 0px 3px 6px; */
+  justify-content: center;
+}
+
+#navRightButtons {
+  flex-shrink: 0;
+  flex-grow: 0;
+  max-height: min-content;
+  align-items: center;
+}
+
+#navRightButtons button {
+  font-family: "Righteous", cursive;
+  font-weight: 400;
+}
+
+#navBarTitle {
+  font-family: "Monoton", cursive;
+  font-weight: 400;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  position: fixed;
+  color: #fff;
+  justify-content: center;
+}
+
+#homeSegment {
+  margin-top: 100px;
+}
+
+#homeSegment h1 {
+  font-family: "Righteous", cursive;
+  font-weight: 600;
+}
+
+#homeSegment h3 {
+  font-family: "Kalam", cursive;
+  font-weight: 400;
+}
+
+#homeInfo {
+  font-family: "Comfortaa", cursive;
+  font-weight: 400;
+}
+
+#posts-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#postCard {
+  margin-bottom: 20px;
+}
+
+.posts-container {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+#postCardHeader {
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+#postTitle {
+  font-family: "Comfortaa", cursive;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.6px;
+  text-transform: capitalize;
+}
+
+#scrollButton {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  margin: auto;
+  background-color: transparent;
+  color: purple;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+#scrollButton:hover {
+  background-color: #737373e3;
+  color: aliceblue;
+}
+
+#descriptionSegment {
+  border-radius: 20px;
+}
+
+h4#description {
+  font-size: 1.2rem;
+  font-family: "Merienda", cursive;
+  font-weight: 400;
+}
+
+.card {
+  background-color: #fff;
+  color: rgb(247, 243, 243);
+  border-radius: 15px;
+  padding: 40px 50px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.card.reverse {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.card h2 {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+input {
+  flex-grow: 2;
+  border: none;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.message {
+  padding-top: 10px;
+  text-align: center;
+  color: rebeccapurple;
+}
+
+.headerMast {
+  background-color: #101010;
+  box-shadow: #7f7f7f 0px 3px 10px;
+  height: 670px;
+  box-shadow: #101010 0px 3px 4px;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100vw;
+}
+
+#postHeader {
+  color: #fff;
+  font-family: "Righteous", cursive;
+  font-weight: 400;
+  margin-top: 170px;
+  /* padding-top: 150px; */
+  /* padding-bottom: 100px; */
+  /* height: 1000px; */
+}
+
+#searchOrCreate {
+  margin-top: 160px;
+  /* margin-bottom: 300px; */
+}
+
+#searchOrCreate .button,
+#searchOrCreate input {
+  font-family: "Righteous", cursive;
+  font-weight: 400;
+}
+
+#postOr {
+  font-family: "Righteous", cursive;
+  font-weight: 400;
+  color: #fff;
+}
+
+#createPostDivider {
+  margin-bottom: -40px;
+}
+
+div.ui.form div {
+  font-family: "Comfortaa", cursive;
+}
+
+.ui.horizontal.divider.header {
+  font-family: "Kalam", cursive;
+  font-weight: 600;
+}
+
+#loginRegister {
+  margin-top: 35px;
+}
+
+div.field label {
+  font-family: "Comfortaa", cursive;
+  font-weight: 400;
+}
+
+#postDivider {
+  color: #000;
+  margin-top: 268px;
+  margin-bottom: -20px;
+  font-family: "Kalam", cursive;
+  font-weight: 600;
+}
+
+#profileGrid {
+  margin-top: 80px;
+  display: flex;
+}
+
+#userMessageCards {
+  flex-direction: column;
+  background-color: snow;
+  margin: 10px;
+  margin-top: 20px;
+}
+
+#userMessageCards .card {
+  border-radius: 15px;
+  padding: 8px 4px;
+  /* margin: 20px 0; */
+  box-shadow: #e1e1e1 0px 0px 10px 2px;
+  background-color: white;
+}
+
+#profileMessage {
+  box-shadow: #d5d5d5 0px 1px 4px 1px;
+  background-color: rgb(244, 246, 248);
+  color: rgb(81, 81, 81);
+  font-weight: 600;
+  font-family: "Comfortaa", cursive;
+}
+
+@media screen and (max-width: 389px) {
+  #searchOrCreate {
+    margin-top: 124px;
+  }
+
+  div.ui.icon.action.input {
+    /* margin-left: -3px; */
+    width: 180px;
+    justify-content: center;
+  }
+
+  #postDivider {
+    margin-top: 222px;
+    margin-bottom: -20px;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  #postDivider {
+    margin-top: 232px;
+    margin-bottom: -20px;
+  }
+
+  #navBarTitle {
+    display: none;
+  }
+}

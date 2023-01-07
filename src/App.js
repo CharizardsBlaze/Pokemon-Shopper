@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { fetchCards, fetchUser } from "./api/api";
 import "./App.css";
@@ -20,8 +19,9 @@ import {
 const App = () => {
   const [card, setCard] = useState([]);
 
-  //TODO - Temporary token for testing. Will be removed later.
+  //TODO - Temporary token for testing.
   //TODO - We could also have a wishlist or favorites feature.
+
   const [token, setToken] = useState(
     window.localStorage.getItem("token") || null
   );
@@ -47,11 +47,6 @@ const App = () => {
     getCards();
   }, [token]);
 
-  // REVIEW - Make sure the fix from chuck is actually implemented.
-  // If I set fetchUser to token.token, login works fine.
-  // Otherwise, I get an error but login still works sometimes?
-  // But using token.token makes my registration fail. Not sure
-  // where the bug is but I'm going to leave it as is for now.
   useEffect(() => {
     if (token) {
       const getUser = async () => {
@@ -80,7 +75,7 @@ const App = () => {
 
   //----------------- return -----------------
   return (
-    //TODO - Temporary for testing. Will be changed later.
+    //TODO - Temporary NavBar for testing. Will be changed later.
 
     <div className='container'>
       {location.pathname === "/cards" ? (

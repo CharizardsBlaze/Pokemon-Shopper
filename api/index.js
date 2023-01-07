@@ -38,7 +38,7 @@ router.get('/products', async (request, response, next) => {
 
 router.get('/products/:productId', async (request, response, next) => {
     try {
-        const productId = request.params;
+        const {productId} = request.params;
         const oneProduct = await fetchOneProduct(productId)
         response.send(oneProduct);
     } catch (error) {

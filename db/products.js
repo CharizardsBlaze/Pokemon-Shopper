@@ -15,12 +15,12 @@ const fetchAllProducts = async() => {
 
 const fetchOneProduct = async(productId) => {
     try {
-        const {rows: OneProduct} = await client.query(`
+        const {rows: [oneProduct]} = await client.query(`
         SELECT * FROM products
         WHERE id = $1
         ;
         `, [productId]);
-        return OneProduct;
+        return oneProduct;
     } catch (error) {
         console.log('there was an error in fetchOneProduct from database: ', error);
         throw error;

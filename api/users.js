@@ -1,15 +1,16 @@
 const express = require('express')
 const usersRouter = express.Router();
-const {createUser, getUserByEmail, getUserById, getUser} = require('../db/users')
+const {createUser, getUserByEmail, getUserById, verifyUser} = require('../db/users')
 var jwt = require('jsonwebtoken');
 
 usersRouter.post('/register', async (req, res, next) => {
     const {username, password, emailAddress} = req.body
     if(!username || !password || !emailAddress){
-        next({
+        // fix status codes
+        res.status(400).send({
             error: "MissingFields",
             message: "Please enter all required fields to register"
-        }).status(401)
+        })
         return
     }else{
         const userCheck = await getUserByEmail(req.body);
@@ -43,15 +44,21 @@ usersRouter.post('/login', async (req, res, next) => {
     try{
         const user = await getUserByEmail(req.body)
         if(user){
-            const loggedInUser = await getUser(req.body)
+            if(await verifyUser(req.body)){
             const token = jwt.sign(user, process.env.JWT_SECRET, {
                 expiresIn: '1w'
             })
-            delete loggedInUser.password
-            loggedInUser.token = token
+            // login should only return the token to be used by get/me
+            user.token = token;
             res.send({
-                loggedInUser,
+                user,
                 message: "Thank you for logging in!"
+            })
+        }
+        }else{
+            res.status(401).send({
+                error: "NotAuthorized",
+                message: "Login was not successful, please check your username or password"
             })
         }
     }catch(error){

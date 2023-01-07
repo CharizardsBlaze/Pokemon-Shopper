@@ -15,12 +15,13 @@ import {
 // TODO - Refactor into needed components, props to pass to them, and routes.
 
 const App = () => {
+  //------------------- State --------------------
+
+  // const [cards, setCards] = useState([]);
+
   //----------------- useEffects -----------------
 
-  //
-  //
-
-  //----------------- return -----------------
+  // useEffect(() => {}, []);
 
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.

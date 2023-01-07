@@ -3,7 +3,7 @@ const { client } = require('./index')
 const getAllProducts = async() => {
     try {
         const {rows: allProducts} = await client.query(`
-        SELECT ("imageUrl", name, price) FROM products
+        SELECT "imageUrl", name, price FROM products
         ;
         `);
         return allProducts;

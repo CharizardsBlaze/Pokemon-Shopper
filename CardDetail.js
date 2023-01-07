@@ -11,7 +11,7 @@ const CardDetail = () => {
 
     useEffect(() => {
         // /products/:productId is our params
-        const productId = useParams();
+        const {productId} = useParams();
         // get one product from params and load it into use state
         getOneItem(productId);
     }, []);

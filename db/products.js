@@ -1,9 +1,9 @@
 const { client } = require('./index')
 
-const fetchAllProducts = async() => {
+const getAllProducts = async() => {
     try {
         const {rows: allProducts} = await client.query(`
-        SELECT * FROM products
+        SELECT ("imageUrl", name, price) FROM products
         ;
         `);
         return allProducts;
@@ -13,7 +13,7 @@ const fetchAllProducts = async() => {
     }
 }
 
-const fetchOneProduct = async(productId) => {
+const getOneProduct = async(productId) => {
     try {
         const {rows: [oneProduct]} = await client.query(`
         SELECT * FROM products
@@ -28,7 +28,7 @@ const fetchOneProduct = async(productId) => {
 }
 
 module.exports = {
-    fetchAllProducts,
-    fetchOneProduct,
+    getAllProducts,
+    getOneProduct,
 
 }

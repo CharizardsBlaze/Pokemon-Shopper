@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken')
-const { fetchAllProducts, fetchOneProduct} = require('../db/products')
+const {getAllProducts, getOneProduct,} = require('../db/products')
 
 
 router.use('/', async (req, res, next) => {
@@ -26,7 +26,7 @@ router.use('/', async (req, res, next) => {
 
 router.get('/products', async (request, response, next) => {
     try {
-        const allProducts = await fetchAllProducts().then(results => results.json());
+        const allProducts = await getAllProducts();
         console.log('this is all products: ', allProducts);
         response.send(allProducts);
     } catch (error) {
@@ -38,7 +38,7 @@ router.get('/products', async (request, response, next) => {
 router.get('/products/:productId', async (request, response, next) => {
     try {
         const productId = request.params;
-        const oneProduct = await fetchOneProduct(productId).then(results => results.json());
+        const oneProduct = await getOneProduct(productId);
         response.send(oneProduct);
     } catch (error) {
         console.log('there was an error fetching products by productId: ', error);

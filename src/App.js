@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-// import { fetchCards, fetchUser } from "./api/index";
+// import { fetchCards, fetchUser } from "./api";
 import "./App.css";
 import {
   // AccountDetails,

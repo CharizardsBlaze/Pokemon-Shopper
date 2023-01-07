@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
+import { getAllProducts } from './api'
 
 const Cards = () => {
 
@@ -11,11 +12,11 @@ const Cards = () => {
 
     // get all products on load
     useEffect(() => {
-        const fetching = async() => {
-            const allProducts = await fetchAllProducts();
+        const gettingAllProducts = async() => {
+            const allProducts = await getAllProducts();
             setAllProducts(allProducts);
         } 
-        fetching();
+        gettingAllProducts();
     })
 
     // eachProduct: id, pokedexId:, name, cost, type1, type2, quality, rarity, img_url

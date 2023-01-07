@@ -5,9 +5,7 @@ const dropTables = async () => {
     try {
     console.log("Starting to drop tables")
     await client.query(`
-    DROP TABLE IF EXISTS order_item;
     DROP TABLE IF EXISTS cart_item;
-    DROP TABLE IF EXISTS cart_session
     DROP TABLE IF EXISTS products;
     DROP TABLE IF EXISTS users;
     `)    
@@ -42,15 +40,10 @@ const createTables = async() => {
         rarity VARCHAR(255) NOT NULL,
         "imageUrl" VARCHAR(255)
     );
-    CREATE TABLE cart_session (
-        id SERIAL PRIMARY KEY,
-        user_id INTEGER REFERENCES users(id) UNIQUE NOT NULL,
-        total_cost INTEGER NOT NULL
-    );
     CREATE TABLE cart_item (
         id SERIAL PRIMARY KEY,
+        user_id INTEGER REFERENCES users(id) NOT NULL,
         product_id INTEGER REFERENCES products(id) NOT NULL,
-        sesion_id INTEGER REFERENCES cart_session(id) NOT NULL,
         quantity INTEGER NOT NULL
     );
     `)
@@ -66,11 +59,11 @@ module.exports = {
 }
 
 
-
+//Potential look at the tables for order items
 //Create order_items
 // CREATE TABLE order_item (
 //     id SERIAL PRIMARY KEY,
-//     session_id INTEGER REFERENCES cart_session(id) NOT NULL,
+//     order_id INTEGER REFERENCES order_details(id),
 //     item_id INTEGER REFERENCES product(id) NOT NULL,
 //     quantity INTEGER REFERENCES cart_item(quantity) NOT NULL
 // );

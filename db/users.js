@@ -37,6 +37,7 @@ const getUserByEmail = async ({emailAddress}) => {
             WHERE "emailAddress" = $1
             ;
         `, [emailAddress])
+        return user;
     }catch(error){
         throw new Error('Error getting use by Email')
     }
@@ -44,13 +45,10 @@ const getUserByEmail = async ({emailAddress}) => {
 const getUser = async ({emailAddress, password}) => {
     try{
         // if no user is returned the try should fail and the error should be handled
+        console.log(emailAddress)
         const user = await getUserByEmail({emailAddress})
+        console.log(user)
         if(await bcrypt.compare(password, user.password)){
-            const token = jwt.sign(user, process.env.JWT_SECRET, {
-                expiresIn: '1w'
-            })
-            delete user.password
-            user.token = token
             return user
         }else{
             throw new Error('Could not Login in User')

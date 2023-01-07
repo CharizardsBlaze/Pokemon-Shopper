@@ -19,11 +19,11 @@ import {
 const App = () => {
   const [card, setCard] = useState([]);
 
-  //TODO - Temporary token for testing.
   //TODO - We could also have a wishlist or favorites feature.
+  //TODO - Temporary token for testing and can be changed freely.
 
-  const [token, setToken] = useState(
-    window.localStorage.getItem("token") || null
+  const [pokeToken, setPokeToken] = useState(
+    window.localStorage.getItem("pokeToken") || null
   );
 
   const [user, setUser] = useState(null);
@@ -33,8 +33,8 @@ const App = () => {
 
   const getCards = async () => {
     try {
-      console.log("Requested token for getCards in app.js", token);
-      const result = await fetchCards(token);
+      console.log("Requested pokeToken for getCards in app.js", pokeToken);
+      const result = await fetchCards(pokeToken);
 
       setCard(result);
     } catch (error) {
@@ -43,33 +43,34 @@ const App = () => {
   };
 
   //----------------- useEffects -----------------
+  // REVIEW - For use as template.
   useEffect(() => {
     getCards();
-  }, [token]);
+  }, [pokeToken]);
 
   useEffect(() => {
-    if (token) {
+    if (pokeToken) {
       const getUser = async () => {
-        const data = await fetchUser(token);
+        const data = await fetchUser(pokeToken);
         console.log("fetch user", data);
         setUser(data);
       };
       getUser();
     }
-  }, [token]);
+  }, [pokeToken]);
 
   useEffect(() => {
-    if (token) {
-      window.localStorage.setItem("token", token);
+    if (pokeToken) {
+      window.localStorage.setItem("pokeToken", pokeToken);
     } else {
-      window.localStorage.removeItem("token");
+      window.localStorage.removeItem("pokeToken");
     }
-  }, [token]);
+  }, [pokeToken]);
 
   //TODO - MOVE TO NAVBAR
   const logOut = () => {
     setUser(null);
-    setToken(null);
+    setPokeToken(null);
     navigate("/");
   };
 
@@ -96,7 +97,7 @@ const App = () => {
           Pokemon Shopper
         </h2>
         <div className='right menu' id='navRightButtons'>
-          {token ? (
+          {pokeToken ? (
             <>
               <Link
                 className='blue ui right floated button'
@@ -134,11 +135,13 @@ const App = () => {
       {/* <NavBar loggedIn={loggedIn} logOut={logOut} /> */}
 
       <Routes>
-        <Route path='/' element={<Home token={token} user={user} />} />
+        <Route path='/' element={<Home pokeToken={pokeToken} user={user} />} />
         <Route
           className='item'
           path='/cards'
-          element={<Cards card={card} token={token} setCard={setCard} />}
+          element={
+            <Cards card={card} pokeToken={pokeToken} setCard={setCard} />
+          }
         />
         <Route
           className='item'
@@ -153,7 +156,7 @@ const App = () => {
         <Route
           className='item'
           path='/account/:action'
-          element={<AccountForm setToken={setToken} />}
+          element={<AccountForm setPokeToken={setPokeToken} />}
         />
         <Route className='item' path='/cart' element={<Cart user={user} />} />
       </Routes>

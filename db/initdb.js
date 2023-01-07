@@ -59,7 +59,6 @@ const createTables = async() => {
     }
 }
 
-
 module.exports = {
     dropTables, 
     createTables

@@ -1,20 +1,22 @@
-// import React from "react";
-// import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+// Will likely want useNavigate for logout.
 
-// TODO - Not needed if we put inside App.js instead. Like StangerThings.
-// TODO - Otherwise need to move to NavBar.js
+// TODO - This component is not needed if we put a condensed NavBar inside App.js instead.
 
-// const NavBar = () => {
-//     return (
-//         <div className="ui secondary pointing menu">
-//             <Link to="/" className="item">
-//                 Home
-//             </Link>
-//             <Link to="/cards" className="item">
-//                 Cards
-//             </Link>
-//         </div>
-//     );
-// };
+const NavBar = () => {
+  return (
+    <nav>
+      <div className='ui secondary pointing menu'>
+        <Link to='/' className='item'>
+          Home
+        </Link>
+        <Link to='/cards' className='item'>
+          Cards
+        </Link>
+      </div>
+    </nav>
+  );
+};
 
-// export default NavBar;
+export default NavBar;

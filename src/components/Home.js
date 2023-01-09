@@ -1,13 +1,10 @@
 import React from "react";
 
-const Home = ({ user }) => {
+const Home = () => {
   return (
     <>
       <div className='ui block segment' id='homeSegment'>
         <h1 className='ui center aligned header'>Gotta Catch Em' All!</h1>
-        {user ? (
-          <h3 className='ui center aligned header'>Welcome {user.username}!</h3>
-        ) : null}
       </div>
       <div className='ui inverted block segment'>
         <h3 className='ui inverted center aligned header' id='homeInfo'>

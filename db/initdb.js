@@ -1,24 +1,24 @@
-const client = require('./index')
+const client = require("./index");
 //dropTables and createTables
 
 const dropTables = async () => {
-    try {
-    console.log("Starting to drop tables")
+  try {
+    console.log("Starting to drop tables");
     await client.query(`
     DROP TABLE IF EXISTS cart_item;
     DROP TABLE IF EXISTS products;
     DROP TABLE IF EXISTS users;
-    `)    
-    console.log("Completed drop tables.")
-    }catch(error) {
-        console.log("There was an error dropping the tables")
-        throw error
-    }
-}
-//CREATES TABLE FOR USERS, PRODUCT, PRODUCT CATEGORY, PRODUCT INVENTORY 
+    `);
+    console.log("Completed drop tables.");
+  } catch (error) {
+    console.log("There was an error dropping the tables");
+    throw error;
+  }
+};
+//CREATES TABLE FOR USERS, PRODUCT, PRODUCT CATEGORY, PRODUCT INVENTORY
 
-const createTables = async() => {
-    try {
+const createTables = async () => {
+  try {
     await client.query(`
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,
@@ -46,17 +46,16 @@ const createTables = async() => {
         product_id INTEGER REFERENCES products(id) NOT NULL,
         quantity INTEGER NOT NULL
     );
-    `)
-    }catch(error) {
-       throw new Error("There was an error creating the tables!")
-    }
-}
+    `);
+  } catch (error) {
+    throw new Error("There was an error creating the tables!");
+  }
+};
 
 module.exports = {
-    dropTables, 
-    createTables
-}
-
+  dropTables,
+  createTables,
+};
 
 //Potential look at the tables for order items
 //Create order_items

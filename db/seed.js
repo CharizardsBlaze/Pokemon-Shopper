@@ -259,13 +259,20 @@ const seedUsers = [
         role: 2, //user role, admin role?
     }
 ]
+
+const insertUsersIntoDB = async () => {
+    console.log('putting seed users into database');
+    seedUsers.forEach((user) => {
+        createUser(user)
+    })
+    console.log('done inserting seed users');
+};
+
 const rebuildDB = async () => {
     dropTables();
     createTables();
     // put each fake user into the database
-    seedUsers.forEach((user) => {
-        createUser(user);
-    })
+    insertUsersIntoDB();
 }
 client.connect();
 

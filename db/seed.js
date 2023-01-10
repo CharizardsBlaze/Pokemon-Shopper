@@ -1,5 +1,6 @@
 const client = require('./index')
-const {dropTables, createTables} = require('./initdb')
+const {dropTables, createTables} = require('./initdb');
+const { createUser } = require('./users')
 // should use classes for the seed data? probably not
 // class pokemonCard = {
 //     constructor(id, pokemonId, name, type, type1, type2, quality, rarity, img_url){
@@ -13,6 +14,7 @@ const {dropTables, createTables} = require('./initdb')
 //         this.img_url = img_url;
 //     }
 // }
+
 
 // see  product data
 // price is writted as 100.00 (with cents value)
@@ -131,7 +133,7 @@ const seedProduct = [
 
 const seedUsers = [
     {
-        id: 1,
+        username: "fastAndy",
         firstName: "Andrew",
         lastName: "Smith",
         emailAddress: "a_wallenberg@yahoo.org",
@@ -149,7 +151,7 @@ const seedUsers = [
         role: 1, //user role, admin role?
     },
     {
-        id: 2,
+        username: "JAllen",
         firstName: "Jennifer",
         lastName: "Allensborough",
         emailAddress: "jborough@hotmail.gov",
@@ -167,7 +169,7 @@ const seedUsers = [
         role: 1, //user role, admin role?
     },
     {
-        id: 3,
+        username: "JOKER-D",
         firstName: "Devonte",
         lastName: "Jochik",
         emailAddress: "theJoker45@gmail.comp",
@@ -185,7 +187,7 @@ const seedUsers = [
         role: 1, //user role, admin role?
     },
     {
-        id: 4,
+        username: "HorsePerson",
         firstName: "Sarah",
         lastName: "Jessica-Parker",
         emailAddress: "horseface2001@hotmail.web",
@@ -203,7 +205,7 @@ const seedUsers = [
         role: 1, //user role, admin role?
     },
     {
-        id: 5,
+        username: "The1",
         firstName: "Neo",
         lastName: null,
         emailAddress: "the0ne@matrix.dev",
@@ -221,7 +223,7 @@ const seedUsers = [
         role: 2, //user role, admin role?
     },
     {
-        id: 6,
+        username: "MrAnderson",
         firstName: "Mr",
         lastName: "Anderson",
         emailAddress: "thedirector@email.net",
@@ -239,7 +241,7 @@ const seedUsers = [
         role: 1, //user role, admin role?
     },
     {
-        id: 7,
+        username: "NicDaQuick",
         firstName: "Nicholas",
         lastName: "Worffen-Styme",
         emailAddress: "not1that2wharf3@aol.org",
@@ -257,9 +259,20 @@ const seedUsers = [
         role: 2, //user role, admin role?
     }
 ]
+
+const insertUsersIntoDB = async () => {
+    console.log('putting seed users into database');
+    seedUsers.forEach((user) => {
+        createUser(user)
+    })
+    console.log('done inserting seed users');
+};
+
 const rebuildDB = async () => {
     dropTables();
     createTables();
+    // put each fake user into the database
+    insertUsersIntoDB();
 }
 client.connect();
 

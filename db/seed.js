@@ -1,6 +1,8 @@
 const client = require('./index')
 const {dropTables, createTables} = require('./initdb');
+const {createCartItem, getCartItemsByUserId} = require('./cart')
 const { createUser } = require('./users')
+
 // should use classes for the seed data? probably not
 // class pokemonCard = {
 //     constructor(id, pokemonId, name, type, type1, type2, quality, rarity, img_url){

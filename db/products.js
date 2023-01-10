@@ -1,5 +1,20 @@
 const { client } = require('./index')
 
+const createProduct = async({pokedexId, name, price, type1, type2, quality, rarity, imageUrl}) => {
+    try {
+        const {rows: [product]} = await client.query(`
+        INSERT INTO products ("pokedexId", name, price, type1, type2, quality, rarity, "imageUrl")
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING *;
+        `)
+        return product
+    }catch(error) {
+    console.log('There was an error createProduct from the database', error)
+    throw error
+    }
+}
+
+
 const getAllProducts = async() => {
     try {
         const {rows: allProducts} = await client.query(`
@@ -30,5 +45,5 @@ const getOneProduct = async(productId) => {
 module.exports = {
     getAllProducts,
     getOneProduct,
-
+    createProduct
 }

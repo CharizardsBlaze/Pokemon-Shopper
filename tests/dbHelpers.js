@@ -16,7 +16,7 @@ fakeData.phoneNumber = Math.random()
         INSERT INTO users (username, "firstName", "lastName", password, "emailAddress", "phoneNumber")
         VALUES ($1, $2, $3, $4, $5, $6)
         RETURNING *;
-        `,[...fakeData])
+        `,[...Object.values(fakeData)])
         return user
     }catch(error) {
         console.error('There was an error creating fake user in the tests', error)

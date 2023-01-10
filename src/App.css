@@ -2,7 +2,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #adacac;
+  background-color: #ffdf79;
   color: #fff;
   line-height: 1.6;
 }
@@ -59,6 +59,7 @@ button.ui.button,
 
 #homeSegment {
   margin-top: 100px;
+  background-color: #21d9d9e7;
 }
 
 #homeSegment h1 {
@@ -178,7 +179,7 @@ input:focus {
   background-color: #101010;
   box-shadow: #7f7f7f 0px 3px 10px;
   height: 670px;
-  box-shadow: #101010 0px 3px 4px;
+  /* box-shadow: #101010 0px 3px 4px; */
   position: absolute;
   z-index: -1;
   left: 0;

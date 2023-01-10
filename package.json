@@ -1,5 +1,4 @@
 {
-
   "name": "pokemon-shopper",
   "description": "",
   "version": "1.0.0",
@@ -8,12 +7,16 @@
     "test": "tests"
   },
   "devDependencies": {
+    "jest": "^29.3.1",
     "nodemon": "^2.0.20"
   },
   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "server:dev": "nodemon index.js",
     "db:build": "node db/seed.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest -runInBand",
+    "test:watch": "jest --runInBand --watchAll"
   },
   "repository": {
     "type": "git",
@@ -26,13 +29,28 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "jest": "^29.3.1",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.1",
+    "react-scripts": "^5.0.1",
+    "semantic-ui-css": "^2.5.0"
   },
   "bugs": {
     "url": "https://github.com/CharizardsBlaze/Pokemon-Shopper/issues"
   },
-  "homepage": "https://github.com/CharizardsBlaze/Pokemon-Shopper#readme"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

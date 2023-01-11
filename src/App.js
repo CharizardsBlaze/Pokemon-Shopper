@@ -21,7 +21,15 @@ const App = () => {
 
   //----------------- useEffects -----------------
 
-  // useEffect(() => {}, []);
+  const gettingAllProducts = async() => {
+    const allProducts = await getAllProducts();
+    setAllProducts(allProducts);
+  };
+
+  // get all products on load
+  useEffect(() => {
+    gettingAllProducts();
+  })
 
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.

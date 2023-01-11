@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Cards = ({allProducts}) => {
 
+    console.log('allproducts: ', allProducts)
+
     const handleSeeDetails = (productId) => {
         console.log(`you are going to see details for ${productId}`)
     }
@@ -14,8 +16,8 @@ const Cards = ({allProducts}) => {
             ? (<h4>Loading...</h4>) 
             : (allProducts.map((eachProduct) => {
                 return (
-                    <div className="card-container">
-                        <img href={eachProduct.img_url} />
+                    <div key={eachProduct.id} className="card-container">
+                        <img href={eachProduct.iamgeUrl} />
                         <h5>Card name: {eachProduct.name}</h5>
                         <p>Price: {eachProduct.cost}</p>
                         <button 

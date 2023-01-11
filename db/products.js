@@ -18,7 +18,7 @@ const createProduct = async({pokedexId, name, price, type1, type2, condition, ra
 const getAllProducts = async() => {
     try {
         const {rows: allProducts} = await client.query(`
-        SELECT "imageUrl", name, price, condition FROM products
+        SELECT "imageUrl", name, price, id, condition FROM products
         ;
         `);
         return allProducts;

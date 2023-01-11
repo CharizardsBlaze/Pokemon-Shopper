@@ -1,4 +1,4 @@
-const {client} = require('./index')
+const client = require('./index')
 
 const createCartItem = async({user_id, product_id, quantity}) => {
     try {
@@ -38,7 +38,19 @@ const getCartItemsByUserId = async({id}) => {
         throw error
     }
 }
-
+const removeCartItem = async({id}) => {
+    try {
+    const {rows: cartItem} = await client.query(`
+    DELETE * 
+    FROM cart_item
+    WHERE id=$1;
+    `, [id])
+    return cartItem
+    }catch(error) {
+        console.error('There was an error removing the cart item by its id', error)
+        throw error
+    }
+}
 const deleteCartItemsByUserId = async({id}) => {
     try {
         const {rows: cartItems} = await client.query(`
@@ -55,5 +67,6 @@ const deleteCartItemsByUserId = async({id}) => {
 module.exports = {
     createCartItem,
     getCartItemsByUserId,
-    deleteCartItemsByUserId
+    deleteCartItemsByUserId,
+    removeCartItem
 }

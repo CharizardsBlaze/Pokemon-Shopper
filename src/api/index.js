@@ -44,10 +44,21 @@ export async function loginUser(emailAddress, password) {
 export const getAllProducts = () => {
     try {
         const response = await fetch(`${BASE_URL}/products`);
-        const allProducts = response.json();
+        const allProducts = await response.json();
         return allProducts;
     } catch (error) {
         console.log('there was an error getting all prodcuts in src/api/: ', error);
+        throw error;
+    }
+}
+
+export const getOneProduct = (productId) => {
+    try {
+        const response = await fetch(`${BASE_URL}/products/${productId}`);
+        const oneProduct = await response.json();
+        return oneProduct;
+    } catch (error) {
+        console.log('there was an error getting one product in src/api: ', error);
         throw error;
     }
 }

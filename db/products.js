@@ -35,6 +35,7 @@ const getOneProduct = async(productId) => {
         WHERE id = $1
         ;
         `, [productId]);
+        console.log('one product in database', oneProduct)
         return oneProduct;
     } catch (error) {
         console.log('there was an error in fetchOneProduct from database: ', error);

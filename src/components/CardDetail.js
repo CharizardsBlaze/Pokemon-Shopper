@@ -1,20 +1,22 @@
-import React, {useEffect, useState, useParams} from 'react';
+import React, {useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getOneProduct } from '../api';
 
 const CardDetail = () => {
 
     const [oneItem, setOneItem] = useState({})
 
     // /cards/:cardId is our params
-    const cardId = useParams();
+    const {cardId} = useParams();
 
-    const getOneItem = async(productId) => {
-        const oneItem = await getOneItem(productId);
+    const getOneItem = async() => {
+        const oneItem = await getOneProduct(cardId);
         setOneItem(oneItem);
     };
 
     useEffect(() => {
         // get one product from params and load it into use state
-        getOneItem(cardId);
+        getOneItem();
     }, []);
 
     const handleAddToCart = (productId) => {
@@ -29,10 +31,10 @@ const CardDetail = () => {
             : (
                 <div key={oneItem.id}>
                     <h3>{oneItem.name}</h3>
-                    <p>Price: {oneItem.cost}</p>
+                    <p>Price: {oneItem.price}</p>
                     <img href={oneItem.img_url} />
                     <div>
-                        <p>Quality: {oneItem.quality}</p>
+                        <p>Quality: {oneItem.condition}</p>
                         <p>Rarity: {oneItem.rarity}</p>
                         <p>{oneItem.name} first type: {oneItem.type1}</p>
                         {!oneItem.type2 ? null : (<p>{oneItem.name} second type: {oneItem.type2}</p>)}

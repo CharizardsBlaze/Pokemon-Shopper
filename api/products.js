@@ -13,10 +13,10 @@ productRouter.get("/", async (request, response, next) => {
     }
   });
   
-  productRouter.get("/:productId", async (request, response, next) => {
+  productRouter.get("/:cardId", async (request, response, next) => {
     try {
-      const productId = request.params;
-      const oneProduct = await getOneProduct(productId);
+      const {cardId} = request.params;
+      const oneProduct = await getOneProduct(cardId);
       response.send(oneProduct);
     } catch (error) {
       console.log("there was an error fetching products by productId: ", error);

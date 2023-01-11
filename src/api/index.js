@@ -43,8 +43,9 @@ export async function loginUser(emailAddress, password) {
 
 export const getAllProducts = async () => {
     try {
-        const response = await fetch(`${BASE_URL}/products`);
+        const response = await fetch(`${BASE_URL}/cards`);
         const allProducts = await response.json();
+        console.log('products in front end api', allProducts)
         return allProducts;
     } catch (error) {
         console.log('there was an error getting all prodcuts in src/api/: ', error);
@@ -54,7 +55,7 @@ export const getAllProducts = async () => {
 
 export const getOneProduct = async (productId) => {
     try {
-        const response = await fetch(`${BASE_URL}/products/${productId}`);
+        const response = await fetch(`${BASE_URL}/cards/${productId}`);
         const oneProduct = await response.json();
         return oneProduct;
     } catch (error) {

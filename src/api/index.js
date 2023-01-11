@@ -41,7 +41,7 @@ export async function loginUser(emailAddress, password) {
     }
 }
 
-export const getAllProducts = () => {
+export const getAllProducts = async () => {
     try {
         const response = await fetch(`${BASE_URL}/products`);
         const allProducts = await response.json();
@@ -52,7 +52,7 @@ export const getAllProducts = () => {
     }
 }
 
-export const getOneProduct = (productId) => {
+export const getOneProduct = async (productId) => {
     try {
         const response = await fetch(`${BASE_URL}/products/${productId}`);
         const oneProduct = await response.json();

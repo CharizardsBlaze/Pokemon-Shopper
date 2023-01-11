@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { getAllProducts } from '../../api'
 
-const Cards = () => {
-
-    const [allProducts, setAllProducts] = useState([]);
+const Cards = ({allProducts}) => {
 
     const handleSeeDetails = (productId) => {
         console.log(`you are going to see details for ${productId}`)

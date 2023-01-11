@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-// import { fetchCards, fetchUser } from "./api";
+import { getAllProducts } from "./api";
 import "./App.css";
 import {
   // AccountDetails,
@@ -18,6 +18,7 @@ const App = () => {
   //------------------- State --------------------
 
   // const [cards, setCards] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
   //----------------- useEffects -----------------
 
@@ -42,7 +43,7 @@ const App = () => {
         {/* <Route
           className='item'
           path='/cards'
-          element={<Cards />}
+          element={<Cards allProducts={allProducts}/>}
         />
         <Route
           className='item'

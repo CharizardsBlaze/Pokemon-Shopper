@@ -39,8 +39,21 @@ const getCartItemsByUserId = async({id}) => {
     }
 }
 
+const deleteCartItemsByUserId = async({id}) => {
+    try {
+        const {rows: cartItems} = await client.query(`
+        DELETE FROM cart_item 
+        WHERE user_id=$1;
+        `, [id])
+        return cartItems
+    }catch(error) {
+        console.error('There was an error trying to delete the users cart by user id', error)
+        throw error
+    }
+}
 
 module.exports = {
     createCartItem,
-    getCartItemsByUserId
+    getCartItemsByUserId,
+    deleteCartItemsByUserId
 }

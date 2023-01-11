@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-// import { fetchCards, fetchUser } from "./api";
+import { getAllProducts } from "./api";
 import "./App.css";
 import {
   // AccountDetails,
@@ -18,10 +18,19 @@ const App = () => {
   //------------------- State --------------------
 
   // const [cards, setCards] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
   //----------------- useEffects -----------------
 
-  // useEffect(() => {}, []);
+  const gettingAllProducts = async() => {
+    const allProducts = await getAllProducts();
+    setAllProducts(allProducts);
+  };
+
+  // get all products on load
+  useEffect(() => {
+    gettingAllProducts();
+  })
 
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.
@@ -34,7 +43,7 @@ const App = () => {
         {/* <Route
           className='item'
           path='/cards'
-          element={<Cards />}
+          element={<Cards allProducts={allProducts}/>}
         />
         <Route
           className='item'

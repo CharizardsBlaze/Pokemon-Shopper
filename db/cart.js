@@ -17,7 +17,7 @@ const createCartItem = async({user_id, product_id, quantity}) => {
 const getCartItemsByUserId = async({id}) => {
     try {
         const{rows: cartItem} = await client.query(`
-        SELECT cart_item.*, products."pokedexId", products.name, products.price, products.type1, products.type2, products.quality, products.rarity, products."imageUrl"
+        SELECT cart_item.*, products."pokedexId", products.name, products.price, products.type1, products.type2, products.condition, products.rarity, products."imageUrl"
         FROM cart_item
         LEFT JOIN products
         ON cart_item.product_id=product.id

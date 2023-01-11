@@ -2,6 +2,7 @@ const client = require('./index')
 const {dropTables, createTables} = require('./initdb');
 const {createCartItem, getCartItemsByUserId} = require('./cart')
 const { createUser } = require('./users')
+const {createProduct} = require('./products')
 
 // should use classes for the seed data? probably not
 // class pokemonCard = {
@@ -37,8 +38,8 @@ const seedProduct = [
         pokedexId: 7,
         name: "Squirtle",
         cost: 1.50,
-            type1: "water",
-            type2: null,
+        type1: "water",
+        type2: null,
         quality: "fair to good",
         rarity: "common",
         img_url: "https://m.media-amazon.com/images/I/51TxlvrsoBL._AC_.jpg",
@@ -270,11 +271,28 @@ const insertUsersIntoDB = async () => {
     console.log('done inserting seed users');
 };
 
+const insertProductsIntoBd = async () => {
+    seedProduct.forEach(async(product) => {
+        await createProduct({
+            pokedexId: product.pokedexId,
+            name: product.name,
+            price: product.cost,
+            type1: product.type1,
+            type2: product.type1,
+            condition:product.quality,
+            rarity:product.rarity,
+            imageUrl: product.img_url
+        })
+    })
+}
+
 const rebuildDB = async () => {
     dropTables();
     createTables();
     // put each fake user into the database
     insertUsersIntoDB();
+    //insert each product into db
+    insertProductsIntoBd ()
 }
 client.connect();
 

@@ -33,10 +33,10 @@ const createTables = async () => {
         id SERIAL PRIMARY KEY,
         "pokedexId" INTEGER NOT NULL,
         name VARCHAR(255) NOT NULL,
-        price INTEGER NOT NULL,
+        price DECIMAL(6,2) NOT NULL,
         type1 VARCHAR(255) NOT NULL,
         type2 VARCHAR(255),
-        quality VARCHAR(255) NOT NULL,
+        condition VARCHAR(255) NOT NULL,
         rarity VARCHAR(255) NOT NULL,
         "imageUrl" VARCHAR(255)
     );

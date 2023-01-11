@@ -4,14 +4,15 @@ const CardDetail = () => {
 
     const [oneItem, setOneItem] = useState({})
 
+    // /cards/:productId is our params
+    const {productId} = useParams();
+
     const getOneItem = async(productId) => {
         const oneItem = await getOneItem(productId);
         setOneItem(oneItem);
     };
 
     useEffect(() => {
-        // /products/:productId is our params
-        const {productId} = useParams();
         // get one product from params and load it into use state
         getOneItem(productId);
     }, []);

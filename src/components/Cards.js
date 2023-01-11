@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import { getAllProducts } from '../../api'
 
 const Cards = ({allProducts}) => {
 
@@ -24,7 +23,7 @@ const Cards = ({allProducts}) => {
                             onClick={(event) => {
                                 event.preventDefault();
                                 handleSeeDetails(eachProduct.id)
-                            }}><Link to={`/products/${eachProduct.id}`}>See more</Link></button>
+                            }}><Link to={`/cards/${eachProduct.id}`}>See more</Link></button>
 
                         {/* <CardDetail product={eachProduct}/>  */}
                     </div>

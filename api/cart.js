@@ -1,7 +1,7 @@
 const express = require('express')
 const cartRouter = express.Router()
 const requireUser = require('./utils')
-const {createCartItem} = require('../db/cart')
+const {createCartItem, getCartItemsByUserId} = require('../db/cart')
 //Create Cart Item
 cartRouter.post('/', requireUser, async(req, res, next) => {
     try {
@@ -10,6 +10,20 @@ cartRouter.post('/', requireUser, async(req, res, next) => {
     res.send(cartItem)
     }catch(error) {
         console.error("There was an error adding item to cart")
+        throw error
+    }
+})
+
+cartRouter.get('/', requireUser, async(req, res, next)=> {
+    try {
+        const cart = await getCartItemsByUserId({id: req.user.id})
+        let totalSum = 0
+        for(let i = 0; i < cart.length; i++) {
+            totalSum += Number(cart[i].itemCost)
+        }
+        res.send({cart:cart, totalCost: totalSum})
+    }catch(error) {
+        console.error('There was an gerror getting the cart by user id', error)
         throw error
     }
 })

@@ -17,21 +17,13 @@ const createCartItem = async({user_id, product_id, quantity}) => {
 const getCartItemsByUserId = async({id}) => {
     try {
         const{rows: cartItem} = await client.query(`
-        SELECT cart_item.*, products."pokedexId", products.name, products.price, products.type1, products.type2, products.condition, products.rarity, products."imageUrl"
+        SELECT cart_item.*, products."pokedexId", products.name, cart_item.quantity * products.price AS "itemCost", products.type1, products.type2, products.condition, products.rarity, products."imageUrl"
         FROM cart_item
         LEFT JOIN products
-        ON cart_item.product_id=product.id
+        ON cart_item.product_id=products.id
         WHERE cart_item.user_id=$1
         `, [id])
-        for(let i = 0; i < cartItem.length; i++) {
-            cartItem['itemCost'] = (cartItem[i].price * cartItem[i].quantity)
-            delete cartItem[i].price
-        }
-        let totalSum = 0
-        for(let i = 0; i < cartItem.length; i++) {
-            totalSum += cartItem[i].itemCost
-        }
-        cartItem['totalCost'] = totalSum
+        console.log(cartItem)
         return cartItem
     }catch(error) {
         console.log("There was an error getting cartItems by userId", error)

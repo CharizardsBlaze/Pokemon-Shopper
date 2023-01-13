@@ -5,8 +5,8 @@ import "./App.css";
 import {
   // AccountDetails,
   // AccountForm,
-  // CardDetail,
-  // Cards,
+  CardDetail,
+  Cards,
   Cart,
   Home,
   NavBar,
@@ -30,7 +30,7 @@ const App = () => {
   // get all products on load
   useEffect(() => {
     gettingAllProducts();
-  })
+  }, [])
 
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.
@@ -40,7 +40,7 @@ const App = () => {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        {/* <Route
+        <Route
           className='item'
           path='/cards'
           element={<Cards allProducts={allProducts}/>}
@@ -50,7 +50,7 @@ const App = () => {
           path='/cards/:cardId'
           element={<CardDetail />}
         />
-        <Route
+        {/* <Route
           className='item'
           path='/account'
           element={<AccountDetails />}

@@ -18,7 +18,7 @@ const createProduct = async({pokedexId, name, price, type1, type2, condition, ra
 const getAllProducts = async() => {
     try {
         const {rows: allProducts} = await client.query(`
-        SELECT "imageUrl", name, price, condition FROM products
+        SELECT "imageUrl", name, price, id, condition FROM products
         ;
         `);
         return allProducts;
@@ -35,6 +35,7 @@ const getOneProduct = async(productId) => {
         WHERE id = $1
         ;
         `, [productId]);
+        console.log('one product in database', oneProduct)
         return oneProduct;
     } catch (error) {
         console.log('there was an error in fetchOneProduct from database: ', error);

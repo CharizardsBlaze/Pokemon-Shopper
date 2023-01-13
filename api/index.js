@@ -27,7 +27,7 @@ router.use(async (req, res, next) => {
   }
 });
 router.use("/users", usersRouter);
-router.use("/products", productRouter)
-router.use("/cart", cartRouter)
+router.use("/cards", productRouter)
+
 module.exports = router;
 

@@ -10,6 +10,8 @@ import {
   Cart,
   Home,
   NavBar,
+  Register,
+  Login
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -60,6 +62,8 @@ const App = () => {
           path='/account/:action'
           element={<AccountForm />}
         /> */}
+        <Route path="/register" element={<Register />}/>
+        <Route path="/login" element={<Login />}/>
         <Route className='item' path='/cart' element={<Cart />} />
       </Routes>
     </div>

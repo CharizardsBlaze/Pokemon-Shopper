@@ -7,18 +7,19 @@ export async function registerUser(username, firstName, lastName, password, emai
         headers: {
             'Content-Type': 'application/json'
         },
-        body: {
+        body: JSON.stringify({
             username,
             firstName,
             lastName,
             password,
             emailAddress,
             phoneNumber
-        }
+        })
     })
     const result = await response.json()
     return result;
     }catch(error){
+        console.log('error registering user in src/api')
         throw error
     }
 }
@@ -29,14 +30,15 @@ export async function loginUser(emailAddress, password) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: {
+        body: JSON.stringify({
             emailAddress,
             password
-        }
+        })
     })
     const result = await response.json()
     return result;
     }catch(error){
+        console.log('error Logging in user in src/api')
         throw error
     }
 }

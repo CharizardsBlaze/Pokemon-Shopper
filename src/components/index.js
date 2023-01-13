@@ -1,7 +1,8 @@
 export { default as Home } from "./Home";
 export { default as NavBar } from "./NavBar";
 export { default as Cart } from "./Cart";
-
+export { default as Login } from './Login'
+export { default as Register} from './Register'
 // REVIEW - Potential components.
 
 export { default as Cards } from "./Cards";

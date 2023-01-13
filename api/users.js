@@ -9,6 +9,7 @@ const {
 const jwt = require("jsonwebtoken");
 
 usersRouter.post("/register", async (req, res, next) => {
+    console.log(req.body)
   const { username, password, emailAddress } = req.body;
   if (!username || !password || !emailAddress) {
     // fix status codes
@@ -47,8 +48,11 @@ usersRouter.post("/login", async (req, res, next) => {
     return;
   }
   try {
+    console.log(req.body)
     const user = await getUserByEmail(req.body);
+    console.log('<<<<<<', user)
     if (user) {
+        console.log('>>>>>>', req.body)
       if (await verifyUser(req.body)) {
         const token = jwt.sign(user, process.env.JWT_SECRET, {
           expiresIn: "1w",

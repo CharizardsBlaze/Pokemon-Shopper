@@ -273,6 +273,18 @@ div.field label {
   font-family: "Comfortaa", cursive;
 }
 
+.user-forms {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.text-input {
+  padding: 2px 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+
+
+}
 @media screen and (max-width: 389px) {
   #searchOrCreate {
     margin-top: 124px;

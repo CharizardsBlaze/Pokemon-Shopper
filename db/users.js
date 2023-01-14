@@ -9,7 +9,7 @@ const createUser = async ({username, firstName, lastName, password, emailAddress
         INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", "phoneNumber")
         VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT ("emailAddress") DO NOTHING
-        RETURNING username, "firstName", "lastName", "emailAddress", "phoneNumber"
+        RETURNING id, username, "firstName", "lastName", "emailAddress", "phoneNumber"
         ;
         `, [username, firstName, lastName, cryptedPassword, emailAddress, phoneNumber])
         return user;

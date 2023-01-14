@@ -3,7 +3,7 @@ const {createFakeUser, getFakeUserByEmail, getFakeUserById} = require('../dbHelp
 const bcyrpt = require('bcrypt')
 const client = require('../../db/index')
 const {dropTables, createTables} = require('../../db/initdb')
-const {createUser} = require('../../db/users')
+const {createUser, getUserById, getUserByEmail} = require('../../db/users')
 
 describe('./db/Users', () => {
     beforeAll(() => client.connect())
@@ -12,14 +12,14 @@ describe('./db/Users', () => {
         describe("createUser", () => {
             it("It should create and return the user without the password", async() => {
                 let fakeData = {}
-                fakeData.username = Math.random()
-                fakeData.firstName = Math.random()
-                fakeData.lastName = Math.random()
-                fakeData.password = Math.random()
-                fakeData.emailAddress = Math.random()
-                fakeData.phoneNumber = Math.random()
+                fakeData.username = String(Math.random())
+                fakeData.firstName = String(Math.random())
+                fakeData.lastName = String(Math.random())
+                fakeData.password = String(Math.random())
+                fakeData.emailAddress = String(Math.random())
+                fakeData.phoneNumber = String(Math.random())
                 const user = await createUser(fakeData);
-                const fakeUser = await client.query(`
+                const {rows: [fakeUser]} = await client.query(`
                 SELECT * FROM users
                 WHERE id=$1;
                 `, [user.id])
@@ -28,18 +28,18 @@ describe('./db/Users', () => {
             })
             it('Should hash the users password using bcyrpt', async() => {
                 let fakeData = {}
-                fakeData.username = Math.random()
-                fakeData.firstName = Math.random()
-                fakeData.lastName = Math.random()
-                fakeData.password = Math.random()
-                fakeData.emailAddress = Math.random()
-                fakeData.phoneNumber = Math.random()
+                fakeData.username = String(Math.random())
+                fakeData.firstName = String(Math.random())
+                fakeData.lastName = String(Math.random())
+                fakeData.password = String(Math.random())
+                fakeData.emailAddress = String(Math.random())
+                fakeData.phoneNumber = String(Math.random())
                 const user = await createUser(fakeData)
-                const fakeUser = await client.query(`
+                const {rows: [fakeUser]} = await client.query(`
                 SELECT * FROM users
                 WHERE id=$1
                 `, [user.id])
-                let checkPassword =  bcyrpt.compare(fakeData.password, fakeUser.password)
+                let checkPassword =  await bcyrpt.compare(fakeData.password, fakeUser.password)
                 expect(checkPassword).toEqual(true)
                 
             })
@@ -47,7 +47,7 @@ describe('./db/Users', () => {
         describe('getUserByEmail', () => {
             it('Selects and returns the user by their email without their password', async() => {
                 const fakeUser = await createFakeUser()
-                const fakeUserByEmail = await getUserByemailAddress({emailAddress: fakeUser.emailAddress})
+                const fakeUserByEmail = await getUserByEmail({emailAddress: fakeUser.emailAddress})
                 expect(fakeUserByEmail).toEqual(fakeUser)
         })
     })

@@ -63,3 +63,73 @@ export const getOneProduct = async (productId) => {
         throw error;
     }
 }
+
+export const getUserCart = async({token}) => {
+    try {
+        const response = await fetch(`${BASE_URL}/cart`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Beaer ${token}`
+            }
+        }).then(result => result.json())
+        return response
+    }catch(error){
+        console.log("there was an error getting the user cart in src/api", error) 
+        throw error
+    }
+}
+
+export const addToCart = async ({product_id, quantity, token}) => {
+    try {
+    const response = await fetch(`${BASE_URL}/cart`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        BODY: JSON.stringify({
+            token: token,
+            product_id: product_id,
+            quantity: quantity
+        })
+    }).then(result => result.json())
+    return response
+    }catch(error) {
+        console.log("There was an error adding an item to cart in src/api", error)
+        throw error
+        }
+}
+
+export const removeFromCart = async({cart_id, token}) => {
+    try {
+    const response = await fetch(`${BASE_URL}/cart`,{
+        method: 'DELETE',
+        headers : {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: json.stringify({
+            cart_id: cart_id, 
+        })
+    }).then(result => result.json())
+    return response
+    }catch(error) {
+        console.log("There was an error removing from cart in src/api", error)
+        throw error
+    }
+}
+
+export const deleteCart = async({token}) => {
+    try {
+    const resopnse = await fetch(`${BASE_URL}/cart`, {
+        method: "DELETE",
+        headers : {
+            'Authorization': `Bearer ${token}`
+        }
+    }).then(result => result.json()) 
+    return resopnse
+    }catch(error) {
+        console.log("There was an error deleting the user cart", error)
+        throw error
+    }
+}

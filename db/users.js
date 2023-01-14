@@ -43,6 +43,19 @@ const getUserByEmail = async ({emailAddress}) => {
         throw new Error('Error getting use by Email')
     }
 }
+const getUserByUsername = async ({username}) => {
+    try{
+        const {rows: [user]} = await client.query(`
+            SELECT *
+            FROM users
+            WHERE username = $1
+            ;
+        `, [username])
+        return user;
+    }catch(error){
+        throw new Error('Error getting use by Email')
+    }
+}
 const verifyUser = async ({emailAddress, password}) => {
     try{
         // if no user is returned the try should fail and the error should be handled
@@ -61,5 +74,6 @@ module.exports = {
     createUser,
     getUserById,
     getUserByEmail,
-    verifyUser
+    verifyUser,
+    getUserByUsername
 }

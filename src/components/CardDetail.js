@@ -38,6 +38,7 @@ const CardDetail = () => {
                         <p>Rarity: {oneItem.rarity}</p>
                         <p>{oneItem.name} first type: {oneItem.type1}</p>
                         {!oneItem.type2 ? null : (<p>{oneItem.name} second type: {oneItem.type2}</p>)}
+                        <p>Quantity available: {oneItem.quantity}</p>
                     </div>
             {/* do we want buttons for "Add to cart" under each card? */}
                     <div className="add-to-cart-form">

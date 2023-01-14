@@ -141,6 +141,7 @@ const seedProduct = [
         type2: "ghost",
         quality: "fine",
         rarity: "common",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51JKgaWf8hL._AC_.jpg"
     },
     {
@@ -152,6 +153,7 @@ const seedProduct = [
         type2: null,
         quality: "good",
         rarity: "very common",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/511vS3mhjeL._AC_.jpg"
     },
     {
@@ -163,6 +165,7 @@ const seedProduct = [
         type2: "flying",
         quality: "holographic",
         rarity: "very rare",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/A1aaGfGbpUL._AC_SY879_.jpg"
     },
     {
@@ -174,6 +177,7 @@ const seedProduct = [
         type2: null,
         quality: "good",
         rarity: "common",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51ZXBM0ddVL._AC_.jpg"
     },
     {
@@ -185,6 +189,7 @@ const seedProduct = [
         type2: "poison",
         quality: "reverse holo",
         rarity: "rare",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51-F+NSJ4rL._AC_.jpg"
     },
     {
@@ -196,6 +201,7 @@ const seedProduct = [
         type2: "fighting",
         quality: "good",
         rarity: "common",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/71m5Hk24e5L._AC_SY879_.jpg"
     },
     {
@@ -207,6 +213,7 @@ const seedProduct = [
         type2: null,
         quality: "fine",
         rarity: "common",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51RzedXZWcL._AC_.jpg"
     },
     {
@@ -218,6 +225,7 @@ const seedProduct = [
         type2: "normal",
         quality: "extra fine",
         rarity: "very rare",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51l6AzFprBL._AC_.jpg"
     },
     {
@@ -229,6 +237,7 @@ const seedProduct = [
         type2: "normal",
         quality: "fine",
         rarity: "common",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51YVpIMtQSL._AC_.jpg"
     },
     {
@@ -240,6 +249,7 @@ const seedProduct = [
         type2: null,
         quality: "extra fine",
         rarity: "rare",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51zRqAgIeRL._AC_.jpg"
     },
     {
@@ -251,6 +261,7 @@ const seedProduct = [
         type2: null,
         quality: "first edition",
         rarity: "rare",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/41inYuyVJLL._AC_.jpg"
     },
 ]

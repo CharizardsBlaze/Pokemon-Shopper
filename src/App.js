@@ -10,6 +10,8 @@ import {
   Cart,
   Home,
   NavBar,
+  Register,
+  Login
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -19,7 +21,7 @@ const App = () => {
 
   // const [cards, setCards] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
-
+  const [token, setToken] = useState('')
   //----------------- useEffects -----------------
 
   const gettingAllProducts = async() => {
@@ -31,12 +33,17 @@ const App = () => {
   useEffect(() => {
     gettingAllProducts();
   }, [])
-
+  useEffect(() => {
+    const localToken = localStorage.getItem('pokemon-shopper-token')
+    if(localToken){
+      setToken(localToken)
+    }
+  }, [])
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.
 
     <div className='container'>
-      <NavBar />
+      <NavBar token={token} setToken={setToken}/>
 
       <Routes>
         <Route path='/' element={<Home />} />
@@ -60,6 +67,8 @@ const App = () => {
           path='/account/:action'
           element={<AccountForm />}
         /> */}
+        <Route path="/register" element={<Register setToken={setToken}/>}/>
+        <Route path="/login" element={<Login setToken={setToken}/>}/>
         <Route className='item' path='/cart' element={<Cart />} />
       </Routes>
     </div>

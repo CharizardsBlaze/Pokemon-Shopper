@@ -30,6 +30,7 @@ const Register = ({setToken}) => {
         setRegisterEmail('');
         setPhoneNumber('');
         setToken(newUser.token)
+        localStorage.setItem('pokemon-shopper-token', newUser.token)
         navigate('/')
     }
     return (

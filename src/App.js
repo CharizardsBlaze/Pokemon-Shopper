@@ -33,12 +33,17 @@ const App = () => {
   useEffect(() => {
     gettingAllProducts();
   }, [])
-
+  useEffect(() => {
+    const localToken = localStorage.getItem('pokemon-shopper-token')
+    if(localToken){
+      setToken(localToken)
+    }
+  }, [])
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.
 
     <div className='container'>
-      <NavBar />
+      <NavBar token={token} setToken={setToken}/>
 
       <Routes>
         <Route path='/' element={<Home />} />

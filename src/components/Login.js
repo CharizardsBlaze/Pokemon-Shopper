@@ -16,6 +16,7 @@ const Login = ({setToken}) => {
             return
         }
         setToken(newUser.token)
+        localStorage.setItem('pokemon-shopper-token', newUser.token)
         navigate('/')
     }
     return (

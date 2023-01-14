@@ -28,6 +28,6 @@ router.use(async (req, res, next) => {
 });
 router.use("/users", usersRouter);
 router.use("/cards", productRouter)
-
+router.use("/cart", cartRouter)
 module.exports = router;
 

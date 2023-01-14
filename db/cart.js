@@ -30,13 +30,27 @@ const getCartItemsByUserId = async({id}) => {
         throw error
     }
 }
+const getCartItemById = async ({id}) => {
+    try {
+       const {rows: [cart_item]} = await client.query(`
+        SELECT * FROM cart_item
+        WHERE id=$1;
+        `, [id])
+        return cart_item
+    }catch(error) {
+        console.error("There was an error getting the card item by its ID")
+        throw error
+    }
+}
+
 const removeCartItem = async({id}) => {
     try {
     const {rows: cartItem} = await client.query(`
-    DELETE * 
-    FROM cart_item
-    WHERE id=$1;
+    DELETE FROM cart_item
+    WHERE id=$1
+    RETURNING *;
     `, [id])
+    console.log("Cart item here", cartItem)
     return cartItem
     }catch(error) {
         console.error('There was an error removing the cart item by its id', error)
@@ -60,5 +74,7 @@ module.exports = {
     createCartItem,
     getCartItemsByUserId,
     deleteCartItemsByUserId,
+    removeCartItem,
+    getCartItemById,
     removeCartItem
 }

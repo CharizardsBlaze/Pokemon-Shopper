@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import SearchBar from "./SearchBar";
 // Will likely want useNavigate for logout.
 
 // TODO - This component is not needed if we put a condensed NavBar inside App.js instead.
 
-const NavBar = ({token, setToken}) => {
+const NavBar = ({token, setToken, allProducts}) => {
   const navigate = useNavigate()
   const handleLogout = () => {
     setToken('')
@@ -29,6 +30,7 @@ const NavBar = ({token, setToken}) => {
         Login
         </Link>
         </>}
+        <SearchBar allProducts={allProducts}/>
       </div>
     </nav>
   );

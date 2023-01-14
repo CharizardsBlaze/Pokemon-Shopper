@@ -11,7 +11,8 @@ import {
   Home,
   NavBar,
   Register,
-  Login
+  Login,
+  SearchBar,
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -43,7 +44,7 @@ const App = () => {
     //TODO - Temporary NavBar for testing. Will be changed later.
 
     <div className='container'>
-      <NavBar token={token} setToken={setToken}/>
+      <NavBar token={token} setToken={setToken} allProducts={allProducts}/>
 
       <Routes>
         <Route path='/' element={<Home />} />

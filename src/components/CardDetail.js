@@ -17,7 +17,7 @@ const CardDetail = () => {
     useEffect(() => {
         // get one product from params and load it into use state
         getOneItem();
-    }, []);
+    }, [cardId]);
 
     const handleAddToCart = (productId) => {
         console.log(`You have added ${productId} to your cart.`)

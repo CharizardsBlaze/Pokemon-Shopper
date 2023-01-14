@@ -300,3 +300,7 @@ div.field label {
     display: none;
   }
 }
+
+.cart-item-emblem{
+  align-self: flex-end;
+}

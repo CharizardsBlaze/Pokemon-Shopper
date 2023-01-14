@@ -1,16 +1,27 @@
 import {useState} from 'react'
 import { registerUser } from '../api'
-const Register = () => {
+import { useNavigate } from 'react-router-dom'
+const Register = ({setToken}) => {
     const [username, setUsername] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [registerPassword, setRegisterPassword] = useState('')
     const [registerEmail, setRegisterEmail] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
-
+    const [returnFromRegister, setReturnFromRegister] = useState({})
+    const navigate = useNavigate()
     const handleRegisterSubmit = async (event) => {
         event.preventDefault()
         const newUser = await registerUser(username, firstName, lastName, registerPassword, registerEmail, phoneNumber)
+        if(newUser.error){
+            setReturnFromRegister(newUser)
+            if(newUser.error === "EmailTaken"){
+                setRegisterEmail('')
+            } else if(newUser.error === "UsernameTaken"){
+                setUsername('')
+            }
+            return
+        }
         console.log(newUser)
         setUsername('');
         setFirstName('');
@@ -18,9 +29,13 @@ const Register = () => {
         setRegisterPassword('');
         setRegisterEmail('');
         setPhoneNumber('');
+        setToken(newUser.token)
+        navigate('/')
     }
     return (
+        // add min length for password and confirm password
         <form className='user-forms' onSubmit={handleRegisterSubmit}>
+            {returnFromRegister.message ? <p>{returnFromRegister.message}</p> : null}
             <label>Username:</label>
             <input className='text-input' type='text' value={username} onChange={event => setUsername(event.target.value)}></input>
             <label>First Name:</label>

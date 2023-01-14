@@ -21,7 +21,7 @@ const App = () => {
 
   // const [cards, setCards] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
-
+  const [token, setToken] = useState('')
   //----------------- useEffects -----------------
 
   const gettingAllProducts = async() => {
@@ -62,8 +62,8 @@ const App = () => {
           path='/account/:action'
           element={<AccountForm />}
         /> */}
-        <Route path="/register" element={<Register />}/>
-        <Route path="/login" element={<Login />}/>
+        <Route path="/register" element={<Register setToken={setToken}/>}/>
+        <Route path="/login" element={<Login setToken={setToken}/>}/>
         <Route className='item' path='/cart' element={<Cart />} />
       </Routes>
     </div>

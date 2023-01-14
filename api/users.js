@@ -5,14 +5,13 @@ const {
   getUserByEmail,
   getUserById,
   verifyUser,
+  getUserByUsername
 } = require("../db/users");
 const jwt = require("jsonwebtoken");
 
 usersRouter.post("/register", async (req, res, next) => {
-    console.log(req.body)
   const { username, password, emailAddress } = req.body;
   if (!username || !password || !emailAddress) {
-    // fix status codes
     res.status(400).send({
       error: "MissingFields",
       message: "Please enter all required fields to register",
@@ -20,18 +19,28 @@ usersRouter.post("/register", async (req, res, next) => {
     return;
   } else {
     const userCheck = await getUserByEmail(req.body);
+    const userCheckUsername = await getUserByUsername(req.body)
     if (userCheck) {
       res.status(401).send({
         error: "EmailTaken",
         message: "Email is already in use, please choose another",
       });
       return;
+    }else if(userCheckUsername){
+        res.status(401).send({
+        error: "UsernameTaken",
+        message: "Username is already in use, please choose another",
+      });
+      return; 
     }
   }
   try {
     const newUser = await createUser(req.body);
+    const token = jwt.sign(newUser, process.env.JWT_SECRET, {
+          expiresIn: "1w",
+        });
     res.send({
-      newUser,
+      token,
       message: `Account has been created`,
     });
   } catch (error) {
@@ -40,6 +49,11 @@ usersRouter.post("/register", async (req, res, next) => {
 });
 usersRouter.post("/login", async (req, res, next) => {
   const { emailAddress, password } = req.body;
+  const errorMessage = {
+    error: "NotAuthorized",
+    message:
+      "Login was not successful, please check your username or password",
+  }
   if (!emailAddress || !password) {
     res.status(401).send({
       error: "MissingFields",
@@ -48,28 +62,20 @@ usersRouter.post("/login", async (req, res, next) => {
     return;
   }
   try {
-    console.log(req.body)
     const user = await getUserByEmail(req.body);
-    console.log('<<<<<<', user)
-    if (user) {
-        console.log('>>>>>>', req.body)
+    if (user){
       if (await verifyUser(req.body)) {
         const token = jwt.sign(user, process.env.JWT_SECRET, {
           expiresIn: "1w",
         });
-        // login should only return the token to be used by get/me
-        user.token = token;
         res.send({
-          user,
+          token,
           message: "Thank you for logging in!",
         });
       }
-    } else {
-      res.status(401).send({
-        error: "NotAuthorized",
-        message:
-          "Login was not successful, please check your username or password",
-      });
+    res.status(401).send(errorMessage);
+    }else {
+      res.status(401).send(errorMessage);
     }
   } catch (error) {
     throw error;

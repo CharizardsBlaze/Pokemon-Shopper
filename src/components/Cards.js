@@ -11,7 +11,7 @@ const Cards = ({allProducts}) => {
             : (allProducts.map((eachProduct) => {
                 return (
                     <div key={eachProduct.id} className="card-container">
-                        <img href={eachProduct.imageUrl} />
+                        <img src={eachProduct.imageUrl} />
                         <h5>Card name: {eachProduct.name}</h5>
                         <p>Price: {eachProduct.price}</p>
                         <button 

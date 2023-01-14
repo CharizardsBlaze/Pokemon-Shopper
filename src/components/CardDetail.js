@@ -32,7 +32,7 @@ const CardDetail = () => {
                 <div key={oneItem.id}>
                     <h3>{oneItem.name}</h3>
                     <p>Price: {oneItem.price}</p>
-                    <img href={oneItem.img_url} />
+                    <img src={oneItem.imageUrl} />
                     <div>
                         <p>Quality: {oneItem.condition}</p>
                         <p>Rarity: {oneItem.rarity}</p>

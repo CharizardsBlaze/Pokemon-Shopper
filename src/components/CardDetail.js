@@ -1,11 +1,14 @@
+
 import React, {useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getOneProduct } from '../api';
+import { getOneProduct, addToCart} from '../api';
+// import fetchUser from '../App'
 
-const CardDetail = () => {
+const CardDetail = ({user}) => {
 
     const [oneItem, setOneItem] = useState({})
-
+    const [quantity, setQuantity] = useState ('')
+    const [errorMessaage, setErrorMessage] = useState('')
     // /cards/:cardId is our params
     const {cardId} = useParams();
 
@@ -19,8 +22,20 @@ const CardDetail = () => {
         getOneItem();
     }, []);
 
-    const handleAddToCart = (productId) => {
-        console.log(`You have added ${productId} to your cart.`)
+    const handleAddToCart = async (productId) => {
+        const response = await addToCart({
+            token: user.token,
+            product_id: productId,
+            quantity: quantity
+        })
+        if(response.error) {
+            setErrorMessage(response.message)
+        }else {
+        setErrorMessage('')
+        //Update the quantity on the product inventory
+        //Re-fetch ther user data
+        //Re-fetch the item
+        }
     }
 
     // product: id, pokedexId:, name, cost, type1, type2, quality, rarity, img_url
@@ -47,6 +62,8 @@ const CardDetail = () => {
                             onClick={() => {
                                 handleAddToCart(oneItem.id)
                             }}>Add To Cart</button>
+                            <input value={quantity} onChange={(event) => setQuantity(event.target.value)}type='number'></input>
+                            <h2>{errorMessaage} </h2>
                     </div>
                 </div>
             )

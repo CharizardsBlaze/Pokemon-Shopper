@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import cart from './images/cart.png'
+
 // Will likely want useNavigate for logout.
 
 // TODO - This component is not needed if we put a condensed NavBar inside App.js instead.
@@ -14,21 +16,25 @@ const NavBar = ({token, setToken}) => {
   return (
     <nav>
       <div className='ui secondary pointing menu'>
-        <Link to='/' className='item'>
+        <NavLink to='/' className='item'>
           Home
-        </Link>
-        <Link to='/cards' className='item'>
+        </NavLink>
+        <NavLink to='/cards' className='item'>
           Cards
-        </Link>
+        </NavLink
+        </NavLink>
         {token ? <button onClick={handleLogout}>Logout</button> :
         <>
-        <Link to='/register' className="item">
+        <NavLink to='/register' className="item">
         Register
-        </Link>
-        <Link to='/login' className="item">
+        </NavLink>
+        <NavLink to='/login' className="item">
         Login
-        </Link>
+        </NavLink>
         </>}
+         <NavLink to='/cart' className='item float right'>
+        <img src={cart} className="ui large shopping cart icon"/>
+        </NavLink>
       </div>
     </nav>
   );

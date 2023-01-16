@@ -4,7 +4,7 @@ export { default as Cart } from "./Cart";
 export { default as Login } from './Login'
 export { default as Register} from './Register'
 // REVIEW - Potential components.
-
+export {default as SearchBar } from './SearchBar'
 export { default as Cards } from "./Cards";
 // export { default as CardItem } from "./CardItem";
 export { default as CardDetail } from "./CardDetail";

@@ -1,4 +1,5 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import cart from './images/cart.png'
 
@@ -6,7 +7,7 @@ import cart from './images/cart.png'
 
 // TODO - This component is not needed if we put a condensed NavBar inside App.js instead.
 
-const NavBar = ({token, setToken}) => {
+const NavBar = ({token, setToken, allProducts}) => {
   const navigate = useNavigate()
   const handleLogout = () => {
     setToken('')
@@ -32,6 +33,7 @@ const NavBar = ({token, setToken}) => {
         Login
         </NavLink>
         </>}
+        <SearchBar allProducts={allProducts}/>
          <NavLink to='/cart' className='item float right'>
         <img src={cart} className="ui large shopping cart icon"/>
         </NavLink>

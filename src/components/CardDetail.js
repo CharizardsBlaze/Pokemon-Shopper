@@ -20,7 +20,7 @@ const CardDetail = ({user}) => {
     useEffect(() => {
         // get one product from params and load it into use state
         getOneItem();
-    }, []);
+    }, [cardId]);
 
     const handleAddToCart = async (productId) => {
         const response = await addToCart({

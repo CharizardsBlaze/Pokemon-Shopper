@@ -142,6 +142,138 @@ const seedProduct = [
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51Xd8iVTl7L._AC_.jpg"
     },
+    {
+        id: 11,
+        pokedexId: 623,
+        name: "Golurk",
+        cost: 1.11,
+        type1: "ground",
+        type2: "ghost",
+        quality: "fine",
+        rarity: "common",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/51JKgaWf8hL._AC_.jpg"
+    },
+    {
+        id: 12,
+        pokedexId: 11,
+        name: "Metapod",
+        cost: 0.50,
+        type1: "bug",
+        type2: null,
+        quality: "good",
+        rarity: "very common",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/511vS3mhjeL._AC_.jpg"
+    },
+    {
+        id: 13,
+        pokedexId: 149,
+        name: "Dragonite",
+        cost: 120.00,
+        type1: "dragon",
+        type2: "flying",
+        quality: "holographic",
+        rarity: "very rare",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/A1aaGfGbpUL._AC_SY879_.jpg"
+    },
+    {
+        id: 14,
+        pokedexId: 524,
+        name: "Rogenrola",
+        cost: 3.99,
+        type1: "rock",
+        type2: null,
+        quality: "good",
+        rarity: "common",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/51ZXBM0ddVL._AC_.jpg"
+    },
+    {
+        id: 15,
+        pokedexId: 92,
+        name: "Ghastly",
+        cost: 25.00,
+        type1: "ghost",
+        type2: "poison",
+        quality: "reverse holo",
+        rarity: "rare",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/51-F+NSJ4rL._AC_.jpg"
+    },
+    {
+        id: 16,
+        pokedexId: 532,
+        name: "Timburr",
+        cost: 8.50,
+        type1: "fighting",
+        type2: "fighting",
+        quality: "good",
+        rarity: "common",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/71m5Hk24e5L._AC_SY879_.jpg"
+    },
+    {
+        id: 17,
+        pokedexId: 20,
+        name: "Raticate",
+        cost: 2.45,
+        type1: "normal",
+        type2: null,
+        quality: "fine",
+        rarity: "common",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/51RzedXZWcL._AC_.jpg"
+    },
+    {
+        id: 18,
+        pokedexId: 20,
+        name: "Raticate",
+        cost: 50.00,
+        type1: "normal",
+        type2: "normal",
+        quality: "extra fine",
+        rarity: "very rare",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/51l6AzFprBL._AC_.jpg"
+    },
+    {
+        id: 19,
+        pokedexId: 20,
+        name: "Raticate",
+        cost: 5.00,
+        type1: "dark",
+        type2: "normal",
+        quality: "fine",
+        rarity: "common",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/51YVpIMtQSL._AC_.jpg"
+    },
+    {
+        id: 20,
+        pokedexId: 20,
+        name: "Lt. Surge Raticate",
+        cost: 5.97,
+        type1: "normal",
+        type2: null,
+        quality: "extra fine",
+        rarity: "rare",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/51zRqAgIeRL._AC_.jpg"
+    },
+    {
+        id: 21,
+        pokedexId: 20,
+        name: "Dark Raticate",
+        cost: 15.00,
+        type1: "normal",
+        type2: null,
+        quality: "first edition",
+        rarity: "rare",
+        quantity: 1,
+        img_url: "https://m.media-amazon.com/images/I/41inYuyVJLL._AC_.jpg"
+    },
 ]
 
 const seedUsers = [

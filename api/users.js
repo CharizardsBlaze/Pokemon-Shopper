@@ -8,7 +8,19 @@ const {
   getUserByUsername
 } = require("../db/users");
 const jwt = require("jsonwebtoken");
+const requireUser = require("./utils");
 
+usersRouter.get('/me', requireUser, async (req, res, next) => {
+    if(req.user){
+        const user = await getUserById({id: req.user.id})
+        res.send(user)
+    }else{
+        res.status(401).send({
+            error: 'UnauthorizedError',
+            message: 'Must be logged in to continue'
+        })
+    }
+})
 usersRouter.post("/register", async (req, res, next) => {
   const { username, password, emailAddress } = req.body;
   if (!username || !password || !emailAddress) {

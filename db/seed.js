@@ -295,6 +295,6 @@ const rebuildDB = async () => {
     insertProductsIntoBd ()
 }
 client.connect();
-
+// close client, client.end()
 rebuildDB().catch(console.error).finally(() => client.end)
 

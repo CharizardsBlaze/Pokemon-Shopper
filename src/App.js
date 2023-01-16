@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { getAllProducts } from "./api";
+import { getAllProducts, getUser } from "./api";
 import "./App.css";
 import {
   // AccountDetails,
@@ -22,13 +22,21 @@ const App = () => {
   // const [cards, setCards] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [token, setToken] = useState('')
+  const [user, setUser] = useState({})
   //----------------- useEffects -----------------
 
   const gettingAllProducts = async() => {
     const allProducts = await getAllProducts();
     setAllProducts(allProducts);
   };
-
+  const useEffectGetUser = async () => {
+    if(token){
+    const currentUser = await getUser(token)
+    if(currentUser.id){
+    setUser(currentUser)
+    }
+    }
+  }
   // get all products on load
   useEffect(() => {
     gettingAllProducts();
@@ -39,6 +47,9 @@ const App = () => {
       setToken(localToken)
     }
   }, [])
+  useEffect(() => {
+    useEffectGetUser()
+  }, [token])
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.
 

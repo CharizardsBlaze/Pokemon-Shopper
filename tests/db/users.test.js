@@ -3,7 +3,7 @@ const {createFakeUser, getFakeUserByEmail, getFakeUserById} = require('../dbHelp
 const bcyrpt = require('bcrypt')
 const client = require('../../db/index')
 const {dropTables, createTables} = require('../../db/initdb')
-const {createUser} = require('../../db/users')
+const {createUser, getUserById, getUserByEmail} = require('../../db/users')
 
 describe('./db/Users', () => {
     beforeAll(() => client.connect())
@@ -47,7 +47,7 @@ describe('./db/Users', () => {
         describe('getUserByEmail', () => {
             it('Selects and returns the user by their email without their password', async() => {
                 const fakeUser = await createFakeUser()
-                const fakeUserByEmail = await getUserByemailAddress({emailAddress: fakeUser.emailAddress})
+                const fakeUserByEmail = await getUserByEmail({emailAddress: fakeUser.emailAddress})
                 expect(fakeUserByEmail).toEqual(fakeUser)
         })
     })

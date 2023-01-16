@@ -311,4 +311,9 @@ div.field label {
   #navBarTitle {
     display: none;
   }
+
+}
+
+.cart-item-emblem{
+  align-self: flex-end;
 }

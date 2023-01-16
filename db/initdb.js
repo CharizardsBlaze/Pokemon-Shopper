@@ -38,6 +38,7 @@ const createTables = async () => {
         type2 VARCHAR(255),
         condition VARCHAR(255) NOT NULL,
         rarity VARCHAR(255) NOT NULL,
+        quantity INTEGER NOT NULL,
         "imageUrl" VARCHAR(255)
     );
     CREATE TABLE cart_item (

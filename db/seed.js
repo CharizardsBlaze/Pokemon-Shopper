@@ -31,6 +31,7 @@ const seedProduct = [
         type2: null,
         quality: "used",
         rarity: "common",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/410qBt1e7LL._AC_.jpg",
     },
     {
@@ -42,6 +43,7 @@ const seedProduct = [
         type2: null,
         quality: "fair to good",
         rarity: "common",
+        quantity: 4,
         img_url: "https://m.media-amazon.com/images/I/51TxlvrsoBL._AC_.jpg",
     },
     {
@@ -53,6 +55,7 @@ const seedProduct = [
         type2: null,
         quality: "reverse holo, good",
         rarity: "semi rare",
+        quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51TIWx7DDIL._AC_.jpg"
     },
     {
@@ -64,6 +67,7 @@ const seedProduct = [
         type2: null,
         quality: "near mint",
         rarity: "rare",
+        quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51QO4llkk7L._AC_.jpg"
     },
     {
@@ -75,6 +79,7 @@ const seedProduct = [
         type2: "flying",
         quality: "fair",
         rarity: "common",
+        quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51PtkDlud4L._AC_.jpg"
     },
     {
@@ -86,6 +91,7 @@ const seedProduct = [
         type2: "flying",
         quality: "extra fine, first edition",
         rarity: "rare",
+        quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51l4OIDKQSL._AC_.jpg"
     },
     {
@@ -97,6 +103,7 @@ const seedProduct = [
         type2: null,
         quality: "reverse holo",
         rarity: "rare",
+        quantity: 3,
         img_url: "https://m.media-amazon.com/images/I/51Jr8J1R2-L._AC_.jpg"
     },
     {
@@ -108,6 +115,7 @@ const seedProduct = [
         type2: null,
         quality: "mint",
         rarity: "common",
+        quantity: 3,
         img_url: "https://m.media-amazon.com/images/I/41DaseWiS4L._AC_.jpg"
     },
     {
@@ -119,6 +127,7 @@ const seedProduct = [
         type2: "psychic",
         quality: "very good",
         rarity: "common",
+        quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51fJUJhWNBL._AC_.jpg"
     },
     {
@@ -130,6 +139,7 @@ const seedProduct = [
         type2: "electric",
         quality: "extra fine",
         rarity: "common",
+        quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51Xd8iVTl7L._AC_.jpg"
     },
 ]
@@ -281,6 +291,7 @@ const insertProductsIntoBd = async () => {
             type2: product.type1,
             condition:product.quality,
             rarity:product.rarity,
+            quantity: product.quantity,
             imageUrl: product.img_url
         })
     })

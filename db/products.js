@@ -1,12 +1,12 @@
 const client  = require('./index')
 
-const createProduct = async({pokedexId, name, price, type1, type2, condition, rarity, imageUrl}) => {
+const createProduct = async({pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl}) => {
     try {
         const {rows: [product]} = await client.query(`
-        INSERT INTO products ("pokedexId", name, price, type1, type2, condition, rarity, "imageUrl")
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        INSERT INTO products ("pokedexId", name, price, type1, type2, condition, rarity, quantity, "imageUrl")
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
         RETURNING *;
-        `, [pokedexId, name, price, type1, type2, condition, rarity, imageUrl])
+        `, [pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl])
         console.log(product)
         return product
     }catch(error) {
@@ -18,7 +18,7 @@ const createProduct = async({pokedexId, name, price, type1, type2, condition, ra
 const getAllProducts = async() => {
     try {
         const {rows: allProducts} = await client.query(`
-        SELECT "imageUrl", name, price, id, condition FROM products
+        SELECT "imageUrl", name, price, id, condition, quantity FROM products
         ;
         `);
         return allProducts;

@@ -1,11 +1,20 @@
 const express = require('express')
 const cartRouter = express.Router()
 const requireUser = require('./utils')
+const {getOneProduct} = require('../db/products')
 const {createCartItem, getCartItemsByUserId, getCartItemById, removeCartItem, deleteCartItemsByUserId} = require('../db/cart')
 //Create Cart Item
 cartRouter.post('/', requireUser, async(req, res, next) => {
     try {
     const {product_id, quantity} = req.body
+    const product = await getOneProduct(product_id)
+    if (product.quantity < quantity) {
+        res.status(401).send({
+            error: "Invetory",
+            name: "ExceedsLimit",
+            message:"Quantity exceeds amount available"
+        })
+    }
     const cartItem = await createCartItem({user_id: req.user.id, product_id: product_id, quantity: quantity})
     res.send(cartItem)
     }catch(error) {

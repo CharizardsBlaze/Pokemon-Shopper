@@ -4,7 +4,7 @@ const client = require('.')
 const createUser = async ({username, firstName, lastName, password, emailAddress, phoneNumber}) => {
     const cryptedPassword = await bcrypt.hash(password, 10)
     try{
-        // add error handling for dup username
+        // add error handling for dup username and add id to returning
         const { rows: [user] } = await client.query(`
         INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", "phoneNumber")
         VALUES ($1, $2, $3, $4, $5, $6)
@@ -20,7 +20,7 @@ const createUser = async ({username, firstName, lastName, password, emailAddress
 const getUserById = async ({id}) => {
     try{
         const {rows: [user]} = await client.query(`
-            SELECT *
+            SELECT id, username, "firstName", "lastName", "emailAddress", "phoneNumber"
             FROM users
             WHERE id = $1
             ;
@@ -59,6 +59,7 @@ const getUserByUsername = async ({username}) => {
 const verifyUser = async ({emailAddress, password}) => {
     try{
         // if no user is returned the try should fail and the error should be handled
+        // handle no user here not in the api
         const {rows: [userPassword]} = await client.query(`
             SELECT password
             FROM users
@@ -70,6 +71,7 @@ const verifyUser = async ({emailAddress, password}) => {
         throw new Error('Login was not successful, please check your username or password')
     }
 }
+
 module.exports = {
     createUser,
     getUserById,

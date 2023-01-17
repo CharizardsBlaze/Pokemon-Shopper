@@ -42,7 +42,21 @@ export async function loginUser(emailAddress, password) {
         throw error
     }
 }
-
+export const getUser = async (token) => {
+    try{
+        const response =  await fetch(`${BASE_URL}/users/me`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        const result = response.json()
+        return result
+    }catch(error){
+        console.log('There was an error getting user')
+        throw error
+    }
+}
 export const getAllProducts = async () => {
     try {
         const response = await fetch(`${BASE_URL}/cards`);

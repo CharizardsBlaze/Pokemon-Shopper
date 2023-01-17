@@ -89,12 +89,13 @@ export const addToCart = async ({product_id, quantity, token}) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        BODY: JSON.stringify({
+        body: JSON.stringify({
             token: token,
             product_id: product_id,
             quantity: quantity
         })
     }).then(result => result.json())
+    console.log('response in addToCart: ', response)
     return response
     }catch(error) {
         console.log("There was an error adding an item to cart in src/api", error)

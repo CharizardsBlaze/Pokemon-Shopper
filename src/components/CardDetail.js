@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import { getOneProduct, addToCart} from '../api';
 // import fetchUser from '../App'
 
-const CardDetail = ({user}) => {
+const CardDetail = ({token}) => {
 
     const [oneItem, setOneItem] = useState({})
-    const [quantity, setQuantity] = useState ('')
+    const [quantity, setQuantity] = useState (0)
     const [errorMessaage, setErrorMessage] = useState('')
     // /cards/:cardId is our params
     const {cardId} = useParams();
@@ -22,13 +22,15 @@ const CardDetail = ({user}) => {
         getOneItem();
     }, [cardId]);
 
-    const handleAddToCart = async (productId) => {
+    const handleAddToCart = async (productId, token) => {
         const response = await addToCart({
-            token: user.token,
             product_id: productId,
-            quantity: quantity
+            quantity: quantity,
+            token: token
         })
         if(response.error) {
+            alert(response.message);
+            setQuantity(0)
             setErrorMessage(response.message)
         }else {
         setErrorMessage('')
@@ -60,9 +62,10 @@ const CardDetail = ({user}) => {
                         <button 
                             className="ui button"
                             onClick={() => {
-                                handleAddToCart(oneItem.id)
+                                handleAddToCart(oneItem.id, token)
                             }}>Add To Cart</button>
-                            <input value={quantity} onChange={(event) => setQuantity(event.target.value)}type='number'></input>
+                            <label htmlFor='quantity-input'>Amount to purchase: </label>
+                            <input className="quantity-input" required value={quantity} onChange={(event) => setQuantity(event.target.value)}type='number'></input>
                             <h2>{errorMessaage} </h2>
                     </div>
                 </div>

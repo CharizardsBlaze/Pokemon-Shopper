@@ -7,6 +7,7 @@ const dropTables = async () => {
     await client.query(`
     DROP TABLE IF EXISTS cart_item;
     DROP TABLE IF EXISTS products;
+    DROP TABLE IF EXISTS product_condition;
     DROP TABLE IF EXISTS users;
     `);
     console.log("Completed drop tables.");
@@ -27,7 +28,11 @@ const createTables = async () => {
         "lastName" VARCHAR(255),
         password VARCHAR(255) NOT NULL,
         "emailAddress" VARCHAR(255) UNIQUE NOT NULL,
-        "phoneNumber" VARCHAR(255) UNIQUE
+        "phoneNumber" VARCHAR(255)
+    );
+    CREATE TABLE product_condition (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) UNIQUE NOT NULL
     );
     CREATE TABLE products (
         id SERIAL PRIMARY KEY,
@@ -36,11 +41,12 @@ const createTables = async () => {
         price DECIMAL(6,2) NOT NULL,
         type1 VARCHAR(255) NOT NULL,
         type2 VARCHAR(255),
-        condition VARCHAR(255) NOT NULL,
+        condition INTEGER REFERENCES product_condition(id) NOT NULL,
         rarity VARCHAR(255) NOT NULL,
         quantity INTEGER NOT NULL,
         "imageUrl" VARCHAR(255)
     );
+  
     CREATE TABLE cart_item (
         id SERIAL PRIMARY KEY,
         user_id INTEGER REFERENCES users(id) NOT NULL,
@@ -49,7 +55,8 @@ const createTables = async () => {
     );
     `);
   } catch (error) {
-    throw new Error("There was an error creating the tables!");
+    console.error("There was an error creating the tables!", error)
+    throw error
   }
 };
 

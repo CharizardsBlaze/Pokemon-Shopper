@@ -96,6 +96,7 @@ export const addToCart = async ({product_id, quantity, token}) => {
         })
     }).then(result => result.json())
     console.log('response in addToCart: ', response)
+    
     return response
     }catch(error) {
         console.log("There was an error adding an item to cart in src/api", error)

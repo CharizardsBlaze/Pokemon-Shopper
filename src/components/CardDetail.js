@@ -37,6 +37,8 @@ const CardDetail = ({token}) => {
         //Update the quantity on the product inventory
         //Re-fetch ther user data
         //Re-fetch the item
+        alert('Item added to cart!')
+        getOneItem();
         }
     }
 

@@ -10,7 +10,7 @@ const Cart = ({user, token}) => {
   const [cart, setCart] = useState([]);
   const [cost, setCost] = useState(0)
 
-  const cartItems = async (token) => {
+  const cartItems = async () => {
     const response = await getUserCart(token);
     console.log('response in getCart', response);
     if (response) {
@@ -21,10 +21,10 @@ const Cart = ({user, token}) => {
   }
 
   useEffect(() => {
-    cartItems(token);
-  },[])
+    cartItems();
+  },[token])
 
-  const handleRemoveFromCart = async(cardId, token) => {
+  const handleRemoveFromCart = async(cardId) => {
     console.log('are you sure you want to delete this from the cart?')
     // cartId and token
     const response = await removeFromCart({cart_id: cardId, token: token});
@@ -47,11 +47,12 @@ const Cart = ({user, token}) => {
         return (
           <div key={eachCard.product_id + eachCard.id} className="container">
             <img src={eachCard.imageUrl} />
-            <p>{eachCard.name}</p>
-            <p>{eachCard.itemCost}</p>
-            <p>{eachCard.rarity}</p>
+            <p>Card Name:{eachCard.name}</p>
+            <p>Price: {eachCard.itemCost}</p>
+            <p>Quantity: {eachCard.quantity}</p>
+            <p>Rartiy: {eachCard.rarity}</p>
             <button 
-              onClick={() => handleRemoveFromCart(eachCard.id, token)}>
+              onClick={() => handleRemoveFromCart(eachCard.id)}>
                 Remove {eachCard.name} from cart
             </button>
           </div>

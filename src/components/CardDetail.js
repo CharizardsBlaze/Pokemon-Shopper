@@ -48,29 +48,33 @@ const CardDetail = ({token}) => {
         {!oneItem 
             ? (<p>Loading ...</p>) 
             : (
-                <div key={oneItem.id}>
-                    <h3>{oneItem.name}</h3>
-                    <p>Price: {oneItem.price}</p>
+            <div className='viewCardContainer'>
+                <div className='cardContainer'key={oneItem.id}>
                     <img src={oneItem.imageUrl} />
-                    <div>
-                        <p>Quality: {oneItem.condition}</p>
-                        <p>Rarity: {oneItem.rarity}</p>
-                        <p>{oneItem.name} first type: {oneItem.type1}</p>
-                        {!oneItem.type2 ? null : (<p>{oneItem.name} second type: {oneItem.type2}</p>)}
-                        <p>Quantity available: {oneItem.quantity}</p>
-                    </div>
-            {/* do we want buttons for "Add to cart" under each card? */}
-                    <div className="add-to-cart-form">
-                        <button 
-                            className="ui button"
-                            onClick={() => {
+                    <div className='left-view-card'>
+                        <h1>{oneItem.name}</h1>
+                        <h2>Price: <span className='itemPrice'>${oneItem.price}</span></h2>
+                        <div className='viewAboutCart'>
+                            <div>
+                                <h3>About this card</h3>
+                                <p>Quality: {oneItem.condition}</p>
+                                <p>Rarity: {oneItem.rarity}</p>
+                                <p>{oneItem.name} first type: {oneItem.type1}</p>
+                                {!oneItem.type2 ? null : (<p>{oneItem.name} second type: {oneItem.type2}</p>)}
+                                <p>Quantity available: {oneItem.quantity}</p>
+                            </div> 
+                            <div className='addToCartForm'>
+                                <input required className="quantity-input" value={quantity} onChange={(event) => setQuantity(event.target.value)}type='number'></input>
+                                <button 
+                                className="ui button"
+                                onClick={() => {
                                 handleAddToCart(cardId, token)
-                            }}>Add To Cart</button>
-                            <label htmlFor='quantity-input'>Amount to purchase: </label>
-                            <input className="quantity-input" required value={quantity} onChange={(event) => setQuantity(event.target.value)}type='number'></input>
-                            <h2>{errorMessaage} </h2>
+                                }}>Add To Cart</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
             )
         }
         </>

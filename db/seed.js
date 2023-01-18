@@ -2,7 +2,7 @@ const client = require('./index')
 const {dropTables, createTables} = require('./initdb');
 const {createCartItem, getCartItemsByUserId} = require('./cart')
 const { createUser } = require('./users')
-const {createProduct, getAllProducts, getOneProduct} = require('./products')
+const {createProduct, getAllProducts, getOneProduct, getProductByCondition} = require('./products')
 const {createCondition} = require('./condition')
 
 // should use classes for the seed data? probably not
@@ -462,8 +462,6 @@ const rebuildDB = async () => {
     insertUsersIntoDB();
     //insert each product into db
     insertProductsIntoBd ()
-    getAllProducts()
-    getOneProduct(1)
 }
 client.connect();
 // close client, client.end()

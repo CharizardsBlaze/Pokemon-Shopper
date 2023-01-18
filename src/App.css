@@ -3,7 +3,7 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: #ffdf79;
-  color: #fff;
+  color: black;
   line-height: 1.6;
 }
 
@@ -322,4 +322,54 @@ div.field label {
   position: absolute;
   z-index: 1;
   background-color: blue;
+}
+.filter-search {
+  padding-left: 45px;
+  background-image: url('./components/images/search.png');
+  background-size: 39px;
+  background-position: 1px -5px;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  width: 300px;
+  height: 30px
+}
+.filter-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 900px;
+}
+.filter-bar {
+  display: flex;
+  gap: 10px;
+}
+.filter-bar>*{
+height: 30px;
+border-radius: 20px;
+width: 100px;
+}
+
+.cards-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.all-cards-container {
+  width: 1400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 600px;
+}
+
+.card-container img {
+  border-radius: 20px;
+  box-shadow: 7px 7px 15px 0 black;
 }

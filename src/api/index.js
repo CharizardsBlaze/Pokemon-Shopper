@@ -78,6 +78,16 @@ export const getOneProduct = async (productId) => {
         throw error;
     }
 }
+export const getProductsByCondition = async(condition) => {
+    try {
+        const response = await fetch(`${BASE_URL}/cards/condition/${condition}`)
+        const result = response.json()
+        return result
+    }catch(error) {
+        console.error("There was an error getting the products by condition", error)
+        throw error
+    }
+}
 
 export const getUserCart = async(token) => {
     try {

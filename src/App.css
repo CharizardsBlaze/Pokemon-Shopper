@@ -317,3 +317,9 @@ div.field label {
 .cart-item-emblem{
   align-self: flex-end;
 }
+
+.search-results {
+  position: absolute;
+  z-index: 1;
+  background-color: blue;
+}

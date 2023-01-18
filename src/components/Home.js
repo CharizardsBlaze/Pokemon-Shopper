@@ -11,7 +11,7 @@ const Home = () => {
           Click the Cards button at the top to explore all available cards.
           Don't forget to click a card for more info. You can also use the
           search feature to find a specific card!
-        </h3>
+        </h3>        
       </div>
     </>
   );

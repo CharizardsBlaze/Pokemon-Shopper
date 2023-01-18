@@ -81,7 +81,7 @@ const App = () => {
         /> */}
         <Route path="/register" element={<Register setToken={setToken} />}/>
         <Route path="/login" element={<Login setToken={setToken} />}/>
-        <Route className='item' path='/cart' element={<Cart />} />
+        <Route className='item' path='/cart' element={<Cart user={user} token={token}/>} />
       </Routes>
     </div>
   );

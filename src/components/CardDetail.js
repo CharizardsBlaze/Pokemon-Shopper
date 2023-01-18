@@ -64,7 +64,7 @@ const CardDetail = ({token}) => {
                         <button 
                             className="ui button"
                             onClick={() => {
-                                handleAddToCart(oneItem.id, token)
+                                handleAddToCart(cardId, token)
                             }}>Add To Cart</button>
                             <label htmlFor='quantity-input'>Amount to purchase: </label>
                             <input className="quantity-input" required value={quantity} onChange={(event) => setQuantity(event.target.value)}type='number'></input>

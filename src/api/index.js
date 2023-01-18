@@ -61,7 +61,6 @@ export const getAllProducts = async () => {
     try {
         const response = await fetch(`${BASE_URL}/cards`);
         const allProducts = await response.json();
-        console.log('products in front end api', allProducts)
         return allProducts;
     } catch (error) {
         console.log('there was an error getting all prodcuts in src/api/: ', error);
@@ -97,7 +96,6 @@ export const getUserCart = async(token) => {
 
 export const addToCart = async ({product_id, quantity, token}) => {
     try {
-        console.log('information in addToCart: ', product_id, quantity)
     const response = await fetch(`${BASE_URL}/cart`, {
         method: "POST",
         headers: {
@@ -109,7 +107,6 @@ export const addToCart = async ({product_id, quantity, token}) => {
             quantity: quantity
         })
     }).then(result => result.json())
-    console.log('response in addToCart: ', response)
     
     return response
     }catch(error) {
@@ -119,7 +116,6 @@ export const addToCart = async ({product_id, quantity, token}) => {
 }
 
 export const removeFromCart = async({cart_id, token}) => {
-    console.log('cart id ', cart_id)
     try {
     const response = await fetch(`${BASE_URL}/cart`,{
         method: 'DELETE',
@@ -131,7 +127,6 @@ export const removeFromCart = async({cart_id, token}) => {
             cart_id: cart_id, 
         })
     }).then(result => result.json())
-    console.log('response in removeFromCart', response)
     return response
     }catch(error) {
         console.log("There was an error removing from cart in src/api", error)

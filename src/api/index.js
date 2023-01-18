@@ -1,6 +1,6 @@
 const BASE_URL = 'http://localhost:3001/api'
 
-export async function registerUser(username, firstName, lastName, password, emailAddress, phoneNumber) {
+export async function registerUser(username, firstName, lastName, password, emailAddress, phoneNumber = null) {
     try{
     const response = await fetch(`${BASE_URL}/users/register`, {
         method: 'POST',

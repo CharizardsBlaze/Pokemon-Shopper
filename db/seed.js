@@ -2,17 +2,18 @@ const client = require('./index')
 const {dropTables, createTables} = require('./initdb');
 const {createCartItem, getCartItemsByUserId} = require('./cart')
 const { createUser } = require('./users')
-const {createProduct} = require('./products')
+const {createProduct, getAllProducts, getOneProduct} = require('./products')
+const {createCondition} = require('./condition')
 
 // should use classes for the seed data? probably not
 // class pokemonCard = {
-//     constructor(id, pokemonId, name, type, type1, type2, quality, rarity, img_url){
+//     constructor(id, pokemonId, name, type, type1, type2, condition, rarity, img_url){
 //         this.id = id;
 //         this.pokemonId = pokemonId;
 //         this.name = name;
 //         this.type.type1 = type1;
 //         this.type.type2 = type2;
-//         this.quality = quality;
+//         this.condition = condition;
 //         this.rarity = rarity;
 //         this.img_url = img_url;
 //     }
@@ -21,6 +22,26 @@ const {createProduct} = require('./products')
 
 // see  product data
 // price is writted as 100.00 (with cents value)
+const seedCondition = [
+    {
+        name: 'Fair'
+    },
+    {
+        name: 'Good'
+    },
+    {
+        name: 'Very Good'
+    },
+
+    {
+        name: 'Near Mint'
+    },
+    {
+        name: 'Mint'
+    }
+
+    
+]
 const seedProduct = [
     {
         id: 1,
@@ -29,7 +50,7 @@ const seedProduct = [
         cost: 100.00,
         type1: "plant",
         type2: null,
-        quality: "used",
+        condition:1,
         rarity: "common",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/410qBt1e7LL._AC_.jpg",
@@ -41,7 +62,7 @@ const seedProduct = [
         cost: 1.50,
         type1: "water",
         type2: null,
-        quality: "fair to good",
+        condition: 2,
         rarity: "common",
         quantity: 4,
         img_url: "https://m.media-amazon.com/images/I/51TxlvrsoBL._AC_.jpg",
@@ -53,7 +74,7 @@ const seedProduct = [
         cost: 25.99,
         type1: "psychic",
         type2: null,
-        quality: "reverse holo, good",
+        condition: 3,
         rarity: "semi rare",
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51TIWx7DDIL._AC_.jpg"
@@ -65,7 +86,7 @@ const seedProduct = [
         cost: 150.25,
         type1: "psychic",
         type2: null,
-        quality: "near mint",
+        condition: 4,
         rarity: "rare",
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51QO4llkk7L._AC_.jpg"
@@ -77,7 +98,7 @@ const seedProduct = [
         cost: 5.76,
         type1: "water",
         type2: "flying",
-        quality: "fair",
+        condition: 1,
         rarity: "common",
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51PtkDlud4L._AC_.jpg"
@@ -89,7 +110,7 @@ const seedProduct = [
         cost: 40.00,
         type1: "electric",
         type2: "flying",
-        quality: "extra fine, first edition",
+        condition: 3,
         rarity: "rare",
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51l4OIDKQSL._AC_.jpg"
@@ -101,7 +122,7 @@ const seedProduct = [
         cost: 1.69,
         type1: "fire",
         type2: null,
-        quality: "reverse holo",
+        condition: 4,
         rarity: "rare",
         quantity: 3,
         img_url: "https://m.media-amazon.com/images/I/51Jr8J1R2-L._AC_.jpg"
@@ -113,7 +134,7 @@ const seedProduct = [
         cost: 3.98,
         type1: "fighting",
         type2: null,
-        quality: "mint",
+        condition:5,
         rarity: "common",
         quantity: 3,
         img_url: "https://m.media-amazon.com/images/I/41DaseWiS4L._AC_.jpg"
@@ -125,7 +146,7 @@ const seedProduct = [
         cost: 5.44,
         type1: "dark",
         type2: "psychic",
-        quality: "very good",
+        condition: 3,
         rarity: "common",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51fJUJhWNBL._AC_.jpg"
@@ -137,7 +158,7 @@ const seedProduct = [
         cost: 10.11,
         type1: "dragon",
         type2: "electric",
-        quality: "extra fine",
+        condition: 4,
         rarity: "common",
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51Xd8iVTl7L._AC_.jpg"
@@ -149,7 +170,7 @@ const seedProduct = [
         cost: 1.11,
         type1: "ground",
         type2: "ghost",
-        quality: "fine",
+        condition: 2,
         rarity: "common",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51JKgaWf8hL._AC_.jpg"
@@ -161,7 +182,7 @@ const seedProduct = [
         cost: 0.50,
         type1: "bug",
         type2: null,
-        quality: "good",
+        condition: 2,
         rarity: "very common",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/511vS3mhjeL._AC_.jpg"
@@ -173,7 +194,7 @@ const seedProduct = [
         cost: 120.00,
         type1: "dragon",
         type2: "flying",
-        quality: "holographic",
+        condition: 4,
         rarity: "very rare",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/A1aaGfGbpUL._AC_SY879_.jpg"
@@ -185,7 +206,7 @@ const seedProduct = [
         cost: 3.99,
         type1: "rock",
         type2: null,
-        quality: "good",
+        condition:2,
         rarity: "common",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51ZXBM0ddVL._AC_.jpg"
@@ -197,7 +218,7 @@ const seedProduct = [
         cost: 25.00,
         type1: "ghost",
         type2: "poison",
-        quality: "reverse holo",
+        condition: 3,
         rarity: "rare",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51-F+NSJ4rL._AC_.jpg"
@@ -209,7 +230,7 @@ const seedProduct = [
         cost: 8.50,
         type1: "fighting",
         type2: "fighting",
-        quality: "good",
+        condition: 2,
         rarity: "common",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/71m5Hk24e5L._AC_SY879_.jpg"
@@ -221,7 +242,7 @@ const seedProduct = [
         cost: 2.45,
         type1: "normal",
         type2: null,
-        quality: "fine",
+        condition: 4,
         rarity: "common",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51RzedXZWcL._AC_.jpg"
@@ -233,7 +254,7 @@ const seedProduct = [
         cost: 50.00,
         type1: "normal",
         type2: "normal",
-        quality: "extra fine",
+        condition: 3,
         rarity: "very rare",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51l6AzFprBL._AC_.jpg"
@@ -245,7 +266,7 @@ const seedProduct = [
         cost: 5.00,
         type1: "dark",
         type2: "normal",
-        quality: "fine",
+        condition: 2,
         rarity: "common",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51YVpIMtQSL._AC_.jpg"
@@ -257,7 +278,7 @@ const seedProduct = [
         cost: 5.97,
         type1: "normal",
         type2: null,
-        quality: "extra fine",
+        condition: 3,
         rarity: "rare",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51zRqAgIeRL._AC_.jpg"
@@ -269,7 +290,7 @@ const seedProduct = [
         cost: 15.00,
         type1: "normal",
         type2: null,
-        quality: "first edition",
+        condition: 5,
         rarity: "rare",
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/41inYuyVJLL._AC_.jpg"
@@ -404,7 +425,11 @@ const seedUsers = [
         role: 2, //user role, admin role?
     }
 ]
-
+const insertPoductCondition = async () => {
+    seedCondition.forEach(condition => {
+        createCondition(condition.name)
+    })
+}
 const insertUsersIntoDB = async () => {
     console.log('putting seed users into database');
     seedUsers.forEach((user) => {
@@ -421,7 +446,7 @@ const insertProductsIntoBd = async () => {
             price: product.cost,
             type1: product.type1,
             type2: product.type1,
-            condition:product.quality,
+            condition:product.condition,
             rarity:product.rarity,
             quantity: product.quantity,
             imageUrl: product.img_url
@@ -432,10 +457,13 @@ const insertProductsIntoBd = async () => {
 const rebuildDB = async () => {
     dropTables();
     createTables();
+    insertPoductCondition()
     // put each fake user into the database
     insertUsersIntoDB();
     //insert each product into db
     insertProductsIntoBd ()
+    getAllProducts()
+    getOneProduct(1)
 }
 client.connect();
 // close client, client.end()

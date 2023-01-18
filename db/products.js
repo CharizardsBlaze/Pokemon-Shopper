@@ -18,9 +18,12 @@ const createProduct = async({pokedexId, name, price, type1, type2, condition, ra
 const getAllProducts = async() => {
     try {
         const {rows: allProducts} = await client.query(`
-        SELECT "imageUrl", name, price, id, condition, quantity FROM products
-        ;
+        SELECT products."imageUrl", products.name, products.price, products.id, products.quantity, product_condition.name AS condition
+        FROM products
+        JOIN product_condition 
+        ON products.condition = product_condition.id;
         `);
+        console.log("All products", allProducts)
         return allProducts;
     } catch (error) {
         console.log('there was an error fetchingAllProducts from the database: ', error);
@@ -31,8 +34,11 @@ const getAllProducts = async() => {
 const getOneProduct = async(productId) => {
     try {
         const {rows: [oneProduct]} = await client.query(`
-        SELECT * FROM products
-        WHERE id = $1
+        SELECT products."pokedexId", products.name, products.price, products.type1, products.type2, products.rarity, products.quantity, products."imageUrl", product_condition.name AS condition
+        FROM products
+        JOIN product_condition
+        ON products.condition=product_condition.id
+        WHERE products.id = $1
         ;
         `, [productId]);
         console.log('one product in database', oneProduct)

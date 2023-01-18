@@ -4,6 +4,7 @@ const client = require('.')
 const createUser = async ({username, firstName, lastName, password, emailAddress, phoneNumber}) => {
     const cryptedPassword = await bcrypt.hash(password, 10)
     try{
+        console.log('phone number', phoneNumber)
         // add error handling for dup username and add id to returning
         const { rows: [user] } = await client.query(`
         INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", "phoneNumber")
@@ -14,7 +15,8 @@ const createUser = async ({username, firstName, lastName, password, emailAddress
         `, [username, firstName, lastName, cryptedPassword, emailAddress, phoneNumber])
         return user;
     }catch(error){
-        throw new Error('Error creating user')
+        console.error("There was an error creating the user in the db:", error)
+        throw error
     }
 }
 const getUserById = async ({id}) => {

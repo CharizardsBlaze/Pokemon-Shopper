@@ -15,8 +15,6 @@ const Cards = () => {
     useEffect(() => {
         gettingAllProducts();
       }, [])
-      console.log(conditionOption)
-      
       const handleFilter = async() => {
         if (conditionOption == 'All') {
             gettingAllProducts()

@@ -82,7 +82,6 @@ export const getProductsByCondition = async(condition) => {
     try {
         const response = await fetch(`${BASE_URL}/cards/condition/${condition}`)
         const result = response.json()
-        console.log("result from filter here", result)
         return result
     }catch(error) {
         console.error("There was an error getting the products by condition", error)

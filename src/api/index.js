@@ -119,6 +119,7 @@ export const addToCart = async ({product_id, quantity, token}) => {
 }
 
 export const removeFromCart = async({cart_id, token}) => {
+    console.log('cart id ', cart_id)
     try {
     const response = await fetch(`${BASE_URL}/cart`,{
         method: 'DELETE',
@@ -126,10 +127,11 @@ export const removeFromCart = async({cart_id, token}) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: json.stringify({
+        body: JSON.stringify({
             cart_id: cart_id, 
         })
     }).then(result => result.json())
+    console.log('response in removeFromCart', response)
     return response
     }catch(error) {
         console.log("There was an error removing from cart in src/api", error)

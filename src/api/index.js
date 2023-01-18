@@ -80,7 +80,7 @@ export const getOneProduct = async (productId) => {
     }
 }
 
-export const getUserCart = async({token}) => {
+export const getUserCart = async(token) => {
     try {
         const response = await fetch(`${BASE_URL}/cart`, {
             method: 'GET',
@@ -97,6 +97,7 @@ export const getUserCart = async({token}) => {
 
 export const addToCart = async ({product_id, quantity, token}) => {
     try {
+        console.log('information in addToCart: ', product_id, quantity)
     const response = await fetch(`${BASE_URL}/cart`, {
         method: "POST",
         headers: {
@@ -104,7 +105,6 @@ export const addToCart = async ({product_id, quantity, token}) => {
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            token: token,
             product_id: product_id,
             quantity: quantity
         })

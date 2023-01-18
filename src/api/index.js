@@ -61,7 +61,6 @@ export const getAllProducts = async () => {
     try {
         const response = await fetch(`${BASE_URL}/cards`);
         const allProducts = await response.json();
-        console.log('products in front end api', allProducts)
         return allProducts;
     } catch (error) {
         console.log('there was an error getting all prodcuts in src/api/: ', error);

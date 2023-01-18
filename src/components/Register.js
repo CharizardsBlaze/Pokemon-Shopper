@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import { registerUser } from '../api'
 import { useNavigate } from 'react-router-dom'
-const Register = ({setToken}) => {
+const Register = ({setToken, setUser}) => {
     const [username, setUsername] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -31,6 +31,7 @@ const Register = ({setToken}) => {
         setPhoneNumber('');
         setToken(newUser.token)
         localStorage.setItem('pokemon-shopper-token', newUser.token)
+        setUser(newUser)
         navigate('/')
     }
     return (

@@ -67,7 +67,7 @@ const App = () => {
         <Route
           className='item'
           path='/cards/:cardId'
-          element={<CardDetail />}
+          element={<CardDetail token={token}/>}
         />
         {/* <Route
           className='item'
@@ -79,8 +79,8 @@ const App = () => {
           path='/account/:action'
           element={<AccountForm />}
         /> */}
-        <Route path="/register" element={<Register setToken={setToken}/>}/>
-        <Route path="/login" element={<Login setToken={setToken}/>}/>
+        <Route path="/register" element={<Register setToken={setToken} />}/>
+        <Route path="/login" element={<Login setToken={setToken} />}/>
         <Route className='item' path='/cart' element={<Cart />} />
       </Routes>
     </div>

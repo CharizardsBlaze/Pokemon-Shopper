@@ -22,7 +22,7 @@ const NavBar = ({token, setToken, allProducts}) => {
         </NavLink>
         <NavLink to='/cards' className='item'>
           Cards
-        </NavLink
+
         </NavLink>
         {token ? <button onClick={handleLogout}>Logout</button> :
         <>

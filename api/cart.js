@@ -1,8 +1,9 @@
 const express = require('express')
 const cartRouter = express.Router()
 const requireUser = require('./utils')
-const {getOneProduct} = require('../db/products')
+const {getOneProduct, updateProductQuantity} = require('../db/products')
 const {createCartItem, getCartItemsByUserId, getCartItemById, removeCartItem, deleteCartItemsByUserId} = require('../db/cart')
+
 //Create Cart Item
 cartRouter.post('/', requireUser, async(req, res, next) => {
     try {

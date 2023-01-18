@@ -43,8 +43,25 @@ const getOneProduct = async(productId) => {
     }
 }
 
+const updateProductQuantity = async(productId, quantity) => {
+    try {
+        const {rows: [product]} = await client.query(`
+        UPDATE products
+        SET quantity = quantity - $2
+        WHERE id=$1
+        RETURNING *
+        ;
+        `, [productId, quantity]);
+        return product;
+    } catch (error) {
+        console.log('there was an error updating product quantity: ', error);
+        throw error;
+    }
+}
+
 module.exports = {
     getAllProducts,
     getOneProduct,
-    createProduct
+    createProduct,
+    updateProductQuantity,
 }

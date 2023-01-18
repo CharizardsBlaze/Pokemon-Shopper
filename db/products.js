@@ -48,6 +48,21 @@ const getOneProduct = async(productId) => {
         throw error;
     }
 }
+const getProductByCondition = async(condition) => {
+    try {   
+        const {rows: cards} = await client.query(`
+        SELECT products."imageUrl", products.name, products.price, products.id, products.quantity, product_condition.name AS condition
+        FROM products
+        JOIN product_condition
+        ON products.condition=product_condition.id
+        WHERE product_condition.name=$1
+        `, [condition])
+        return cards
+    }catch(error) {
+        console.error('There was a problem getting the product by the condition', error)
+        throw error
+    }
+}
 
 const updateProductQuantity = async(productId, quantity) => {
     try {
@@ -70,4 +85,5 @@ module.exports = {
     getOneProduct,
     createProduct,
     updateProductQuantity,
+    getProductByCondition
 }

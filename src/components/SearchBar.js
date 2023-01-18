@@ -9,6 +9,7 @@ const SearchBar = ({allProducts}) => {
     return (
         <div>
             <input 
+            className="filter-search"
             onChange={(event) => {
                 setSearch(event.target.value);
             }}

@@ -14,7 +14,6 @@ productRouter.get("/", async (request, response, next) => {
   });
   productRouter.get("/:cardId", async (request, response, next) => {
     try {
-      console.log("HERE")
       const {cardId} = request.params;
       const oneProduct = await getOneProduct(cardId);
       response.send(oneProduct);
@@ -25,7 +24,6 @@ productRouter.get("/", async (request, response, next) => {
   });
   productRouter.get('/condition/:conditionName', async(req, res, next) => {
     try {
-      console.log("HERE")
       const {conditionName} = req.params
       const filteredProducts = await getProductByCondition(conditionName)
       res.send(filteredProducts)

@@ -13,6 +13,7 @@ import {
   Register,
   Login,
   SearchBar,
+  Footer,
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -76,6 +77,7 @@ const App = () => {
         <Route path="/login" element={<Login setToken={setToken} />}/>
         <Route className='item' path='/cart' element={<Cart user={user} token={token}/>} />
       </Routes>
+      <Footer />
     </div>
   );
 };

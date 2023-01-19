@@ -314,6 +314,38 @@ div.field label {
 
 }
 
+.cart-container {
+  display: flex;
+  padding: 3em;
+  border: 2px solid red;
+  border-radius: 13%;
+}
+
+.cart-container img {
+  align-self: flex-start;
+  border-radius: 25px;
+  box-shadow: 7px 7px 15px 0 black;
+}
+
+.cart-name {
+  font-size: 2rem;;
+}
+
+.info-container {
+  padding-left: 2em;
+}
+
+.checkout {
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.cart-cost {
+  font-weight: 900;
+}
+
 .cart-item-emblem{
   align-self: flex-end;
 }

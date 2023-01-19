@@ -158,3 +158,19 @@ export const deleteCart = async({token}) => {
         throw error
     }
 }
+export const paymentInitialize = async (items) => {
+    try{
+        const response = await fetch(`${BASE_URL}/create-payment-intent`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({items})
+        })
+        const result = await response.json();
+        return result;
+    } catch(error){
+        console.log('Error in payment init')
+        throw error
+    }
+}

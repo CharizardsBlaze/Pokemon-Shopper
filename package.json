@@ -25,6 +25,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.16.3",
+    "@stripe/stripe-js": "^1.46.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -36,7 +38,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "^5.0.1",
-    "semantic-ui-css": "^2.5.0"
+    "semantic-ui-css": "^2.5.0",
+    "stripe": "^11.6.0"
   },
   "bugs": {
     "url": "https://github.com/CharizardsBlaze/Pokemon-Shopper/issues"

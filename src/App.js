@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { getAllProducts, getUser } from "./api";
+import { getUser } from "./api";
 import "./App.css";
 import {
   // AccountDetails,
@@ -22,15 +22,10 @@ const App = () => {
   //------------------- State --------------------
 
   // const [cards, setCards] = useState([]);
-  const [allProducts, setAllProducts] = useState([]);
   const [token, setToken] = useState('')
   const [user, setUser] = useState({})
   //----------------- useEffects -----------------
 
-  const gettingAllProducts = async() => {
-    const allProducts = await getAllProducts();
-    setAllProducts(allProducts);
-  };
   const useEffectGetUser = async () => {
     if(token){
     const currentUser = await getUser(token)
@@ -40,9 +35,7 @@ const App = () => {
     }
   }
   // get all products on load
-  useEffect(() => {
-    gettingAllProducts();
-  }, [])
+
   useEffect(() => {
     const localToken = localStorage.getItem('pokemon-shopper-token')
     if(localToken){
@@ -56,14 +49,14 @@ const App = () => {
     //TODO - Temporary NavBar for testing. Will be changed later.
 
     <div className='container'>
-      <NavBar token={token} setToken={setToken} allProducts={allProducts}/>
+      <NavBar token={token} setToken={setToken} />
 
       <Routes>
         <Route path='/' element={<Home />} />
         <Route
           className='item'
           path='/cards'
-          element={<Cards allProducts={allProducts}/>}
+          element={<Cards />}
         />
         <Route
           className='item'
@@ -82,7 +75,7 @@ const App = () => {
         /> */}
         <Route path="/register" element={<Register setToken={setToken} />}/>
         <Route path="/login" element={<Login setToken={setToken} />}/>
-        <Route className='item' path='/cart' element={<Cart />} />
+        <Route className='item' path='/cart' element={<Cart user={user} token={token}/>} />
       </Routes>
       <Stripe />
     </div>

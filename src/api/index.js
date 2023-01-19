@@ -61,7 +61,6 @@ export const getAllProducts = async () => {
     try {
         const response = await fetch(`${BASE_URL}/cards`);
         const allProducts = await response.json();
-        console.log('products in front end api', allProducts)
         return allProducts;
     } catch (error) {
         console.log('there was an error getting all prodcuts in src/api/: ', error);
@@ -79,8 +78,18 @@ export const getOneProduct = async (productId) => {
         throw error;
     }
 }
+export const getProductsByCondition = async(condition) => {
+    try {
+        const response = await fetch(`${BASE_URL}/cards/condition/${condition}`)
+        const result = response.json()
+        return result
+    }catch(error) {
+        console.error("There was an error getting the products by condition", error)
+        throw error
+    }
+}
 
-export const getUserCart = async({token}) => {
+export const getUserCart = async(token) => {
     try {
         const response = await fetch(`${BASE_URL}/cart`, {
             method: 'GET',
@@ -104,12 +113,10 @@ export const addToCart = async ({product_id, quantity, token}) => {
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            token: token,
             product_id: product_id,
             quantity: quantity
         })
     }).then(result => result.json())
-    console.log('response in addToCart: ', response)
     
     return response
     }catch(error) {
@@ -126,7 +133,7 @@ export const removeFromCart = async({cart_id, token}) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: json.stringify({
+        body: JSON.stringify({
             cart_id: cart_id, 
         })
     }).then(result => result.json())

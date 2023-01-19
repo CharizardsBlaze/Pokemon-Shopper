@@ -40,10 +40,8 @@ cartRouter.get('/', requireUser, async(req, res, next)=> {
 //For deleting individual prodcuts from the users cart item
 cartRouter.delete('/', async(req, res, next) => {
     try {
-        console.log("here")
-        const {cartItemId} = req.body
-        const cart_item = await getCartItemById({id: cartItemId})
-        console.log(cart_item)
+        const {cart_id} = req.body
+        const cart_item = await getCartItemById({id: cart_id})
         if(cart_item.user_id !== req.user.id) {
             res.status(401).send({
                 error: "Unathorized",
@@ -51,11 +49,11 @@ cartRouter.delete('/', async(req, res, next) => {
                 message: "You are not allowed to remove that cart item"
             })
         }else {
-            const removedCartItem = await removeCartItem({id: cartItemId})
+            const removedCartItem = await removeCartItem({id: cart_id})
             res.send(removedCartItem)
         }
     }catch(error) {
-        console.error("There was an error remove the cart item")
+        console.error("There was an error removing the cart item")
     }
 })
 

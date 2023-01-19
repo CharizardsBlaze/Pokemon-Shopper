@@ -1,6 +1,6 @@
 const express = require('express')
 const productRouter = express.Router()
-const { getAllProducts, getOneProduct } = require("../db/products");
+const { getAllProducts, getOneProduct, getProductByCondition} = require("../db/products");
 
 productRouter.get("/", async (request, response, next) => {
     try {
@@ -12,7 +12,6 @@ productRouter.get("/", async (request, response, next) => {
       throw error;
     }
   });
-  
   productRouter.get("/:cardId", async (request, response, next) => {
     try {
       const {cardId} = request.params;
@@ -23,5 +22,17 @@ productRouter.get("/", async (request, response, next) => {
       throw error;
     }
   });
+  productRouter.get('/condition/:conditionName', async(req, res, next) => {
+    try {
+      const {conditionName} = req.params
+      const filteredProducts = await getProductByCondition(conditionName)
+      res.send(filteredProducts)
+    }catch(error) {
+      console.error("There was an error getting product by condition", error)
+      throw error
+    }
+  })
+  
+
 
   module.exports = productRouter

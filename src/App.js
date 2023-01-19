@@ -13,6 +13,7 @@ import {
   Register,
   Login,
   SearchBar,
+  Stripe
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -83,6 +84,7 @@ const App = () => {
         <Route path="/login" element={<Login setToken={setToken} />}/>
         <Route className='item' path='/cart' element={<Cart />} />
       </Routes>
+      <Stripe />
     </div>
   );
 };

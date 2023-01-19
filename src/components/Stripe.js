@@ -8,9 +8,6 @@ const items = {
     stuff: 4
 }
 const Stripe = () => {
-    // const func = async () => {
-    //     return await paymentInitialize(items)
-    // }
     const [clientSecret, setClientSecret] = useState(null)
     useEffect(() => {
         paymentInitialize(items).then(res=> setClientSecret(res.clientSecret))

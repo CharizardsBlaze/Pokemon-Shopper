@@ -4,16 +4,12 @@ import { removeFromCart } from "../api";
 import { useNavigate } from 'react-router-dom'
 
 const Cart = ({user, token}) => {
-
-  console.log('user in Cart', user)
-  console.log('user in Cart', user)
-
   const [cart, setCart] = useState([]);
   const [cost, setCost] = useState(0)
   const navigate = useNavigate()
-  const cartItems = async (token) => {
+  const cartItems = async () => {
+  
     const response = await getUserCart(token);
-    console.log('response in getCart', response);
     if (response) {
       setCart(response.cart)
       setCost(response.totalCost)
@@ -22,10 +18,10 @@ const Cart = ({user, token}) => {
   }
 
   useEffect(() => {
-    cartItems(token);
-  },[])
+    cartItems();
+  },[token])
 
-  const handleRemoveFromCart = async(cardId, token) => {
+  const handleRemoveFromCart = async(cardId) => {
     console.log('are you sure you want to delete this from the cart?')
     // cartId and token
     const response = await removeFromCart({cart_id: cardId, token: token});
@@ -58,6 +54,7 @@ const Cart = ({user, token}) => {
                   Remove {eachCard.name} from cart
               </button>
             </div>
+
           </div>
         )
       }) : null }

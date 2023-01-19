@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { getUserCart } from "../api";
 import { removeFromCart } from "../api";
+import { useNavigate } from 'react-router-dom'
 
 const Cart = ({user, token}) => {
 
@@ -9,7 +10,7 @@ const Cart = ({user, token}) => {
 
   const [cart, setCart] = useState([]);
   const [cost, setCost] = useState(0)
-
+  const navigate = useNavigate()
   const cartItems = async (token) => {
     const response = await getUserCart(token);
     console.log('response in getCart', response);
@@ -38,6 +39,7 @@ const Cart = ({user, token}) => {
 
   const handleCheckout = () => {
     console.log('you have checked out!')
+    navigate('/checkout')
   }
 
   return (

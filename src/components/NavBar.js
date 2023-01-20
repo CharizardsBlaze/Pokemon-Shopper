@@ -15,7 +15,7 @@ const NavBar = ({token, setToken}) => {
     navigate('/')
   }
   return (
-    <nav>
+    <nav className="nav">
       <div className='ui secondary pointing menu'>
         <NavLink to='/' className='item'>
           Home

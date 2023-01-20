@@ -350,11 +350,38 @@ div.field label {
   align-self: flex-end;
 }
 
-.search-results {
+.search-results-container {
   position: absolute;
   z-index: 1;
-  background-color: blue;
+  background-color: rgba(0, 0, 255, 0.651);
+  border-radius: 5%;
+  margin-left: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
+
+.one-result{
+  height: 50px;
+  border-radius: 30%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.one-result-link {
+  color: white;
+  font-size: large;
+  margin-top: 15px;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  background-color: #ffdf79;
+}
+
 .filter-search {
   padding-left: 45px;
   background-image: url('./components/images/search.png');
@@ -371,6 +398,8 @@ div.field label {
   margin-top: 10px;
   margin-bottom: 10px;
   width: 900px;
+  position: sticky;
+  top: 70px;
 }
 .filter-bar {
   display: flex;

@@ -193,3 +193,30 @@ export const deleteProduct = async (user, productId, token) => {
         throw error
     }
 }
+export const createNewProduct = async (pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl, token, user) => {
+    try{
+        const response = await fetch(`${BASE_URL}/cards`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                pokedexId,
+                name,
+                price,
+                type1,
+                type2,
+                condition,
+                rarity,
+                quantity,
+                imageUrl,
+                user
+            })
+        })
+        const result = response.json();
+        return result;
+    } catch(error){
+        throw error
+    }
+}

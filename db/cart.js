@@ -70,11 +70,45 @@ const deleteCartItemsByUserId = async({id}) => {
     }
 }
 
+const updateCartItem = async({quantity, cartId}) => {
+    try {
+    const {rows: [cartItem]} = await client.query(`
+    UPDATE cart_item
+    SET quantity=$1
+    WHERE id=$2
+    RETURNING *;
+    `, [quantity, cartId])
+    return cartItem
+    }catch(error) {
+        console.error('There was an error updating the cart item', error)
+        throw error
+    }
+}
+
+const getUserCartItem = async ({userId, product_id}) => {
+    try {
+        console.log("Ids here", userId, product_id)
+        const {rows: [cartItem]} = await client.query(`
+        SELECT * FROM 
+        cart_item
+        WHERE 
+        user_id=$1 AND product_id=$2;
+        `, [userId, product_id])
+        return cartItem
+    }catch(error) {
+        console.error("There was an error getting the cart item by the user id and cart id", error)
+        throw error
+    }
+}
+
+
 module.exports = {
     createCartItem,
     getCartItemsByUserId,
     deleteCartItemsByUserId,
     removeCartItem,
     getCartItemById,
-    removeCartItem
+    removeCartItem,
+    getUserCartItem,
+    updateCartItem
 }

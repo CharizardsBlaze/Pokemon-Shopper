@@ -17,7 +17,12 @@ const Login = ({setToken}) => {
         }
         setToken(newUser.token)
         localStorage.setItem('pokemon-shopper-token', newUser.token)
-        navigate('/')
+        if (newUser.isAdmin) {
+            localStorage.setItem('pokemon-admin', true)
+            navigate('/admin')
+        } else {
+            navigate('/')
+        }
     }
     return (
         <form className='user-forms' onSubmit={handleLoginSubmit}>

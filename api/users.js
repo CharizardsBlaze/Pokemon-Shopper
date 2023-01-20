@@ -80,12 +80,20 @@ usersRouter.post("/login", async (req, res, next) => {
         const token = jwt.sign(user, process.env.JWT_SECRET, {
           expiresIn: "1w",
         });
-        res.send({
-          token,
-          message: "Thank you for logging in!",
-        });
+        if (user.isAdmin === true) {
+          res.send({
+            token,
+            isAdmin: user.isAdmin,
+            message: "Thank you for logging in!",
+          })
+        } else {
+          res.send({
+            token,
+            message: "Thank you for logging in!",
+          });
+        }
       }else {
-    res.status(401).send(errorMessage);
+        res.status(401).send(errorMessage);
       }
     }else {
       res.status(401).send(errorMessage);

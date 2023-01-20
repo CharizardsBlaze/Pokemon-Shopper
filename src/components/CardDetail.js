@@ -7,7 +7,7 @@ import { getOneProduct, addToCart} from '../api';
 const CardDetail = ({token}) => {
 
     const [oneItem, setOneItem] = useState({})
-    const [quantity, setQuantity] = useState (0)
+    const [quantity, setQuantity] = useState (1)
     const [errorMessaage, setErrorMessage] = useState('')
     // /cards/:cardId is our params
     const {cardId} = useParams();
@@ -64,7 +64,7 @@ const CardDetail = ({token}) => {
                                 <p>Quantity available: {oneItem.quantity}</p>
                             </div> 
                             <div className='addToCartForm'>
-                                <input required className="quantity-input" value={quantity} onChange={(event) => setQuantity(event.target.value)}type='number'></input>
+                                <input min="1" required className="quantity-input" value={quantity} onChange={(event) => setQuantity(event.target.value)} type='number'></input>
                                 <button 
                                 className="ui button"
                                 onClick={() => {

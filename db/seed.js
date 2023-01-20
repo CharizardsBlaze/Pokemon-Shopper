@@ -52,7 +52,7 @@ const seedProduct = [
         type2: null,
         condition:1,
         rarity: "common",
-        quantity: 1,
+        quantity: 10,
         img_url: "https://m.media-amazon.com/images/I/410qBt1e7LL._AC_.jpg",
     },
     {

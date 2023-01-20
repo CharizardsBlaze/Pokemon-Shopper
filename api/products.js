@@ -1,7 +1,7 @@
 const express = require('express')
 const productRouter = express.Router()
-const { getAllProducts, getOneProduct, getProductByCondition} = require("../db/products");
-
+const { getAllProducts, getOneProduct, getProductByCondition, deleteProduct} = require("../db/products");
+const requireUser = require('./utils')
 productRouter.get("/", async (request, response, next) => {
     try {
       const allProducts = await getAllProducts();
@@ -32,7 +32,25 @@ productRouter.get("/", async (request, response, next) => {
       throw error
     }
   })
-  
+  productRouter.delete('/:productId', requireUser, async (req, res, next) => {
+    const productId = req.params.productId
+    const {user} = req.body
+    if(!user.is_admin){
+      res.status(401).send({
+        error: "Unauthorized",
+        message: "You do not have admin functions"
+      })
+      return
+    } 
+    try{
+      const deletedProduct = await deleteProduct(productId)
+      res.send(
+        deletedProduct
+      )
+    }catch(error){
+      throw error
+    }
+  })
 
 
   module.exports = productRouter

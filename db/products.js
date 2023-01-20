@@ -79,11 +79,24 @@ const updateProductQuantity = async(productId, quantity) => {
         throw error;
     }
 }
-
+const deleteProduct = async (productId) => {
+    try{
+        const {rows: [deletedProduct]} = await client.query(`
+            DELETE from products
+            WHERE id = $1
+            RETURNING *
+            ;
+        `, [productId])
+        return deletedProduct
+    } catch(error){
+        throw error
+    }
+}
 module.exports = {
     getAllProducts,
     getOneProduct,
     createProduct,
     updateProductQuantity,
-    getProductByCondition
+    getProductByCondition,
+    deleteProduct
 }

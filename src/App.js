@@ -22,28 +22,18 @@ const App = () => {
   //------------------- State --------------------
 
   // const [cards, setCards] = useState([]);
-  const [token, setToken] = useState('')
+  const [token, setToken] = useState(localStorage.getItem('pokemon-shopper-token') || '')
   const [user, setUser] = useState({})
   //----------------- useEffects -----------------
 
-  const useEffectGetUser = async () => {
-    if(token){
+  const useEffectGetUser = async (token) => {
     const currentUser = await getUser(token)
-    if(currentUser.id){
     setUser(currentUser)
-    }
-    }
   }
-  // get all products on load
-
   useEffect(() => {
-    const localToken = localStorage.getItem('pokemon-shopper-token')
-    if(localToken){
-      setToken(localToken)
-    }
-  }, [])
-  useEffect(() => {
-    useEffectGetUser()
+    if(token){
+    useEffectGetUser(token)
+  }
   }, [token])
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.

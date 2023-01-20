@@ -44,13 +44,14 @@ export async function loginUser(emailAddress, password) {
 }
 export const getUser = async (token) => {
     try{
-        const response =  await fetch(`${BASE_URL}/users/me`, {
+        const response = await fetch(`${BASE_URL}/users/me`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
         })
-        const result = response.json()
+        const result = await response.json()
         return result
     }catch(error){
         console.log('There was an error getting user')

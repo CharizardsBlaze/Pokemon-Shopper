@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { loginUser } from '../api'
 import { useNavigate } from 'react-router-dom'
-const Login = ({setToken, setUser}) => {
+const Login = ({setToken}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [returnFromLogin, setReturnFromLogin] = useState({})

@@ -22,7 +22,6 @@ const Register = ({setToken, setUser}) => {
             }
             return
         }
-        console.log(newUser)
         setUsername('');
         setFirstName('');
         setLastName('');
@@ -31,7 +30,6 @@ const Register = ({setToken, setUser}) => {
         setPhoneNumber('');
         setToken(newUser.token)
         localStorage.setItem('pokemon-shopper-token', newUser.token)
-        setUser(newUser)
         navigate('/')
     }
     return (

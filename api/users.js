@@ -22,7 +22,6 @@ usersRouter.get('/me', requireUser, async (req, res, next) => {
     }
 })
 usersRouter.post("/register", async (req, res, next) => {
-  console.log("Req body", req.body)
   const { username, password, emailAddress } = req.body;
   if (!username || !password || !emailAddress) {
     res.status(400).send({
@@ -85,8 +84,9 @@ usersRouter.post("/login", async (req, res, next) => {
           token,
           message: "Thank you for logging in!",
         });
-      }
+      }else {
     res.status(401).send(errorMessage);
+      }
     }else {
       res.status(401).send(errorMessage);
     }

@@ -12,19 +12,7 @@ const calculateOrderAmount = (items) => {
     return 1400;
   };
   
-  router.post("/create-payment-intent", async (req, res) => {
-    const { items } = req.body;
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: calculateOrderAmount(items),
-      currency: "usd",
-      automatic_payment_methods: {
-        enabled: true,
-      },
-    });
-    res.send({
-      clientSecret: paymentIntent.client_secret,
-    });
-  });
+
 router.use(async (req, res, next) => {
   const auth = req.header("Authorization");
   if (auth) {
@@ -45,6 +33,19 @@ router.use(async (req, res, next) => {
     next();
   }
 });
+router.post("/create-payment-intent", async (req, res) => {
+    const { items } = req.body;
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: calculateOrderAmount(items),
+      currency: "usd",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  });
 router.use("/users", usersRouter);
 router.use("/cards", productRouter)
 router.use("/cart", cartRouter)

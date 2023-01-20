@@ -356,6 +356,38 @@ footer li, p {
 
 }
 
+.cart-container {
+  display: flex;
+  padding: 3em;
+  border: 2px solid red;
+  border-radius: 13%;
+}
+
+.cart-container img {
+  align-self: flex-start;
+  border-radius: 25px;
+  box-shadow: 7px 7px 15px 0 black;
+}
+
+.cart-name {
+  font-size: 2rem;;
+}
+
+.info-container {
+  padding-left: 2em;
+}
+
+.checkout {
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.cart-cost {
+  font-weight: 900;
+}
+
 .cart-item-emblem{
   align-self: flex-end;
 }
@@ -414,4 +446,56 @@ width: 100px;
 .card-container img {
   border-radius: 20px;
   box-shadow: 7px 7px 15px 0 black;
+}
+
+.viewLink button {
+  width: 100%;
+}
+.left-view-card {
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 2px solid black;
+  box-shadow: 7px 7px 15px 0 black;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.viewCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cardContainer {
+  display: flex;
+  margin-top: 100px;
+  width: 1000px;
+  justify-content: center;
+  gap: 10px
+}
+.cardContainer img {
+  width: 50%;
+  box-shadow: 7px 7px 15px 0 black;
+}
+.cardContainer h1 {
+  border-bottom: 2px solid rgb(96, 74, 74);
+  width: auto;
+}
+
+.itemPrice {
+  color: rgb(201, 23, 23);
+}
+.viewAboutCart {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-grow: 3;
+ 
+}
+
+.addToCartForm input {
+  width: 45px;
+  height: 60px;
+  border-radius: 14px;
+  margin-right: 10px;
 }

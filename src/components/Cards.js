@@ -48,13 +48,15 @@ const Cards = () => {
                         <img src={eachProduct.imageUrl} />
                         <h5>Card name: {eachProduct.name}</h5>
                         <p>Price: {eachProduct.price}</p>
-                        <button 
+                       
+                            <Link className='viewLink' to={`/cards/${eachProduct.id}`}>
+                            <button 
                             className="ui button"
                             // onClick={(event) => {
                             //     event.preventDefault();
                             //     handleSeeDetails(eachProduct.id)
                             >
-                            <Link to={`/cards/${eachProduct.id}`}>See more</Link></button>
+                            See more </button></Link>
                         {/* <CardDetail product={eachProduct}/>  */}
                     </div>
                 )}

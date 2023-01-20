@@ -15,6 +15,7 @@ import {
   SearchBar,
   Footer,
   About,
+  Stripe
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -78,6 +79,7 @@ const App = () => {
         <Route path="/login" element={<Login setToken={setToken} />}/>
         <Route className='item' path='/cart' element={<Cart user={user} token={token}/>} />
         <Route path="/about" element={<About /> } />
+        <Route className='checkout' path="/checkout" element={<Stripe />} />
       </Routes>
       <Footer />
     </div>

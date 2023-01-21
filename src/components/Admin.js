@@ -52,7 +52,7 @@ const Admin = ({admin}) => {
                         <label>Rarity:</label>
                             <input required type="text" placeholder="Card rarity" value={rarity} onChange={(event) => setRarity(event.target.value)}/>
                         <label>Quantity:</label>
-                            <input required type="text" placeholder="Card quanitity to sell" value={quanitity} onChange={(event) => setQuantity(event.target.value)}/>
+                            <input required type="text" placeholder="Card quanitity to sell" value={quantity} onChange={(event) => setQuantity(event.target.value)}/>
                         <label>Image url:</label>
                             <input required type="text" placeholder="image url" value={imageUrl} onChange={(event) => setImageUrl(event.target.value)}/>
                         <label>Submit</label>

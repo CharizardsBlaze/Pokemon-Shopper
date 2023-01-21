@@ -314,7 +314,7 @@ const seedUsers = [
         cart: {
             products: [1, 2, 3] // references productNumber
         },
-        isAdmin: "true", //user role, admin role?
+        isAdmin: true, //user role, admin role?
     },
     {
         username: "JAllen",
@@ -332,7 +332,6 @@ const seedUsers = [
         cart: {
             products: [8] // references productNumber
         },
-        isAdmin: "false", //user role, admin role?
     },
     {
         username: "JOKER-D",
@@ -350,7 +349,6 @@ const seedUsers = [
         cart: {
             products: [] // references productNumber
         },
-        isAdmin: "false", //user role, admin role?
     },
     {
         username: "HorsePerson",
@@ -368,7 +366,6 @@ const seedUsers = [
         cart: {
             products: [1, 2, 3, 4, 5, 6, 7, 8, 9] // references productNumber
         },
-        isAdmin: "false", //user role, admin role?
     },
     {
         username: "The1",
@@ -386,7 +383,6 @@ const seedUsers = [
         cart: {
             products: [1] // references productNumber
         },
-        isAdmin: "false", //user role, admin role?
     },
     {
         username: "MrAnderson",
@@ -404,7 +400,6 @@ const seedUsers = [
         cart: {
             products: [5] // references productNumber
         },
-        isAdmin: "false", //user role, admin role?
     },
     {
         username: "NicDaQuick",
@@ -422,7 +417,6 @@ const seedUsers = [
         cart: {
             products: [1, 9] // references productNumber
         },
-        isAdmin: "false", //user role, admin role?
     }
 ]
 const insertPoductCondition = async () => {

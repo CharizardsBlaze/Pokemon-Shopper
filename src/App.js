@@ -72,7 +72,7 @@ const App = () => {
         <Route className='item' path='/cart' element={<Cart user={user} token={token}/>} />
         <Route path="/about" element={<About /> } />
         <Route className='checkout' path="/checkout" element={<Stripe />} />
-        <Route path="/admin" element={<Admin admin={admin} />} />
+        {user.isAdmin ? (<Route path="/admin" element={<Admin admin={admin} />} />) : null }
       </Routes>
       <Footer />
     </div>

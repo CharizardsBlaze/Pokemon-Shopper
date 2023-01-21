@@ -1,17 +1,17 @@
 const bcrypt = require('bcrypt')
 const client = require('.')
 
-const createUser = async ({username, firstName, lastName, password, emailAddress, phoneNumber, isAdmin}) => {
+const createUser = async ({username, firstName, lastName, password, emailAddress, phoneNumber}) => {
     const cryptedPassword = await bcrypt.hash(password, 10)
     try{
         // add error handling for dup username and add id to returning
         const { rows: [user] } = await client.query(`
-        INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", "phoneNumber", "isAdmin")
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", "phoneNumber")
+        VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT ("emailAddress") DO NOTHING
         RETURNING id, username, "firstName", "lastName", "emailAddress", "phoneNumber", "isAdmin"
         ;
-        `, [username, firstName, lastName, cryptedPassword, emailAddress, phoneNumber, isAdmin])
+        `, [username, firstName, lastName, cryptedPassword, emailAddress, phoneNumber])
         return user;
     }catch(error){
         console.error("There was an error creating the user in the db:", error)

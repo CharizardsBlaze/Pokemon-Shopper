@@ -27,6 +27,7 @@ const App = () => {
   // const [cards, setCards] = useState([]);
   const [token, setToken] = useState(localStorage.getItem('pokemon-shopper-token') || '')
   const [user, setUser] = useState({});
+  console.log('user in App', user)
   //----------------- useEffects -----------------
 
   const useEffectGetUser = async (token) => {
@@ -42,7 +43,7 @@ const App = () => {
     //TODO - Temporary NavBar for testing. Will be changed later.
 
     <div className='container'>
-      <NavBar token={token} setToken={setToken} />
+      <NavBar token={token} setToken={setToken} user={user} setUser={setUser}/>
 
       <Routes>
         <Route path='/' element={<Home />} />

@@ -2,7 +2,11 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #ffdf79;
+   background-image: url('https://images4.alphacoders.com/115/1159692.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: black;
   line-height: 1.6;
 }
@@ -421,7 +425,7 @@ footer li, p {
 .nav {
   position: sticky;
   top: 0;
-  background-color: #ffdf79;
+  color: red;
 }
 
 .filter-search {
@@ -459,22 +463,25 @@ width: 100px;
   align-items: center;
 }
 .all-cards-container {
-  width: 1400px;
+  width: 1600px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 20px;
 }
 
 .card-container {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 320px;
   height: 600px;
-}
-
-.card-container img {
-  border-radius: 20px;
   box-shadow: 7px 7px 15px 0 black;
+  background-color: rgba(118, 118, 118, 0.9);
+  background-size: 110px;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  
 }
 
 .viewLink button {
@@ -488,6 +495,10 @@ width: 100px;
   display: flex;
   flex-direction: column;
   width: 50%;
+  padding-right: 10px;
+  background-image: url('https://wallpapers-clan.com/wp-content/uploads/2022/05/pikachu-pokemon-minimalist-wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .viewCardContainer {
   display: flex;
@@ -527,4 +538,30 @@ width: 100px;
   height: 60px;
   border-radius: 14px;
   margin-right: 10px;
+}
+.select-quality option{
+  background-image: url('https://www.fonewalls.com/wp-content/uploads/Pokemon-Minimal-Background-HD-Wallpaper-600x1067.jpg');
+  background-size: cover;
+}
+.ui.large.shopping.cart.icon {
+transition: .3s;
+}
+.ui.large.shopping.cart.icon:hover {
+transform : scale(1.2);
+}
+
+
+@media (min-width: 800px) and (max-width: 1500px){
+.all-cards-container {
+  width: 800px;
+}
+}
+
+@media (min-width: 300px) and (max-width: 750px){
+  .all-cards-container {
+    flex-direction: column; 
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
 }

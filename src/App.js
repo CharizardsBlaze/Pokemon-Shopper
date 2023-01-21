@@ -27,7 +27,6 @@ const App = () => {
   // const [cards, setCards] = useState([]);
   const [token, setToken] = useState(localStorage.getItem('pokemon-shopper-token') || '')
   const [user, setUser] = useState({});
-  console.log('user in App', user)
   //----------------- useEffects -----------------
 
   const useEffectGetUser = async (token) => {
@@ -72,7 +71,7 @@ const App = () => {
         <Route className='item' path='/cart' element={<Cart user={user} token={token}/>} />
         <Route path="/about" element={<About /> } />
         <Route className='checkout' path="/checkout" element={<Stripe />} />
-        {user.isAdmin ? (<Route path="/admin" element={<Admin user={user} />} />) : null }
+        {user.isAdmin ? (<Route path="/admin" element={<Admin user={user} token={token} />} />) : null }
       </Routes>
       <Footer />
     </div>

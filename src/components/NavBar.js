@@ -15,7 +15,6 @@ const NavBar = ({token, setToken, user}) => {
     navigate('/');
     setUser(null);
   }
-  console.log('user in nav', user)
   return (
     <nav className="nav">
       <div className='ui secondary pointing menu'>

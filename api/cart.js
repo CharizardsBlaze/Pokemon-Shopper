@@ -12,7 +12,6 @@ cartRouter.post('/', requireUser, async(req, res, next) => {
     const existingCartItem = await getUserCartItem({product_id: product_id, userId: req.user.id})
     if (existingCartItem) {
         const newQuantity = Number(existingCartItem.quantity) + Number(quantity)
-        console.log(typeof(newQuantity), typeof(product.quantity))
         if ( newQuantity >  product.quantity) {
             res.status(401).send({
                 error: "Invetory",

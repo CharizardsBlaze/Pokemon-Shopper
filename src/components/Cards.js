@@ -28,7 +28,7 @@ const Cards = () => {
                 <div className='filter-container'>
                     <SearchBar allProducts={allProducts}/>
                         <div className='filter-bar'>
-                                <select onChange={(event) => setConditionOption(event.target.value)}>
+                                <select className='select-quality'onChange={(event) => setConditionOption(event.target.value)}>
                                 <option value='All'>All</option>
                                 <option value='Fair'>Fair</option>
                                 <option value='Good'>Good</option>

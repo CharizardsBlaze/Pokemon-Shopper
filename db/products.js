@@ -23,7 +23,6 @@ const getAllProducts = async() => {
         JOIN product_condition 
         ON products.condition = product_condition.id;
         `);
-        console.log("All products", allProducts)
         return allProducts;
     } catch (error) {
         console.log('there was an error fetchingAllProducts from the database: ', error);

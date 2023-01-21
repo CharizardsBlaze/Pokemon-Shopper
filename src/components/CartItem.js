@@ -6,7 +6,6 @@ const CartItem = ({eachCard, token, cartItems}) => {
   
   
   const handleRemoveFromCart = async(cardId) => {
-    console.log('are you sure you want to delete this from the cart?')
     // cartId and token
     const response = await removeFromCart({cart_id: cardId, token: token});
     if (response.error) {
@@ -17,9 +16,7 @@ const CartItem = ({eachCard, token, cartItems}) => {
     return response;
   }
   const handleQuantity = async(quantity) => {
-    console.log(quantity)
     const response = await editQuantityOnCart({token: token, cart_id:eachCard.id, quantity: quantity})
-    console.log(response)
     if (response.error) {
       !alert(response.message)
     }else {

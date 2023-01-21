@@ -1,25 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from "./SearchBar";
-import {getAllProducts, getProductsByCondition} from '../api'
+import {getAllProducts, getProductsByCondition, getAllConditions, getAllRarities} from '../api'
 
 const Cards = () => {
     const [allProducts, setAllProducts] = useState([]);
+    const [conditions, setAllConditions] = useState([])
+    const [rarities, setAllRarities] = useState([])
     const [conditionOption, setConditionOption] = useState('')
+    const [rarityOption, setRarityOption] = useState('')
     // eachProduct: id, pokedexId:, name, cost, type1, type2, quality, rarity, img_url
 
     const gettingAllProducts = async() => {
         const allProducts = await getAllProducts();
+        const allConditions = await getAllConditions()
+        const allRarities = await getAllRarities()
+        setAllRarities(allRarities)
+        setAllConditions(allConditions)
         setAllProducts(allProducts);
+       
       };
     useEffect(() => {
         gettingAllProducts();
       }, [])
       const handleFilter = async() => {
-        if (conditionOption == 'All') {
+        if (!conditionOption) {
             gettingAllProducts()
         }else {
-        const filteredProducts = await getProductsByCondition(conditionOption)
+        const filteredProducts = await getProductsByCondition({conditionId: conditionOption, rarityId: rarityOption})
         setAllProducts(filteredProducts)
         }
       }
@@ -29,12 +37,16 @@ const Cards = () => {
                     <SearchBar allProducts={allProducts}/>
                         <div className='filter-bar'>
                                 <select className='select-quality'onChange={(event) => setConditionOption(event.target.value)}>
-                                <option value='All'>All</option>
-                                <option value='Fair'>Fair</option>
-                                <option value='Good'>Good</option>
-                                <option value='Very Good'>Very Good</option>
-                                <option value='Near Mint'>Near Mint</option>
-                                <option value='Mint'>Mint</option>
+                                <option value=''>All</option>
+                                {conditions.map(con => 
+                                <option value={con.id}>{con.name}</option>
+                                )}
+                                </select>
+                                <select className='select-quality'onChange={(event) => setRarityOption(event.target.value)}>
+                                <option value='all'>All</option>
+                                {rarities.map(rare => 
+                                <option value={rare.id}>{rare.name}</option>
+                                )}
                                 </select>
                                 <button onClick={handleFilter}>Search</button>
                             </div>

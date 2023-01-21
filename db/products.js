@@ -48,18 +48,28 @@ const getOneProduct = async(productId) => {
         throw error;
     }
 }
-const getProductByCondition = async(condition) => {
+const getProductsByQuery = async(fields) => {
+    
+    const keys = Object.keys(fields)
+    const beforeString = keys.map(name => `JOIN product_${name} ON products.${name}=product_${name}.id`)
+    const joinString = beforeString.join(' ')
+    const whereString = keys.map((name, index) => `product_${name}.id=$${index+1}`).join(' AND ')
+
+
+    console.log(joinString)
+    console.log(whereString)
+    return
     try {   
         const {rows: cards} = await client.query(`
-        SELECT products."imageUrl", products.name, products.price, products.id, products.quantity, product_condition.name AS condition
+        SELECT products."imageUrl", products.name, products.price, products.id, products.quantity
         FROM products
-        JOIN product_condition
-        ON products.condition=product_condition.id
-        WHERE product_condition.name=$1
-        `, [condition])
+        ${joinString}
+        WHERE ${whereString};
+        `, [...Object.values(fields)])
+        console.log(cards)
         return cards
     }catch(error) {
-        console.error('There was a problem getting the product by the condition', error)
+        console.error('There was a problem getting the product by the query', error)
         throw error
     }
 }
@@ -92,11 +102,15 @@ const deleteProduct = async (productId) => {
         throw error
     }
 }
+
+
+
 module.exports = {
     getAllProducts,
     getOneProduct,
     createProduct,
     updateProductQuantity,
-    getProductByCondition,
-    deleteProduct
+    getProductsByQuery,
+    deleteProduct,
+    
 }

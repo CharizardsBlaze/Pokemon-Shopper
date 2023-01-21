@@ -2,9 +2,9 @@ const client = require('./index')
 const {dropTables, createTables} = require('./initdb');
 const {createCartItem, getCartItemsByUserId} = require('./cart')
 const { createUser } = require('./users')
-const {createProduct, getAllProducts, getOneProduct, getProductByCondition} = require('./products')
+const {createProduct, getAllProducts, getOneProduct} = require('./products')
 const {createCondition} = require('./condition')
-
+const {createRarity, getAllRarities} = require('./rarity')
 // should use classes for the seed data? probably not
 // class pokemonCard = {
 //     constructor(id, pokemonId, name, type, type1, type2, condition, rarity, img_url){
@@ -22,6 +22,19 @@ const {createCondition} = require('./condition')
 
 // see  product data
 // price is writted as 100.00 (with cents value)
+const seedRarity = [{
+    name: 'Common',
+},
+{
+    name: 'Holo',
+},
+{
+    name: 'Reverse Holo',
+},
+{
+    name: 'Rainbow Rare',
+}
+]
 const seedCondition = [
     {
         name: 'Fair'
@@ -448,6 +461,12 @@ const insertProductsIntoBd = async () => {
     })
 }
 
+const insertRarities = async () => {
+    seedRarity.forEach(async(rare) =>
+        await createRarity(rare.name)
+        )
+}
+
 const rebuildDB = async () => {
     dropTables();
     createTables();
@@ -456,6 +475,8 @@ const rebuildDB = async () => {
     insertUsersIntoDB();
     //insert each product into db
     insertProductsIntoBd ()
+    insertRarities()
+    getAllRarities()
 }
 client.connect();
 // close client, client.end()

@@ -79,9 +79,9 @@ export const getOneProduct = async (productId) => {
         throw error;
     }
 }
-export const getProductsByCondition = async(condition) => {
+export const getProductsByCondition = async({conditionId, rarityId}) => {
     try {
-        const response = await fetch(`${BASE_URL}/cards/condition/${condition}`)
+        const response = await fetch(`${BASE_URL}/cards/search?condition=${conditionId}&rarity=${rarityId}`)
         const result = response.json()
         return result
     }catch(error) {
@@ -234,6 +234,27 @@ export const createNewProduct = async (pokedexId, name, price, type1, type2, con
         const result = response.json();
         return result;
     } catch(error){
+        throw error
+    }
+}
+
+export const getAllConditions = async() => {
+    try {
+    const response = await fetch(`${BASE_URL}/cards/conditions`)
+    const result = await response.json()
+    return result
+    }catch(error) {
+        throw error
+    }
+}
+
+export const getAllRarities = async () => {
+    try {
+    const response = await fetch(`${BASE_URL}/cards/rarities`)
+    .then(result => result.json())
+    return response
+    }catch(error) {
+        console.error("There was an error fetching all the rarities in the src/api", error)
         throw error
     }
 }

@@ -4,10 +4,11 @@ const client = require("./index");
 const dropTables = async () => {
   try {
     console.log("Starting to drop tables");
-    await client.query(`
+    await client.query(`\
     DROP TABLE IF EXISTS cart_item;
     DROP TABLE IF EXISTS products;
     DROP TABLE IF EXISTS product_condition;
+    DROP TABLE IF EXISTS product_rarity;
     DROP TABLE IF EXISTS users;
     `);
     console.log("Completed drop tables.");
@@ -33,6 +34,10 @@ const createTables = async () => {
         "isAdmin" BOOLEAN DEFAULT false NOT NULL
     );
     CREATE TABLE product_condition (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) UNIQUE NOT NULL
+    );
+    CREATE TABLE product_rarity (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) UNIQUE NOT NULL
     );

@@ -7,6 +7,7 @@ const {createCartItem, getCartItemsByUserId, getCartItemById, removeCartItem, up
 //Create Cart Item
 cartRouter.post('/', requireUser, async(req, res, next) => {
     try {
+    console.log("I got to this router here")
     const {product_id, quantity} = req.body
     const product = await getOneProduct(product_id)
     const existingCartItem = await getUserCartItem({product_id: product_id, userId: req.user.id})

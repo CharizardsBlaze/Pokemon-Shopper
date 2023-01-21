@@ -24,7 +24,7 @@ const Cards = () => {
         gettingAllProducts();
       }, [])
       const handleFilter = async() => {
-        if (!conditionOption) {
+        if (!conditionOption && !rarityOption) {
             gettingAllProducts()
         }else {
         const filteredProducts = await getProductsByCondition({conditionId: conditionOption, rarityId: rarityOption})
@@ -43,7 +43,7 @@ const Cards = () => {
                                 )}
                                 </select>
                                 <select className='select-quality'onChange={(event) => setRarityOption(event.target.value)}>
-                                <option value='all'>All</option>
+                                <option value=''>All</option>
                                 {rarities.map(rare => 
                                 <option value={rare.id}>{rare.name}</option>
                                 )}

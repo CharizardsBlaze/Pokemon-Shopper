@@ -425,8 +425,11 @@ footer li, p {
 
 .nav {
   position: sticky;
+  width: 100%;
   top: 0;
-  color: red;
+  background-color: gray;
+  box-shadow: 0 0 20px 0 black;
+
 }
 
 .filter-search {
@@ -442,11 +445,15 @@ footer li, p {
 .filter-container {
   display: flex;
   justify-content: space-around;
-  margin-top: 10px;
   margin-bottom: 10px;
   width: 900px;
   position: sticky;
-  top: 70px;
+  top: 20px;
+  padding: 4px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: gray;
+  
 }
 .filter-bar {
   display: flex;
@@ -551,6 +558,10 @@ transition: .3s;
 transform : scale(1.2);
 }
 
+.item.linkNav {
+  color: white; 
+  position: absolute;
+}
 
 @media (min-width: 800px) and (max-width: 1500px){
 .all-cards-container {

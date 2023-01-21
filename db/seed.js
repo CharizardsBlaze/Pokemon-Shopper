@@ -88,7 +88,7 @@ const seedProduct = [
         type1: "normal",
         type2: null,
         condition: 2,
-        rarity: 2,
+        rarity: 1,
         quantity: 7,
         img_url: "https://i.ebayimg.com/images/g/QzwAAOSwifhefo0d/s-l640.jpg"
     },
@@ -100,19 +100,19 @@ const seedProduct = [
         type1: "dark",
         type2: "normal",
         condition: 2,
-        rarity: "common",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51YVpIMtQSL._AC_.jpg"
     },
     {
         id: 3,
         pokedexId: 94,
-        name: "Ghastly",
+        name: "Gastly",
         cost: 25.99,
         type1: "psychic",
         type2: null,
         condition: 3,
-        rarity: "semi rare",
+        rarity: 3,
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51TIWx7DDIL._AC_.jpg"
     },
@@ -124,7 +124,7 @@ const seedProduct = [
         type1: "rock",
         type2: null,
         condition:2,
-        rarity: "common",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51ZXBM0ddVL._AC_.jpg"
     },
@@ -136,7 +136,7 @@ const seedProduct = [
         type1: "water",
         type2: "flying",
         condition: 1,
-        rarity: "common",
+        rarity: 1,
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51PtkDlud4L._AC_.jpg"
     },
@@ -155,12 +155,12 @@ const seedProduct = [
     {
         id: 6,
         pokedexId: 143,
-        name: "Zapados",
+        name: "Zapdos",
         cost: 40.00,
         type1: "electric",
         type2: "flying",
         condition: 3,
-        rarity: "rare",
+        rarity: 1,
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51l4OIDKQSL._AC_.jpg"
     },
@@ -172,7 +172,7 @@ const seedProduct = [
         type1: "fighting",
         type2: null,
         condition:5,
-        rarity: "common",
+        rarity: 1,
         quantity: 3,
         img_url: "https://m.media-amazon.com/images/I/41DaseWiS4L._AC_.jpg"
     },
@@ -184,7 +184,7 @@ const seedProduct = [
         type1: "ground",
         type2: "ghost",
         condition: 2,
-        rarity: "common",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51JKgaWf8hL._AC_.jpg"
     },
@@ -196,7 +196,7 @@ const seedProduct = [
         type1: "bug",
         type2: null,
         condition: 2,
-        rarity: "very common",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/511vS3mhjeL._AC_.jpg"
     },
@@ -208,7 +208,7 @@ const seedProduct = [
         type1: "dragon",
         type2: "flying",
         condition: 4,
-        rarity: "very rare",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/A1aaGfGbpUL._AC_SY879_.jpg"
     },
@@ -232,19 +232,19 @@ const seedProduct = [
         type1: "plant",
         type2: null,
         condition:1,
-        rarity: "common",
+        rarity: 1,
         quantity: 10,
         img_url: "https://m.media-amazon.com/images/I/410qBt1e7LL._AC_.jpg",
     },
     {
         id: 15,
         pokedexId: 92,
-        name: "Ghastly",
+        name: "Gastly",
         cost: 25.00,
         type1: "ghost",
         type2: "poison",
         condition: 3,
-        rarity: "rare",
+        rarity: 3,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51-F+NSJ4rL._AC_.jpg"
     },
@@ -256,7 +256,7 @@ const seedProduct = [
         type1: "dark",
         type2: "psychic",
         condition: 3,
-        rarity: "common",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51fJUJhWNBL._AC_.jpg"
     },
@@ -268,7 +268,7 @@ const seedProduct = [
         type1: "water",
         type2: null,
         condition: 2,
-        rarity: "common",
+        rarity: 1,
         quantity: 4,
         img_url: "https://m.media-amazon.com/images/I/51TxlvrsoBL._AC_.jpg",
     },
@@ -280,7 +280,7 @@ const seedProduct = [
         type1: "fighting",
         type2: "fighting",
         condition: 2,
-        rarity: "common",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/71m5Hk24e5L._AC_SY879_.jpg"
     },
@@ -304,7 +304,7 @@ const seedProduct = [
         type1: "normal",
         type2: null,
         condition: 3,
-        rarity: "rare",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51zRqAgIeRL._AC_.jpg"
     },
@@ -316,7 +316,7 @@ const seedProduct = [
         type1: "dragon",
         type2: "electric",
         condition: 4,
-        rarity: "common",
+        rarity: 1,
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51Xd8iVTl7L._AC_.jpg"
     },
@@ -328,7 +328,7 @@ const seedProduct = [
         type1: "normal",
         type2: null,
         condition: 5,
-        rarity: "rare",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/41inYuyVJLL._AC_.jpg"
     },
@@ -340,7 +340,7 @@ const seedProduct = [
         type1: "normal",
         type2: "normal",
         condition: 3,
-        rarity: "very rare",
+        rarity: 3,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51l6AzFprBL._AC_.jpg"
     },
@@ -364,19 +364,19 @@ const seedProduct = [
         type1: "normal",
         type2: null,
         condition: 4,
-        rarity: "common",
+        rarity: 1,
         quantity: 1,
         img_url: "https://m.media-amazon.com/images/I/51RzedXZWcL._AC_.jpg"
     },
     {
         id: 24,
         pokedexId: 237,
-        name: "hitmontop",
+        name: "Hitmontop",
         cost: 43.98,
         type1: "fighting",
         type2: null,
         condition: 2,
-        rarity: 2,
+        rarity: 1,
         quantity: 2,
         img_url: "https://i.etsystatic.com/23915599/r/il/8f0d68/2430542365/il_794xN.2430542365_n7js.jpg"
     },
@@ -395,11 +395,11 @@ const seedProduct = [
     {
         id: 23,
         pokedexId: 197,
-        name: "umbreon GX",
+        name: "Umbreon GX",
         cost: 90.55,
         type1: "dark",
         type2: null,
-        condition: 1,
+        condition: 5,
         rarity: 3,
         quantity: 100,
         img_url: "https://i.etsystatic.com/26664947/r/il/3c72a4/2912457382/il_fullxfull.2912457382_qo49.jpg"
@@ -424,7 +424,7 @@ const seedProduct = [
         type1: "fire",
         type2: null,
         condition: 4,
-        rarity: "rare",
+        rarity: 2,
         quantity: 3,
         img_url: "https://m.media-amazon.com/images/I/51Jr8J1R2-L._AC_.jpg"
     },
@@ -455,12 +455,12 @@ const seedProduct = [
     {
         id: 26,
         pokedexId: 590,
-        name: "foongus",
+        name: "Foongus",
         cost: 3.98,
         type1: "grass",
         type2: "poison",
         condition: 3,
-        rarity: 1,
+        rarity: 3,
         quantity: 5,
         img_url: "https://assets.listia.com/photos/ebab43089390f92b9b74/original.png?s=320x320m&sig=2bd0cfd16260e8b2&ts=1619988779"
     },
@@ -515,12 +515,12 @@ const seedProduct = [
     {
         id: 25,
         pokedexId: 237,
-        name: "hitmontop",
+        name: "Hitmontop",
         cost: 43.98,
         type1: "fighting",
         type2: null,
         condition: 2,
-        rarity: 2,
+        rarity: 1,
         quantity: 2,
         img_url: "https://i.etsystatic.com/23915599/r/il/8f0d68/2430542365/il_794xN.2430542365_n7js.jpg"
     },
@@ -652,14 +652,14 @@ const seedProduct = [
         type1: "psychic",
         type2: null,
         condition: 4,
-        rarity: "rare",
+        rarity: 1,
         quantity: 2,
         img_url: "https://m.media-amazon.com/images/I/51QO4llkk7L._AC_.jpg"
     },
     {
         id: 31,
         pokedexId: 577,
-        name: "solosis",
+        name: "Solosis",
         cost: 18.50,
         type1: "psychic",
         type2: null,
@@ -835,11 +835,12 @@ const rebuildDB = async () => {
     dropTables();
     createTables();
     insertPoductCondition()
+    insertRarities()
     // put each fake user into the database
     insertUsersIntoDB();
     //insert each product into db
     insertProductsIntoBd ()
-    insertRarities()
+ 
     getAllRarities()
 }
 client.connect();

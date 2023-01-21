@@ -2,6 +2,7 @@ const client  = require('./index')
 
 const createProduct = async({pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl}) => {
     try {
+        console.log("Rarity here", rarity)
         const {rows: [product]} = await client.query(`
         INSERT INTO products ("pokedexId", name, price, type1, type2, condition, rarity, quantity, "imageUrl")
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
@@ -48,16 +49,11 @@ const getOneProduct = async(productId) => {
     }
 }
 const getProductsByQuery = async(fields) => {
-    
+    console.log(fields)
     const keys = Object.keys(fields)
     const beforeString = keys.map(name => `JOIN product_${name} ON products.${name}=product_${name}.id`)
     const joinString = beforeString.join(' ')
     const whereString = keys.map((name, index) => `product_${name}.id=$${index+1}`).join(' AND ')
-
-
-    console.log(joinString)
-    console.log(whereString)
-    return
     try {   
         const {rows: cards} = await client.query(`
         SELECT products."imageUrl", products.name, products.price, products.id, products.quantity

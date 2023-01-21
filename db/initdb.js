@@ -49,7 +49,7 @@ const createTables = async () => {
         type1 VARCHAR(255) NOT NULL,
         type2 VARCHAR(255),
         condition INTEGER REFERENCES product_condition(id) NOT NULL,
-        rarity VARCHAR(255) NOT NULL,
+        rarity INTEGER REFERENCES product_rarity(id) NOT NULL,
         quantity INTEGER NOT NULL,
         "imageUrl" VARCHAR(255)
     );

@@ -26,12 +26,19 @@ productRouter.get('/rarities', async (req, res, next) => {
 })
 productRouter.get('/search', async(req, res, next) => {
   try {
-    let fetchObject = {}
     console.log(req.query)
-    const filteredProducts = await getProductsByQuery(req.query)
+    let fetchObject = {}
+    const {condition, rarity} = req.query
+    if (condition) {
+      fetchObject['condition'] = condition
+    }
+    if (rarity) {
+      fetchObject['rarity'] = rarity
+    }
+    const filteredProducts = await getProductsByQuery(fetchObject)
     console.log(filteredProducts)
     
-    //  res.send(filteredProducts)
+    res.send(filteredProducts)
   }catch(error) {
     console.error("There was an error getting product by condition", error)
     throw error

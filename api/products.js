@@ -34,7 +34,7 @@ productRouter.get("/", async (request, response, next) => {
   })
   productRouter.post('/', requireUser, async (req, res, next) => {
     const {user} = req.body
-    if(!user.is_admin){
+    if(!user.isAdmin){
       res.status(401).send({
         error: "Unauthorized",
         message: "You do not have admin functions"
@@ -53,7 +53,7 @@ productRouter.get("/", async (request, response, next) => {
   productRouter.delete('/:productId', requireUser, async (req, res, next) => {
     const productId = req.params.productId
     const {user} = req.body
-    if(!user.is_admin){
+    if(!user.isAdmin){
       res.status(401).send({
         error: "Unauthorized",
         message: "You do not have admin functions"

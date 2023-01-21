@@ -10,7 +10,7 @@ const createUser = async ({username, firstName, lastName, password, emailAddress
         INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", "phoneNumber")
         VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT ("emailAddress") DO NOTHING
-        RETURNING id, username, "firstName", "lastName", "emailAddress", "phoneNumber", is_admin
+        RETURNING id, username, "firstName", "lastName", "emailAddress", "phoneNumber"
         ;
         `, [username, firstName, lastName, cryptedPassword, emailAddress, phoneNumber])
         return user;
@@ -22,7 +22,7 @@ const createUser = async ({username, firstName, lastName, password, emailAddress
 const getUserById = async ({id}) => {
     try{
         const {rows: [user]} = await client.query(`
-            SELECT id, username, "firstName", "lastName", "emailAddress", "phoneNumber", is_admin
+            SELECT id, username, "firstName", "lastName", "emailAddress", "phoneNumber", "isAdmin"
             FROM users
             WHERE id = $1
             ;

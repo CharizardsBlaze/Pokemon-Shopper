@@ -73,7 +73,7 @@ const CardDetail = ({token, user}) => {
                                 onClick={() => {
                                 handleAddToCart(cardId, token)
                                 }}>Add To Cart</button>
-                                <button className="ui button" onClick={handleDelete}>Delete</button>
+                                {user.is_admin ? <button className="ui button" onClick={handleDelete}>Delete</button> : null}
                             </div>
                         </div>
                     </div>

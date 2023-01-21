@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { loginUser } from '../api'
 import { useNavigate } from 'react-router-dom'
-const Login = ({setToken}) => {
+const Login = ({setToken, setAdmin}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [returnFromLogin, setReturnFromLogin] = useState({})
@@ -17,7 +17,11 @@ const Login = ({setToken}) => {
         }
         setToken(newUser.token)
         localStorage.setItem('pokemon-shopper-token', newUser.token)
-        navigate('/')
+        if (newUser.isAdmin) {
+            navigate('/admin');
+        } else {
+            navigate('/')
+        }
     }
     return (
         <form className='user-forms' onSubmit={handleLoginSubmit}>

@@ -282,9 +282,51 @@ div.field label {
   padding: 2px 10px;
   border: 1px solid black;
   border-radius: 4px;
-
-
 }
+
+.waving {
+
+  width: 300px;
+  height: 290px;
+  float: right;
+}
+
+.address {
+  font-style: italic;
+  display: block;
+  text-indent: 20px;
+}
+
+#github-logo{
+  width: 50px;
+  height: 50px;
+}
+
+footer li, p {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  margin-top: 40px;
+  border-top: solid 1px blue;
+  padding-top: 1rem;
+  display: flex;
+  align-content: space-evenly;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+/* .footer-container ul {
+  list-style-type: none;
+  display: flex;
+  align-content: space-evenly;
+} */
+
+.footer-container li {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 389px) {
   #searchOrCreate {
     margin-top: 124px;
@@ -350,11 +392,39 @@ div.field label {
   align-self: flex-end;
 }
 
-.search-results {
+.search-results-container {
   position: absolute;
   z-index: 1;
-  background-color: blue;
+  background-color: rgba(0, 0, 255, 0.651);
+  border-radius: 5%;
+  margin-left: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+
 }
+
+.one-result{
+  height: 50px;
+  border-radius: 30%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.one-result-link {
+  color: white;
+  font-size: large;
+  margin-top: 15px;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  background-color: #ffdf79;
+}
+
 .filter-search {
   padding-left: 45px;
   background-image: url('./components/images/search.png');
@@ -371,6 +441,8 @@ div.field label {
   margin-top: 10px;
   margin-bottom: 10px;
   width: 900px;
+  position: sticky;
+  top: 70px;
 }
 .filter-bar {
   display: flex;

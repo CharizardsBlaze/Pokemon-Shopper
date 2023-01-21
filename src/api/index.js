@@ -128,6 +128,25 @@ export const addToCart = async ({product_id, quantity, token}) => {
         }
 }
 
+export const editQuantityOnCart = async ({token, quantity, cart_id}) => {
+    try {
+        const response = await fetch(`${BASE_URL}/cart/${cart_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                quantity: quantity
+            })
+        }).then(result => result.json())
+        return response
+    }catch(error) {
+        console.error("There was an error editing the quantity in the api call", error)
+        throw error
+    }
+}
+
 export const removeFromCart = async({cart_id, token}) => {
     try {
     const response = await fetch(`${BASE_URL}/cart`,{

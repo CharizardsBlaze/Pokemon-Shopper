@@ -16,13 +16,15 @@ const SearchBar = ({allProducts}) => {
             value={search}
             placeholder="Search"
             type="text" />
-            <div className="search-results">
+            <div className="search-results-container">
             {search
             ?   <div>
                     {allProducts.map((eachProduct) => {
-                        if (eachProduct.name.toLowerCase().includes(search)) {
+                        if (eachProduct.name.toLowerCase().includes(search.toLowerCase())) {
                             return (
-                                <p><Link to={`/cards/${eachProduct.id}`}>{eachProduct.name}</Link></p>
+                                <p key={eachProduct.id} className="one-result">
+                                    <Link to={`/cards/${eachProduct.id}`} className="one-result-link">{eachProduct.name}</Link>
+                                </p>
                             )
                         }
                     })}

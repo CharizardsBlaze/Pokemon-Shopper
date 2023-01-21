@@ -2,24 +2,62 @@ const express = require('express')
 const cartRouter = express.Router()
 const requireUser = require('./utils')
 const {getOneProduct, updateProductQuantity} = require('../db/products')
-const {createCartItem, getCartItemsByUserId, getCartItemById, removeCartItem, deleteCartItemsByUserId} = require('../db/cart')
+const {createCartItem, getCartItemsByUserId, getCartItemById, removeCartItem, updateCartItem, deleteCartItemsByUserId, getUserCartItem} = require('../db/cart')
 
 //Create Cart Item
 cartRouter.post('/', requireUser, async(req, res, next) => {
     try {
     const {product_id, quantity} = req.body
     const product = await getOneProduct(product_id)
-    if (product.quantity < quantity) {
+    const existingCartItem = await getUserCartItem({product_id: product_id, userId: req.user.id})
+    if (existingCartItem) {
+        const newQuantity = Number(existingCartItem.quantity) + Number(quantity)
+        console.log(typeof(newQuantity), typeof(product.quantity))
+        if ( newQuantity >  product.quantity) {
+            res.status(401).send({
+                error: "Invetory",
+                name: "ExceedsLimit",
+                message:"Quantity exceeds amount available"
+            })
+        }else {
+            const updatedCartItem = await updateCartItem({cartId: existingCartItem.id, quantity: newQuantity})
+            res.send(updatedCartItem)
+        }
+    }else {
+        if (product.quantity < quantity) {
+            res.status(401).send({
+                error: "Invetory",
+                name: "ExceedsLimit",
+                message:"Quantity exceeds amount available"
+            })
+        }else {
+            const cartItem = await createCartItem({user_id: req.user.id, product_id: product_id, quantity: quantity})
+            res.send(cartItem)
+        }
+    }
+    }catch(error) {
+        console.error("There was an error adding item to cart")
+        throw error
+    }
+})
+cartRouter.patch('/:cartId' , requireUser, async(req, res, next) => {
+    try {
+    const {cartId} = req.params
+    const {quantity} = req.body
+    const cartItem = await getCartItemById({id: cartId})
+    const product = await getOneProduct(cartItem.product_id)
+    if (quantity > product.quantity) {
         res.status(401).send({
             error: "Invetory",
             name: "ExceedsLimit",
             message:"Quantity exceeds amount available"
         })
+    }else {
+        const updatedItem = await updateCartItem({quantity: quantity, cartId:cartId})
+        res.send(updatedItem)
     }
-    const cartItem = await createCartItem({user_id: req.user.id, product_id: product_id, quantity: quantity})
-    res.send(cartItem)
     }catch(error) {
-        console.error("There was an error adding item to cart")
+        console.error("There was an error updating the quantity in the api", error)
         throw error
     }
 })

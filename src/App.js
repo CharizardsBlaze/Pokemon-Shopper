@@ -13,7 +13,10 @@ import {
   Register,
   Login,
   SearchBar,
-  Stripe
+  Footer,
+  About,
+  Stripe,
+  Admin,
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -23,7 +26,7 @@ const App = () => {
 
   // const [cards, setCards] = useState([]);
   const [token, setToken] = useState(localStorage.getItem('pokemon-shopper-token') || '')
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
   //----------------- useEffects -----------------
 
   const useEffectGetUser = async (token) => {
@@ -66,8 +69,11 @@ const App = () => {
         <Route path="/register" element={<Register setToken={setToken} />}/>
         <Route path="/login" element={<Login setToken={setToken} />}/>
         <Route className='item' path='/cart' element={<Cart user={user} token={token}/>} />
+        <Route path="/about" element={<About /> } />
         <Route className='checkout' path="/checkout" element={<Stripe />} />
+        {user.isAdmin ? (<Route path="/admin" element={<Admin user={user} />} />) : null }
       </Routes>
+      <Footer />
     </div>
   );
 };

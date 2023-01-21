@@ -20,6 +20,7 @@ const dropTables = async () => {
 
 const createTables = async () => {
   try {
+    console.log('creating tables...')
     await client.query(`
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,
@@ -29,7 +30,7 @@ const createTables = async () => {
         password VARCHAR(255) NOT NULL,
         "emailAddress" VARCHAR(255) UNIQUE NOT NULL,
         "phoneNumber" VARCHAR(255),
-        is_admin BOOLEAN DEFAULT false
+        "isAdmin" BOOLEAN DEFAULT false
     );
     CREATE TABLE product_condition (
       id SERIAL PRIMARY KEY,
@@ -55,6 +56,7 @@ const createTables = async () => {
         quantity INTEGER NOT NULL
     );
     `);
+    console.log('done creating tables')
   } catch (error) {
     console.error("There was an error creating the tables!", error)
     throw error

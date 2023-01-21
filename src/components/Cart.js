@@ -18,7 +18,6 @@ const Cart = ({user, token}) => {
   }
   
   const handleCheckout = () => {
-    console.log('you have checked out!')
     navigate('/checkout')
   }
   useEffect(() => {

@@ -23,7 +23,6 @@ const getCartItemsByUserId = async({id}) => {
         ON cart_item.product_id=products.id
         WHERE cart_item.user_id=$1
         `, [id])
-        console.log(cartItem)
         return cartItem
     }catch(error) {
         console.log("There was an error getting cartItems by userId", error)
@@ -50,7 +49,6 @@ const removeCartItem = async({id}) => {
     WHERE id=$1
     RETURNING *;
     `, [id])
-    console.log("Cart item here", cartItem)
     return cartItem
     }catch(error) {
         console.error('There was an error removing the cart item by its id', error)
@@ -87,7 +85,6 @@ const updateCartItem = async({quantity, cartId}) => {
 
 const getUserCartItem = async ({userId, product_id}) => {
     try {
-        console.log("Ids here", userId, product_id)
         const {rows: [cartItem]} = await client.query(`
         SELECT * FROM 
         cart_item

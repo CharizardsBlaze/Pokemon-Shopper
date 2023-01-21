@@ -18,9 +18,7 @@ const Login = ({setToken, setAdmin}) => {
         setToken(newUser.token)
         localStorage.setItem('pokemon-shopper-token', newUser.token)
         if (newUser.isAdmin) {
-            localStorage.setItem('pokemon-admin', true);
             navigate('/admin');
-            setAdmin(true);
         } else {
             navigate('/')
         }

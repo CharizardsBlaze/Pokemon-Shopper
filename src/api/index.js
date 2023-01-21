@@ -1,3 +1,5 @@
+import { RowDescriptionMessage } from "pg-protocol/dist/messages";
+
 const BASE_URL = 'http://localhost:3001/api'
 
 export async function registerUser(username, firstName, lastName, password, emailAddress, phoneNumber = null) {
@@ -191,6 +193,49 @@ export const paymentInitialize = async (items) => {
         return result;
     } catch(error){
         console.log('Error in payment init')
+        throw error
+    }
+}
+export const deleteProduct = async (user, productId, token) => {
+    try{
+        const response = await fetch(`${BASE_URL}/cards/${productId}`,{
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({user})
+        })
+        const result = await response.json();
+        return result;
+    } catch(error){
+        throw error
+    }
+}
+export const createNewProduct = async (pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl, token, user) => {
+    try{
+        const response = await fetch(`${BASE_URL}/cards`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                pokedexId,
+                name,
+                price,
+                type1,
+                type2,
+                condition,
+                rarity,
+                quantity,
+                imageUrl,
+                user
+            })
+        })
+        const result = response.json();
+        return result;
+    } catch(error){
         throw error
     }
 }

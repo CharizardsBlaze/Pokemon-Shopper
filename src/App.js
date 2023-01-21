@@ -54,7 +54,7 @@ const App = () => {
         <Route
           className='item'
           path='/cards/:cardId'
-          element={<CardDetail token={token}/>}
+          element={<CardDetail token={token} user={user}/>}
         />
         {/* <Route
           className='item'

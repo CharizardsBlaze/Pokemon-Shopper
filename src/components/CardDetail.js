@@ -1,11 +1,11 @@
 
 import React, {useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getOneProduct, addToCart} from '../api';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getOneProduct, addToCart, deleteProduct} from '../api';
 // import fetchUser from '../App'
 
-const CardDetail = ({token}) => {
-
+const CardDetail = ({token, user}) => {
+    const navigate = useNavigate()
     const [oneItem, setOneItem] = useState({})
     const [quantity, setQuantity] = useState (1)
     const [errorMessaage, setErrorMessage] = useState('')
@@ -41,7 +41,10 @@ const CardDetail = ({token}) => {
         getOneItem();
         }
     }
-
+    const handleDelete = async () => {
+        await deleteProduct(user, cardId, token)
+        navigate('/cards')
+    }
     // product: id, pokedexId:, name, cost, type1, type2, quality, rarity, img_url
     return (
         <>
@@ -70,6 +73,7 @@ const CardDetail = ({token}) => {
                                 onClick={() => {
                                 handleAddToCart(cardId, token)
                                 }}>Add To Cart</button>
+                                {user.is_admin ? <button className="ui button" onClick={handleDelete}>Delete</button> : null}
                             </div>
                         </div>
                     </div>

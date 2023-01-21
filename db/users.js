@@ -21,7 +21,7 @@ const createUser = async ({username, firstName, lastName, password, emailAddress
 const getUserById = async ({id}) => {
     try{
         const {rows: [user]} = await client.query(`
-            SELECT id, username, "firstName", "lastName", "emailAddress", "phoneNumber"
+            SELECT id, username, "firstName", "lastName", "emailAddress", "phoneNumber", "isAdmin"
             FROM users
             WHERE id = $1
             ;

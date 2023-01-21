@@ -30,7 +30,7 @@ const createTables = async () => {
         password VARCHAR(255) NOT NULL,
         "emailAddress" VARCHAR(255) UNIQUE NOT NULL,
         "phoneNumber" VARCHAR(255),
-        "isAdmin" BOOLEAN DEFAULT FALSE
+        "isAdmin" BOOLEAN DEFAULT false
     );
     CREATE TABLE product_condition (
       id SERIAL PRIMARY KEY,

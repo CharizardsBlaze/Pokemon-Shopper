@@ -400,13 +400,14 @@ footer li, p {
   margin-left: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+
 }
 
 .one-result{
   height: 50px;
   border-radius: 30%;
+  padding-top: 5px;
+  padding-bottom: 5px;
   display: flex;
   align-content: center;
   justify-content: center;

@@ -7,13 +7,15 @@ import cart from './images/cart.png'
 
 // TODO - This component is not needed if we put a condensed NavBar inside App.js instead.
 
-const NavBar = ({token, setToken}) => {
+const NavBar = ({token, setToken, user}) => {
   const navigate = useNavigate()
   const handleLogout = () => {
-    setToken('')
-    localStorage.removeItem('pokemon-shopper-token')
-    navigate('/')
+    setToken('');
+    localStorage.removeItem('pokemon-shopper-token');
+    navigate('/');
+    setUser(null);
   }
+  console.log('user in nav', user)
   return (
     <nav className="nav">
       <div className='ui secondary pointing menu'>
@@ -23,6 +25,7 @@ const NavBar = ({token, setToken}) => {
         <NavLink to='/cards' className='item'>
           Cards
         </NavLink>
+        {user.isAdmin ? (<NavLink className="item" to="/admin"> Admin </NavLink>) : null }
         {token ? <Link className='item' onClick={handleLogout}>Logout</Link> :
         <>
         <NavLink to='/register' className="item">

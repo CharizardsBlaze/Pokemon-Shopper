@@ -4,13 +4,12 @@ const client = require('.')
 const createUser = async ({username, firstName, lastName, password, emailAddress, phoneNumber}) => {
     const cryptedPassword = await bcrypt.hash(password, 10)
     try{
-        console.log('phone number', phoneNumber)
         // add error handling for dup username and add id to returning
         const { rows: [user] } = await client.query(`
         INSERT INTO users(username, "firstName", "lastName", password, "emailAddress", "phoneNumber")
         VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT ("emailAddress") DO NOTHING
-        RETURNING id, username, "firstName", "lastName", "emailAddress", "phoneNumber"
+        RETURNING id, username, "firstName", "lastName", "emailAddress", "phoneNumber", "isAdmin"
         ;
         `, [username, firstName, lastName, cryptedPassword, emailAddress, phoneNumber])
         return user;
@@ -22,7 +21,7 @@ const createUser = async ({username, firstName, lastName, password, emailAddress
 const getUserById = async ({id}) => {
     try{
         const {rows: [user]} = await client.query(`
-            SELECT id, username, "firstName", "lastName", "emailAddress", "phoneNumber"
+            SELECT id, username, "firstName", "lastName", "emailAddress", "phoneNumber", "isAdmin"
             FROM users
             WHERE id = $1
             ;

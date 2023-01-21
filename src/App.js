@@ -15,7 +15,8 @@ import {
   SearchBar,
   Footer,
   About,
-  Stripe
+  Stripe,
+  Admin,
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -25,7 +26,8 @@ const App = () => {
 
   // const [cards, setCards] = useState([]);
   const [token, setToken] = useState(localStorage.getItem('pokemon-shopper-token') || '')
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
+  console.log('user in App', user)
   //----------------- useEffects -----------------
 
   const useEffectGetUser = async (token) => {
@@ -41,7 +43,7 @@ const App = () => {
     //TODO - Temporary NavBar for testing. Will be changed later.
 
     <div className='container'>
-      <NavBar token={token} setToken={setToken} />
+      <NavBar token={token} setToken={setToken} user={user} setUser={setUser}/>
 
       <Routes>
         <Route path='/' element={<Home />} />
@@ -53,7 +55,7 @@ const App = () => {
         <Route
           className='item'
           path='/cards/:cardId'
-          element={<CardDetail token={token}/>}
+          element={<CardDetail token={token} user={user}/>}
         />
         {/* <Route
           className='item'
@@ -70,6 +72,7 @@ const App = () => {
         <Route className='item' path='/cart' element={<Cart user={user} token={token}/>} />
         <Route path="/about" element={<About /> } />
         <Route className='checkout' path="/checkout" element={<Stripe />} />
+        {user.isAdmin ? (<Route path="/admin" element={<Admin user={user} />} />) : null }
       </Routes>
       <Footer />
     </div>

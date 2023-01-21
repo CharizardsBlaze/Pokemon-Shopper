@@ -12,6 +12,7 @@ export { default as Footer } from "./Footer";
 export { default as About } from "./About";
 export { default as Stripe } from "./Stripe"
 export { default as CheckoutForm } from "./CheckoutForm" 
+export { default as Admin } from "./Admin";
 // export { default as AccountDetails } from "./AccountDetails";
 // export { default as AccountForm } from "./AccountForm";
 // export { default as Header } from "./Header";

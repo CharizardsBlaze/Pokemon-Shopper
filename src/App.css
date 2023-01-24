@@ -427,9 +427,15 @@ footer li, p {
   position: sticky;
   width: 100%;
   top: 0;
-  background-color: gray;
+  background-color: red;
   box-shadow: 0 0 20px 0 black;
-
+}
+.nav a {
+  background-color: red;
+  color: white
+} 
+.item {
+color: white;
 }
 
 .filter-search {
@@ -452,8 +458,8 @@ footer li, p {
   padding: 4px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-color: gray;
-  
+  background-color: #2185d0;
+
 }
 .filter-bar {
   display: flex;
@@ -557,10 +563,25 @@ transition: .3s;
 .ui.large.shopping.cart.icon:hover {
 transform : scale(1.2);
 }
-
-.item.linkNav {
-  color: white; 
-  position: absolute;
+.searchButton {
+  color: black;
+}
+.searchButton:hover {
+  color:red;
+}
+.container.about {
+  background-color: rgb(125, 14, 14);
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+}
+.pokemonImg {
+  max-width: 280px;
+  max-height: 373px;
+}
+.cart-image {
+  max-width: 300px;
+  max-height: 400px;
 }
 
 @media (min-width: 800px) and (max-width: 1500px){

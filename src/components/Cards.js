@@ -48,7 +48,7 @@ const Cards = () => {
                                 <option value={rare.id}>{rare.name}</option>
                                 )}
                                 </select>
-                                <button onClick={handleFilter}>Search</button>
+                                <button className='searchButton' onClick={handleFilter}>Search</button>
                             </div>
                         </div>
             {!allProducts 
@@ -57,7 +57,7 @@ const Cards = () => {
             <div className="all-cards-container">
                 {  allProducts.map(eachProduct => 
                     <div key={eachProduct.id} className="card-container">
-                        <img src={eachProduct.imageUrl} />
+                        <img className='pokemonImg' src={eachProduct.imageUrl} />
                         <h5>Card name: {eachProduct.name}</h5>
                         <p>Price: {eachProduct.price}</p>
                        

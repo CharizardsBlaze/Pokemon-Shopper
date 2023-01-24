@@ -17,24 +17,24 @@ const NavBar = ({token, setToken, user}) => {
   }
   return (
     <nav className="nav">
-      <div className='ui secondary pointing menu'>
-        <NavLink to='/' className='item linkNav'>
+      <div className='ui blue inverted menu'>
+        <NavLink to='/' className=' item'>
           Home
         </NavLink>
-        <NavLink to='/cards' className='item linkNav'>
+        <NavLink to='/cards' className='item'>
           Cards
         </NavLink>
-        {user.isAdmin ? (<NavLink className="item linkNav" to="/admin"> Admin </NavLink>) : null }
-        {token ? <Link className='item linkNav' onClick={handleLogout}>Logout</Link> :
+        {user.isAdmin ? (<NavLink className="item" to="/admin"> Admin </NavLink>) : null }
+        {token ? <Link className='item' onClick={handleLogout}>Logout</Link> :
         <>
-        <NavLink to='/register' className="item linkNav">
+        <NavLink to='/register' className="item">
         Register
         </NavLink>
-        <NavLink to='/login' className="item linkNav">
+        <NavLink to='/login' className="item">
         Login
         </NavLink>
         </>}
-         <NavLink to='/cart' className='item linkNav float right'>
+         <NavLink to='/cart' className='item float right'>
         <img src={cart} className="ui large shopping cart icon"/>
         </NavLink>
       </div>

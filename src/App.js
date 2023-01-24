@@ -41,7 +41,7 @@ const App = () => {
   return (
     //TODO - Temporary NavBar for testing. Will be changed later.
 
-    <div className='container'>
+    <div >
       <NavBar token={token} setToken={setToken} user={user} setUser={setUser}/>
 
       <Routes>

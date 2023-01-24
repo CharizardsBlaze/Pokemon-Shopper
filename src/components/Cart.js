@@ -27,7 +27,7 @@ const Cart = ({user, token}) => {
 
   return (
     <div>
-      <h1 className='ui center aligned header'>Cart</h1>
+      <h1 className='ui center aligned header cart-header'>Cart</h1>
       {cart ? cart.map((eachCard) => 
     <CartItem cartItems={cartItems} token={token} eachCard={eachCard} /> ) 
       : null}

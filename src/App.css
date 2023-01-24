@@ -505,6 +505,7 @@ width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 .cardContainer {
   display: flex;
@@ -520,6 +521,49 @@ width: 100px;
 .cardContainer h1 {
   border-bottom: 2px solid rgb(96, 74, 74);
   width: auto;
+}
+
+.label {
+  color: black;
+  font-size: 25px;
+  padding-left: 10px;
+  font-family: "Comfortaa", cursive;
+  font-weight: 400;
+}
+
+.text-input {
+  border-radius: 20px;
+  height: 33px;
+  font-size: large;
+}
+
+.cart-header{
+  font-family: "Comfortaa", cursive;
+}
+
+.login {
+display: flex;
+justify-content: center;
+margin-top: 30px;
+}
+
+.user-forms {
+  background-color: rgba(255, 255, 255, 0.503);
+  background-clip: 10000px;
+}
+
+#login-button{
+  margin-top: 10px;
+}
+
+#register-button {
+  margin-top: 10px;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .itemPrice {

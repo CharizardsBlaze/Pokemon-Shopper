@@ -33,12 +33,12 @@ const Cart = ({user, token}) => {
       : null}
       <div className="container checkout">
         <h4>Your total cart cost: ${cost}</h4>
-        <button className="ui button"
+        {cart.length ? <button className="ui button"
           onClick={() => {
           handleCheckout();
           }}>
             Go to Checkout
-        </button>
+        </button>: null}
       </div>
     </div>
   );

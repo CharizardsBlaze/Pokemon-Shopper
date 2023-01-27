@@ -18,10 +18,8 @@ router.use(async (req, res, next) => {
   if (auth) {
     const [, token] = auth.split(" ");
     try {
-      console.log("I'm here")
       const data = jwt.verify(token, process.env.JWT_SECRET);
       const user = await getUserById({id: data.id});
-      console.log("There user being set right here", user)
       req.user = user;
       next();
     } catch ({ name, message }) {

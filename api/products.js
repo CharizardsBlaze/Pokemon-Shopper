@@ -8,7 +8,6 @@ const requireUser = require('./utils')
 productRouter.get('/conditions', async(req, res, next) => {
   try {
     const conditions = await getAllConditions()
-    console.log(conditions)
     res.send(conditions)
   }catch(error) {
     console.error("There was an error getting the conditions", error)
@@ -26,7 +25,6 @@ productRouter.get('/rarities', async (req, res, next) => {
 })
 productRouter.get('/search', async(req, res, next) => {
   try {
-    console.log(req.query)
     let fetchObject = {}
     const {condition, rarity} = req.query
     if (condition) {
@@ -36,8 +34,6 @@ productRouter.get('/search', async(req, res, next) => {
       fetchObject['rarity'] = rarity
     }
     const filteredProducts = await getProductsByQuery(fetchObject)
-    console.log(filteredProducts)
-    
     res.send(filteredProducts)
   }catch(error) {
     console.error("There was an error getting product by condition", error)
@@ -56,9 +52,7 @@ productRouter.get("/:cardId", async (request, response, next) => {
 });
 productRouter.get("/", async (request, response, next) => {
     try {
-      console.log("I made it here")
       const allProducts = await getAllProducts();
-      console.log("this is all products: ", allProducts);
       response.send(allProducts);
     } catch (error) {
       console.log("there was an error getting all productS: ", error);

@@ -56,6 +56,7 @@ productRouter.get("/:cardId", async (request, response, next) => {
 });
 productRouter.get("/", async (request, response, next) => {
     try {
+      console.log("I made it here")
       const allProducts = await getAllProducts();
       console.log("this is all products: ", allProducts);
       response.send(allProducts);

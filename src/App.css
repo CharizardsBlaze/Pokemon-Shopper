@@ -572,7 +572,7 @@ transform : scale(1.2);
 .container.about {
   background-color: rgb(125, 14, 14);
   border-radius: 20px;
-  padding: 10px;
+  padding: 20px;
   color: white;
 }
 .pokemonImg {

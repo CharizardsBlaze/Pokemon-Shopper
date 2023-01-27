@@ -37,15 +37,17 @@ const Register = ({setToken, setUser}) => {
         <form className='user-forms' onSubmit={handleRegisterSubmit}>
             {returnFromRegister.message ? <p>{returnFromRegister.message}</p> : null}
             <label>Username:</label>
-            <input className='text-input' type='text' value={username} onChange={event => setUsername(event.target.value)}></input>
+            <input className='text-input' type='text' required value={username} onChange={event => setUsername(event.target.value)}></input>
             <label>First Name:</label>
-            <input className='text-input' type='text' value={firstName} onChange={event => setFirstName(event.target.value)}></input>
+            <input className='text-input' type='text' required value={firstName} onChange={event => setFirstName(event.target.value)}></input>
             <label>Last Name:</label>
-            <input className='text-input' type='text' value={lastName} onChange={event => setLastName(event.target.value)}></input>
+            <input className='text-input' type='text' required value={lastName} onChange={event => setLastName(event.target.value)}></input>
             <label>Password:</label>
-            <input className='text-input' type='password' value={registerPassword} onChange={event => setRegisterPassword(event.target.value)}></input>
+            <input className='text-input' type='password' required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+                value={registerPassword} onChange={event => setRegisterPassword(event.target.value)}></input>
             <label>Email:</label>
-            <input className='text-input' type='text' value={registerEmail} onChange={event => setRegisterEmail(event.target.value)}></input>
+            <input className='text-input' type='text' required value={registerEmail} onChange={event => setRegisterEmail(event.target.value)}></input>
             <label>Phone Number:</label>
             <input className='text-input' type='text' value={phoneNumber} onChange={event => setPhoneNumber(event.target.value)}></input>
             <button id='register-button' className='form-button' type='submit'>Register</button>

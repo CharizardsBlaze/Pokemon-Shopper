@@ -27,9 +27,9 @@ const Login = ({setToken, setAdmin}) => {
         <form className='user-forms' onSubmit={handleLoginSubmit}>
             {returnFromLogin.error ? <p>{returnFromLogin.message}</p> : null}
             <label>Email:</label>
-            <input className='text-input' type='text' value={email} onChange={event => setEmail(event.target.value)}></input>
+            <input className='text-input' type='text' required value={email} onChange={event => setEmail(event.target.value)}></input>
             <label>Password:</label>
-            <input className='text-input' type='password' value={password} onChange={event => setPassword(event.target.value)}></input>
+            <input className='text-input' type='password' required value={password} onChange={event => setPassword(event.target.value)}></input>
             <button id='login-button' className='form-button' type='submit'>Login</button>
         </form>
     )

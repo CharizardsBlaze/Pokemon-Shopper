@@ -210,7 +210,7 @@ export const deleteProduct = async (user, productId, token) => {
         throw error
     }
 }
-export const createNewProduct = async (pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl, token, user) => {
+export const createNewProduct = async (pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl, token) => {
     try{
         const response = await fetch(`${BASE_URL}/cards`, {
             method: "POST",
@@ -228,7 +228,6 @@ export const createNewProduct = async (pokedexId, name, price, type1, type2, con
                 rarity,
                 quantity,
                 imageUrl,
-                user
             })
         })
         const result = response.json();

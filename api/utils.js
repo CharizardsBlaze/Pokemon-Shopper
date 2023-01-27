@@ -7,6 +7,9 @@ const requireUser = (req, res, next) => {
             message: "This is no user set"
         })
     }
+} 
+// remember the stuff kiavash said.
+const verifyUser = (checkAdmin) => {
+  return requireUser
 }
-
 module.exports =  requireUser

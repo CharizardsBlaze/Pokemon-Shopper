@@ -1,37 +1,66 @@
 const express = require('express')
 const productRouter = express.Router()
-const { getAllProducts, getOneProduct, getProductByCondition, deleteProduct, createProduct} = require("../db/products");
+const { getAllProducts, getOneProduct, getProductsByQuery, deleteProduct, createProduct} = require("../db/products");
+const {getAllConditions} = require('../db/condition')
+const {getAllRarities} = require('../db/rarity')
 const requireUser = require('./utils')
+
+productRouter.get('/conditions', async(req, res, next) => {
+  try {
+    const conditions = await getAllConditions()
+    res.send(conditions)
+  }catch(error) {
+    console.error("There was an error getting the conditions", error)
+    throw error
+  }
+})
+productRouter.get('/rarities', async (req, res, next) => {
+  try {
+    const allRarities = await getAllRarities()
+    res.send(allRarities)
+  }catch(error) {
+    console.error("There was an error fetching rarities in the backend", error)
+    throw error
+  }
+})
+productRouter.get('/search', async(req, res, next) => {
+  try {
+    let fetchObject = {}
+    const {condition, rarity} = req.query
+    if (condition) {
+      fetchObject['condition'] = condition
+    }
+    if (rarity) {
+      fetchObject['rarity'] = rarity
+    }
+    const filteredProducts = await getProductsByQuery(fetchObject)
+    res.send(filteredProducts)
+  }catch(error) {
+    console.error("There was an error getting product by condition", error)
+    throw error
+  }
+})
+productRouter.get("/:cardId", async (request, response, next) => {
+  try {
+    const {cardId} = request.params;
+    const oneProduct = await getOneProduct(cardId);
+    response.send(oneProduct);
+  } catch (error) {
+    console.log("there was an error fetching products by productId: ", error);
+    throw error;
+  }
+});
 productRouter.get("/", async (request, response, next) => {
     try {
       const allProducts = await getAllProducts();
-      console.log("this is all products: ", allProducts);
       response.send(allProducts);
     } catch (error) {
       console.log("there was an error getting all productS: ", error);
       throw error;
     }
   });
-  productRouter.get("/:cardId", async (request, response, next) => {
-    try {
-      const {cardId} = request.params;
-      const oneProduct = await getOneProduct(cardId);
-      response.send(oneProduct);
-    } catch (error) {
-      console.log("there was an error fetching products by productId: ", error);
-      throw error;
-    }
-  });
-  productRouter.get('/condition/:conditionName', async(req, res, next) => {
-    try {
-      const {conditionName} = req.params
-      const filteredProducts = await getProductByCondition(conditionName)
-      res.send(filteredProducts)
-    }catch(error) {
-      console.error("There was an error getting product by condition", error)
-      throw error
-    }
-  })
+
+ 
   productRouter.post('/', requireUser, async (req, res, next) => {
     const {user} = req.body
     if(!user.isAdmin){
@@ -69,5 +98,6 @@ productRouter.get("/", async (request, response, next) => {
     }
   }})
 
+  
 
   module.exports = productRouter

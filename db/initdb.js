@@ -4,10 +4,11 @@ const client = require("./index");
 const dropTables = async () => {
   try {
     console.log("Starting to drop tables");
-    await client.query(`
+    await client.query(`\
     DROP TABLE IF EXISTS cart_item;
     DROP TABLE IF EXISTS products;
     DROP TABLE IF EXISTS product_condition;
+    DROP TABLE IF EXISTS product_rarity;
     DROP TABLE IF EXISTS users;
     `);
     console.log("Completed drop tables.");
@@ -36,6 +37,10 @@ const createTables = async () => {
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) UNIQUE NOT NULL
     );
+    CREATE TABLE product_rarity (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) UNIQUE NOT NULL
+    );
     CREATE TABLE products (
         id SERIAL PRIMARY KEY,
         "pokedexId" INTEGER NOT NULL,
@@ -44,7 +49,7 @@ const createTables = async () => {
         type1 VARCHAR(255) NOT NULL,
         type2 VARCHAR(255),
         condition INTEGER REFERENCES product_condition(id) NOT NULL,
-        rarity VARCHAR(255) NOT NULL,
+        rarity INTEGER REFERENCES product_rarity(id) NOT NULL,
         quantity INTEGER NOT NULL,
         "imageUrl" VARCHAR(255)
     );

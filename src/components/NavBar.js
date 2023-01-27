@@ -17,8 +17,8 @@ const NavBar = ({token, setToken, user}) => {
   }
   return (
     <nav className="nav">
-      <div className='ui secondary pointing menu'>
-        <NavLink to='/' className='item'>
+      <div className='ui blue inverted menu'>
+        <NavLink to='/' className=' item'>
           Home
         </NavLink>
         <NavLink to='/cards' className='item'>

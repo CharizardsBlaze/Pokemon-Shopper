@@ -1,52 +1,34 @@
 # Pokemon Shopper
 
-Pokemon Shopper is an e-commerce web application where fans of the trading card game can buy Pokemon cards.
+Pokemon Shopper is a single-page e-commerce web application.
 
-Any user can browse the products that are for sale and see more details (rarity, price, quantity available, etc.) about any of the cards. 
 
-Users can also search for their favorite Pokemon and filter the results by condition.
-
-Registered users can add items to their cart, where they can also update the quantity they wish to buy, or remove an item from their cart entirely. Registered users can then proceed to "check out" through our Stripe interface.
-
-Admin users can see and edit user information (for password resets, or to make another user an admin) and are capable of adding new products to the site. 
 
 Deployed site: <URL>
 
 ![Screen Shot 2023-01-24 at 6 12 29 PM](https://user-images.githubusercontent.com/109768964/214458281-0566e529-753b-4628-9d17-0d263a960dd6.png)
 
-The database is written in Postgres, which stores user information, card information, shopping cart information, and orders information.
 
-The server and API is written in Express.JS, which handles user login with JSON web tokens, user registration, POS calls using Stripe, and various database calls for the products for sale.
-
-The front-end is written in React.JS and handles one-page loading and refreshing of various components.
 
 ## Installation
 
-After you fork / clone this repo, you will have to install the packages required and make a few file changes.
+Before you get started, you will have to have [Postico](https://eggerapps.at/postico2/), [Postgres](https://postgresapp.com/), and [Node](https://nodejs.org/en/) installed. 
+
+[Postman](https://www.postman.com/) is not required, but it is helpful for testing API calls.
+
+After you fork / clone this repo, you will have to install all required packages in the package.json file and make a few file changes.
 
 ```
 npm install
 ```
 
-Install will install these packages for you:
+### `.env`
+
+After you have done that, you must go into the top level of the application and create an `.env` file. Inside that file, create a JWT secret: 
 
 ```
-"@stripe/react-stripe-js"
-"@stripe/stripe-js"
-bcrypt (version 5.X)
-cors (version 2.8)
-dotenv (version 16.X)
-express (verison 4.18)
-jsonwebtoken (version 9)
-pg (version 8.8)
-react (version 18.2)
-react-dom (version 18.2)
-react-router-dom (version 6.6)
-react-scripts (version 5.0)
-semantic-ui-css (version 2.5)
-stripe (version 11.6)
+JWT_SECRET="{{secret string}}"
 ```
-After you have done that, you must go into the top level of the application and create an `.env` file. Inside that file, create a JWT secret: `JWT_SECRET="{{secret string}}`.
 
 You cannot register a new user without the JWT secret. 
 
@@ -75,7 +57,47 @@ Stripe is implimented for user purchases and credit card verification.
 
 ## About
 
-This project was created by Jaron Chretien, Pierce Babineaux, Justin Syrett, and Marcus Moritz in January 2023 for Fullstack Academy's capstone project. 
+This project was created by [Jaron Chretien](https://www.linkedin.com/in/jaron-chretien/), [Pierce Babineaux](https://www.linkedin.com/in/pierce-babineaux/), [Justin Syrett](https://www.linkedin.com/in/justin-syrett/), and [Marcus Moritz](https://www.linkedin.com/in/marcusmoritz/) in January 2023 for Fullstack Academy's capstone project. 
+
+## Tech used
+
+The database is written in Postgres, which stores user information, card information, shopping cart information, and orders information.
+
+The server and API is written in Express.JS, which handles user login with JSON web tokens, user registration, POS calls using Stripe, and various database calls for the products for sale.
+
+The front-end is written in React.JS and handles one-page loading and refreshing of various components.
+
+
+
+
+
+
+Any user can browse the products that are for sale and see more details (rarity, price, quantity available, etc.) about any of the cards. 
+
+Users can also search for their favorite Pokemon and filter the results by condition.
+
+Registered users can add items to their cart, where they can also update the quantity they wish to buy, or remove an item from their cart entirely. Registered users can then proceed to "check out" through our Stripe interface.
+
+Admin users can see and edit user information (for password resets, or to make another user an admin) and are capable of adding new products to the site. 
+
+change summary, describe "why" the website focus is ... what was important to us when we were building it
+
+talk about data schema for the database / strcute of the database
+
+take out packages .. and npm install will 
+
+code block for .env file and jwt secret
+
+labels for db:build and start and whatever, the other code blocks
+
+initialize command for db
+
+dependancies before instillation
+
+
+
+
+
 <!-- 
 # Pokemon-Shopper
 

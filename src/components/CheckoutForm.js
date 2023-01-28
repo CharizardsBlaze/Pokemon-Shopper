@@ -55,8 +55,8 @@ const CheckoutForm = ({token}) => {
             <h4>Order Summary</h4>
             <p>Items: ${cart.totalCost}</p>
             <p>Shipping: $4.99</p>
-            <p>Estimated Tax: ${(cart.totalCost * 0.07).toFixed(2)}</p>
-            <p>Total: ${(cart.totalCost * 1.07 + 4.99).toFixed(2)}</p>
+            <p>Estimated Tax: ${(cart.totalCost * 0.08).toFixed(2)}</p>
+            <p>Total: ${(cart.totalCost * 1.08 + 4.99).toFixed(2)}</p>
         </div>
         <div className='checkout-form'>
         <form onSubmit={handleSubmit}>

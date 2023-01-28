@@ -53,7 +53,8 @@ productRouter.get("/:cardId", async (request, response, next) => {
 productRouter.get("/", async (request, response, next) => {
     try {
       const allProducts = await getAllProducts();
-      response.send(allProducts);
+      let sortedCards = allProducts.sort((a, b) => a.id - b.id)
+      response.send(sortedCards);
     } catch (error) {
       console.log("there was an error getting all productS: ", error);
       throw error;

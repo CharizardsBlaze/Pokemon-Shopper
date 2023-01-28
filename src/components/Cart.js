@@ -29,23 +29,22 @@ const Cart = ({user, token}) => {
     <div className="cartPage">
       <h1 className='cart-header'>Cart</h1>
       <div  className="cart-container">
-      {cart ? cart.map((eachCard) => 
+      {cart.length ? cart.map((eachCard) => 
     <CartItem cartItems={cartItems} token={token} eachCard={eachCard} /> ) 
-      : null}
+      : <h3>Cart is empty.</h3>}
       </div>
       <div className="container checkout">
 
         <h4>Your total cart cost: ${cost}</h4>
-        {cart.length ? <button className="ui button"
-
-        <h2>Subtotal: <span className="subTotal">${cost}</span></h2>
+        {cart.length ?
+        <><h2>Subtotal: <span className="subTotal">${cost}</span></h2>
         <button className="ui button"
 
           onClick={() => {
           handleCheckout();
           }}>
             Go to Checkout
-        </button>: null}
+        </button></>: null}
       </div>
     </div>
   );

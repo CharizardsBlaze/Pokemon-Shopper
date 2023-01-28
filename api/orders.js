@@ -10,8 +10,7 @@ const { getOneProduct, updateProductQuantity} = require("../db/products");
 const {deleteCartItemsByUserId} = require('../db/cart')
 orderRouter.post("/checkout", requireUser, async (req, res, next) => {
   try {
-    const { cart, date, address, zip, city, state} = req.body;
-    console.log(req.body)
+    const { cart, date, address, zip, city, state} = req.body
     for (let i = 0; i < cart.cart.length; i++) {
       const currentProduct = await getOneProduct(cart.cart[i].product_id);
       if (currentProduct.quantity < cart.cart[i].quantity) {

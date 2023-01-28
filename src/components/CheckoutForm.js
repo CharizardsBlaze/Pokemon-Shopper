@@ -1,4 +1,4 @@
-import {PaymentElement, useStripe, useElements} from '@stripe/react-stripe-js'
+import {PaymentElement} from '@stripe/react-stripe-js'
 import {useNavigate} from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { checkout } from '../api'
@@ -69,8 +69,8 @@ const CheckoutForm = ({token, cart, setCart}) => {
         <div className='checkout-form'>
         <form onSubmit={handleSubmit}>
             <PaymentElement />
-            <button className='checkout-button' onClick={handleBack}>Back</button><br></br>
-            <button className='checkout-button' disabled={!stripe}>Submit</button> 
+            <button onClick={handleBack}>Back</button>
+            <button>Submit</button> 
         </form>
         </div></div>
     )

@@ -7,7 +7,7 @@ const stripePromise = loadStripe('pk_test_51MRQaELdzpxpOBV5lHyw2XNDvy08nNRm89pF7
 const items = {
     stuff: 4
 }
-const Stripe = ({token}) => {
+const Stripe = () => {
     const [clientSecret, setClientSecret] = useState(null)
     const [cart, setCart] = useState({})
     const cartItems = async () => {

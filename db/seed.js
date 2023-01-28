@@ -403,7 +403,7 @@ const seedProduct = [
         condition: 5,
         rarity: 3,
         quantity: 100,
-        img_url: "https://i.etsystatic.com/26664947/r/il/3c72a4/2912457382/il_fullxfull.2912457382_qo49.jpg"
+        img_url: "https://i.ebayimg.com/images/g/kVMAAOSweSxe~dOQ/s-l640.jpg"
     },
     {
         id: 29,

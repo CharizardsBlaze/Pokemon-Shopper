@@ -1,14 +1,13 @@
 const e = require('cors')
 const client = require('./index')
 
-const createOrderDetail = async({address, orderTotal, userId, date}) => {
+const createOrderDetail = async({address, orderTotal, userId, date, zip, city, state}) => {
     try {
-        console.log('STRING?', typeof(orderTotal))
         const {rows: [order_detail]} = await client.query(`
-            INSERT INTO order_details ("shippingAddress", "orderTotal", user_id, date)
-            VALUES ($1, $2, $3, $4)
+            INSERT INTO order_details ("shippingAddress", "orderTotal", user_id, date, zip, city, state)
+            VALUES ($1, $2, $3, $4, $5, $6, $7)
             RETURNING *;
-        `, [address, orderTotal, userId, date])
+        `, [address, orderTotal, userId, date, zip, city, state])
     return order_detail
 }catch(error) {
         console.log("There was an error creating the order detail in the database", error)
@@ -33,7 +32,7 @@ const createOrderItem = async({order_id, product_id, quantity}) => {
 const getAllOrders = async(user_id) => {
     try {
     const {rows: order_detail} = await client.query(`
-    SELECT order_details.id, order_details."shippingAddress", order_details."orderTotal", order_details.date , order_item."quantity", order_item.product_id, products.name, products."imageUrl"
+    SELECT order_details.id, order_details."shippingAddress", order_details.zip, order_details.city, order_details.state, order_details."orderTotal", order_details.date , order_item."quantity", order_item.product_id, products.name, products."imageUrl"
     FROM order_details
     JOIN order_item ON order_details.id=order_item.order_id
     JOIN products ON order_item.product_id=products.id
@@ -42,12 +41,17 @@ const getAllOrders = async(user_id) => {
     let allOrders = []
     let emptyObject = {}
     for(let i = 0; i < order_detail.length; i++) {
-        if (!emptyObject.id || !emptyObject.shippingAddress || !emptyObject.orderTotal || !emptyObject.date) {
+        if (!emptyObject.id) {
+            console.log(order_detail[i])
             emptyObject['id'] = order_detail[i].id
             emptyObject['shippingAddress'] = order_detail[i].shippingAddress
             emptyObject['orderTotal'] = order_detail[i].orderTotal
             emptyObject['date'] = order_detail[i].date
+            emptyObject['zip'] = order_detail[i].zip
+            emptyObject['city'] = order_detail[i].city
+            emptyObject['state'] = order_detail[i].state
             emptyObject['products'] = []
+           
         }else if (emptyObject.id != order_detail[i].id) {
             allOrders.push(emptyObject)
             emptyObject = {}

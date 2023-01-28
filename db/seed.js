@@ -838,19 +838,28 @@ const createOrders = async () => {
     address: "New York 124 Mexico", 
     orderTotal: 222,
     userId: 1,
-    date: 'Sun Dec 17 1995 03:24:00 GMT-0600 (Central Standard Time)'
+    date: 'Sun Dec 17 1995 03:24:00 GMT-0600 (Central Standard Time)',
+    zip: 1004,
+    city: 'New Orleans',
+    state: 'Louisiana'
 })
 await createOrderDetail ({
     address: "New York 124 Mexico", 
     orderTotal: 10,
     userId: 1,
-    date: 'Sun Seo 20 1995 03:24:00 GMT-0600 (Central Standard Time)'
+    date: 'Sun Seo 20 1995 03:24:00 GMT-0600 (Central Standard Time)',
+    zip: 1004,
+    city: 'New Orleans',
+    state: 'Louisiana'
 })
 await createOrderDetail ({
-    address: "12345 Lousiana", 
+    address: '12345 Lousiana', 
     orderTotal: 120,
     userId: 2,
-    date: 'Sun Sep 1 1995 03:24:00 GMT-0600 (Central Standard Time)'
+    date: 'Sun Sep 1 1995 03:24:00 GMT-0600 (Central Standard Time)',
+    zip: 1004,
+    city: 'New Orleans',
+    state: 'Louisiana'
 })
 }
 const createOrderItemss = async() => {

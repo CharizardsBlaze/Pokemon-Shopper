@@ -66,7 +66,10 @@ const createTables = async () => {
       "shippingAddress" VARCHAR(100) NOT NULL,
       "orderTotal" DECIMAL(6,2) NOT NULL,
       user_id INTEGER REFERENCES users(id),
-      date VARCHAR(255) NOT NULL 
+      date VARCHAR(255) NOT NULL ,
+      zip INTEGER NOT NULL,
+      city VARCHAR(255) NOT NULL,
+      state VARCHAR(255) NOT NULL
     );
     CREATE TABLE order_item (
       id SERIAL PRIMARY KEY,

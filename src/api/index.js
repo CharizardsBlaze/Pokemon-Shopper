@@ -260,7 +260,7 @@ export const getAllRarities = async () => {
 }
 export const checkout = async({cart, address, state, city, zip, token}) => {
     try {
-        const response = await fetch(`${BASE_URL}/orders`, {
+        const response = await fetch(`${BASE_URL}/orders/checkout`, {
             method: 'POST',
             headers : {
                 'Authorization': `Bearer ${token}`,

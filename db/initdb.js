@@ -4,7 +4,9 @@ const client = require("./index");
 const dropTables = async () => {
   try {
     console.log("Starting to drop tables");
-    await client.query(`\
+    await client.query(`
+    DROP TABLE IF EXISTS order_item;
+    DROP TABLE IF EXISTS order_details;
     DROP TABLE IF EXISTS cart_item;
     DROP TABLE IF EXISTS products;
     DROP TABLE IF EXISTS product_condition;
@@ -53,12 +55,24 @@ const createTables = async () => {
         quantity INTEGER NOT NULL,
         "imageUrl" VARCHAR(255)
     );
-  
     CREATE TABLE cart_item (
         id SERIAL PRIMARY KEY,
         user_id INTEGER REFERENCES users(id) NOT NULL,
         product_id INTEGER REFERENCES products(id) NOT NULL,
         quantity INTEGER NOT NULL
+    );
+    CREATE TABLE order_details(
+      id SERIAL PRIMARY KEY,
+      "shippingAddress" VARCHAR(100) NOT NULL,
+      "orderTotal" DECIMAL(6,2) NOT NULL,
+      user_id INTEGER REFERENCES users(id),
+      date VARCHAR(255) NOT NULL 
+    );
+    CREATE TABLE order_item (
+      id SERIAL PRIMARY KEY,
+      order_id INTEGER REFERENCES order_details(id),
+      product_id INTEGER REFERENCES products(id) NOT NULL,
+      quantity INTEGER NOT NULL
     );
     `);
     console.log('done creating tables')

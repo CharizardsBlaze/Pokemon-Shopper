@@ -5,6 +5,7 @@ const { createUser } = require('./users')
 const {createProduct, getAllProducts, getOneProduct} = require('./products')
 const {createCondition} = require('./condition')
 const {createRarity, getAllRarities} = require('./rarity')
+const {createOrderDetail, createOrderItem, getAllOrders} = require('./orders')
 // should use classes for the seed data? probably not
 // class pokemonCard = {
 //     constructor(id, pokemonId, name, type, type1, type2, condition, rarity, img_url){
@@ -796,22 +797,17 @@ const seedUsers = [
         },
     }
 ]
-const insertPoductCondition = async () => {
-    seedCondition.forEach(condition => {
-        createCondition(condition.name)
-    })
+
+const insertPoductCondition = async() => {
+    await Promise.all(seedCondition.map((condition) => {
+         createCondition(condition.name)
+    }))
 }
-const insertUsersIntoDB = async () => {
-    console.log('putting seed users into database');
-    seedUsers.forEach((user) => {
-        createUser(user)
-    })
-    console.log('done inserting seed users');
-};
+
 
 const insertProductsIntoBd = async () => {
-    seedProduct.forEach(async(product) => {
-        await createProduct({
+    await Promise.all(seedProduct.map((product) => 
+         createProduct({
             pokedexId: product.pokedexId,
             name: product.name,
             price: product.cost,
@@ -822,28 +818,97 @@ const insertProductsIntoBd = async () => {
             quantity: product.quantity,
             imageUrl: product.img_url
         })
+    ))
+}
+
+const insertRarities = async() => {
+    await Promise.all(seedRarity.map(rare=>
+         createRarity(rare.name)
+        ))
+}
+
+const insertUsersIntoDB = async() => {
+     await Promise.all(seedUsers.map(user => 
+           createUser(user)
+    ))
+    console.log('done inserting seed users');
+};
+const createOrders = async () => {
+    await createOrderDetail ({
+    address: "New York 124 Mexico", 
+    orderTotal: 222,
+    userId: 1,
+    date: 'Sun Dec 17 1995 03:24:00 GMT-0600 (Central Standard Time)',
+    zip: 1004,
+    city: 'New Orleans',
+    state: 'Louisiana'
+})
+await createOrderDetail ({
+    address: "New York 124 Mexico", 
+    orderTotal: 10,
+    userId: 1,
+    date: 'Sun Seo 20 1995 03:24:00 GMT-0600 (Central Standard Time)',
+    zip: 1004,
+    city: 'New Orleans',
+    state: 'Louisiana'
+})
+await createOrderDetail ({
+    address: '12345 Lousiana', 
+    orderTotal: 120,
+    userId: 2,
+    date: 'Sun Sep 1 1995 03:24:00 GMT-0600 (Central Standard Time)',
+    zip: 1004,
+    city: 'New Orleans',
+    state: 'Louisiana'
+})
+}
+const createOrderItemss = async() => {
+    await createOrderItem ({
+        order_id: 1,
+        product_id: 1,
+        quantity: 4
+    })
+    await createOrderItem ({
+        order_id: 1,
+        product_id: 2,
+        quantity: 1
+    })
+
+
+    await createOrderItem ({
+        order_id: 2,
+        product_id: 3,
+        quantity: 1
+    })
+    await createOrderItem ({
+        order_id: 2,
+        product_id: 4,
+        quantity: 13
+    })
+    await createOrderItem ({
+        order_id: 3,
+        product_id: 4,
+        quantity: 13
     })
 }
 
-const insertRarities = async () => {
-    seedRarity.forEach(async(rare) =>
-        await createRarity(rare.name)
-        )
-}
 
 const rebuildDB = async () => {
-    dropTables();
-    createTables();
-    insertPoductCondition()
-    insertRarities()
-    // put each fake user into the database
-    insertUsersIntoDB();
-    //insert each product into db
-    insertProductsIntoBd ()
- 
-    getAllRarities()
+    
+     await dropTables();
+     await createTables();
+     await insertUsersIntoDB()
+     await insertPoductCondition();
+     await insertRarities();
+     await insertProductsIntoBd ();
+     
+     
+     
+    await createOrders();
+    await createOrderItemss();
+    await getAllOrders(1)
 }
 client.connect();
 // close client, client.end()
-rebuildDB().catch(console.error).finally(() => client.end)
+rebuildDB().catch(console.error).finally(() => client.end())
 

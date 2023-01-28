@@ -12,6 +12,7 @@ const createUser = async ({username, firstName, lastName, password, emailAddress
         RETURNING id, username, "firstName", "lastName", "emailAddress", "phoneNumber", "isAdmin"
         ;
         `, [username, firstName, lastName, cryptedPassword, emailAddress, phoneNumber])
+        console.log("USERS" , user)
         return user;
     }catch(error){
         console.error("There was an error creating the user in the db:", error)

@@ -7,7 +7,7 @@ const stripePromise = loadStripe('pk_test_51MRQaELdzpxpOBV5lHyw2XNDvy08nNRm89pF7
 const items = {
     stuff: 4
 }
-const Stripe = ({token}) => {
+const Stripe = () => {
     const [clientSecret, setClientSecret] = useState(null)
     useEffect(() => {
         paymentInitialize(items).then(res=> setClientSecret(res.clientSecret))
@@ -17,7 +17,7 @@ const Stripe = ({token}) => {
         }
     return (
         <Elements stripe={stripePromise} options={{clientSecret}}>
-            <CheckoutForm token={token} />
+            <CheckoutForm />
         </Elements>
     )
 }

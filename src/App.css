@@ -671,43 +671,7 @@ transform : scale(1.2);
   max-width: 300px;
   max-height: 400px;
 }
-#checkout-page{
-  display: flex;
-  justify-content: center;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding: 20px;
-}
-.checkout-form{
-  border: 1px solid black;
-  background-image: url('https://www.cartoonwatcher.com/pokemon/pokemon-wallpapers/pokemon-wallpaper-003.jpg');
-  background-color: white;
-  background-size: contain;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  padding: 10px;
-  margin: 30px;
-}
-#shipping-form{
-  display: flex;
-  flex-direction: column;
-}
-#shipping-city{
-  display: flex;
-}
-.shipping-block{
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-  width: 100px;
-}
-.checkout-button{
-  font-family: "Righteous", cursive;
-  font-weight: 400;
-  padding: 5px;
-  margin: 2px;
-  width: 60px;
-}
+
 @media (min-width: 800px) and (max-width: 1500px){
 .all-cards-container {
   width: 800px;

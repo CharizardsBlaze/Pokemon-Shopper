@@ -8,7 +8,7 @@ Deployed site: <URL>
 
 ![Screen Shot 2023-01-24 at 6 12 29 PM](https://user-images.githubusercontent.com/109768964/214458281-0566e529-753b-4628-9d17-0d263a960dd6.png)
 
-
+***
 
 ## Installation
 
@@ -22,6 +22,8 @@ After you fork / clone this repo, you will have to install all required packages
 npm install
 ```
 
+***
+
 ### `.env`
 
 After you have done that, you must go into the top level of the application and create an `.env` file. Inside that file, create a JWT secret: 
@@ -32,20 +34,44 @@ JWT_SECRET="{{secret string}}"
 
 You cannot register a new user without the JWT secret. 
 
+***
+
+### Database
+After you have created an .env file, you will have to initialize the database and fill it with seed data. Make sure you are connected to the database in Postico through the url in the `db/index.js` file. 
+
+Then the following script will fill the database with some dummy users and about 50 seed Pokemon cards.
+
 ```
 npm run db:build
 ```
-Db:build will seed the database with boilerplate users and Pokemon cards. 
+
+***
+
+### Server
+
+After you have the database built, you must connect the server. The following command will initialize `nodemon` on the Express.JS server based on the url in the top level `index.js` file: 
 
 ```
 npm run server:dev
 ```
-Server:dev will run `nodemon` on the sever file so you can connect to the database.
+
+After you do that, your terminal window should display
+
+```
+Server listenining on {port}
+```
+
+Now that your server is connected and talking to the database, let's get the front end rendered.
+
+### Interface
+
+The following script will begin the React rending process on the HTML and CSS for the website:
 
 ```
 npm run start
 ```
-Start will begin the React rendering process. And after that you should have a fully functioning e-commerce website!
+
+After that you should have a fully functioning e-commerce website!
 
 The server file is located in the top level, inside `index.js`. `api/index` is the top-level api file. 
 
@@ -55,22 +81,11 @@ Bcrypt is used to hash user passwords before they are stored in the database.
 
 Stripe is implimented for user purchases and credit card verification. 
 
-## About
+***
 
-This project was created by [Jaron Chretien](https://www.linkedin.com/in/jaron-chretien/), [Pierce Babineaux](https://www.linkedin.com/in/pierce-babineaux/), [Justin Syrett](https://www.linkedin.com/in/justin-syrett/), and [Marcus Moritz](https://www.linkedin.com/in/marcusmoritz/) in January 2023 for Fullstack Academy's capstone project. 
+## Functions
 
-## Tech used
-
-The database is written in Postgres, which stores user information, card information, shopping cart information, and orders information.
-
-The server and API is written in Express.JS, which handles user login with JSON web tokens, user registration, POS calls using Stripe, and various database calls for the products for sale.
-
-The front-end is written in React.JS and handles one-page loading and refreshing of various components.
-
-
-
-
-
+A brief rundown on things various users are able to do.
 
 Any user can browse the products that are for sale and see more details (rarity, price, quantity available, etc.) about any of the cards. 
 
@@ -80,22 +95,32 @@ Registered users can add items to their cart, where they can also update the qua
 
 Admin users can see and edit user information (for password resets, or to make another user an admin) and are capable of adding new products to the site. 
 
+## About
+
+This project was created by [Jaron Chretien](https://www.linkedin.com/in/jaron-chretien/), [Pierce Babineaux](https://www.linkedin.com/in/pierce-babineaux/), [Justin Syrett](https://www.linkedin.com/in/justin-syrett/), and [Marcus Moritz](https://www.linkedin.com/in/marcusmoritz/) in January 2023 for Fullstack Academy's capstone project. 
+
+## Tech used
+
+The server and API is written in Express.JS, which handles user login with JSON web tokens, hashing of the users password with Bcrypt during registration, POS calls using Stripe, and various database calls for each product.
+
+The front-end is written in React.JS and handles one-page loading and refreshing of various components.
+
+The database is written in Postgres / SQL.
+
+Database schema:
+
+Our database is built around the `products` table and the `users` table. Specifically the Id's for each.
+
+Each product has a unique Id that attaches it to a rarity (1 through 4) table, a condition table (good, mint, etc), and to the users cart if they want to purchase it. 
+
+The users table stores all the user data (username, email, address, etc) upon registering. Each user also has a unique Id that is used throughout the functionality of the website. The Id is used to connect and create a user's cart, and when they go to checkout, takes the cart information and creates an order_cart row in the `order_cart` table and an `order_item` for each product they have purchased. 
+
+
+
+
+
+
 change summary, describe "why" the website focus is ... what was important to us when we were building it
-
-talk about data schema for the database / strcute of the database
-
-take out packages .. and npm install will 
-
-code block for .env file and jwt secret
-
-labels for db:build and start and whatever, the other code blocks
-
-initialize command for db
-
-dependancies before instillation
-
-
-
 
 
 <!-- 

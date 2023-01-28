@@ -258,3 +258,39 @@ export const getAllRarities = async () => {
         throw error
     }
 }
+export const checkout = async({cart, address, state, city, zip, token}) => {
+    try {
+        const response = await fetch(`${BASE_URL}/orders`, {
+            method: 'POST',
+            headers : {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                cart:cart,
+                address,
+                state,
+                city,
+                zip
+            })
+        }).then(result => result.json())
+        return response
+    }catch(error) {
+        console.error("There was an error checking out in the src/api", error)
+        throw error
+    }
+}
+export const getOrderHistory = async(token) => {
+    try {
+        const response = await fetch(`${BASE_URL}/orders`, {
+            method: 'GET',
+            headers : {
+                'Authorizatoin': `Bearer ${token}`
+            }
+        }).then(result => result.json())
+        return response
+    }catch(error) {
+        console.error("There was an error getting the order history in src/api", error)
+        throw error
+    }
+}

@@ -68,7 +68,9 @@ cartRouter.get('/', requireUser, async(req, res, next)=> {
         for(let i = 0; i < cart.length; i++) {
             totalSum += Number(cart[i].itemCost)
         }
-        res.send({cart:cart, totalCost: totalSum})
+        let fixedSum = totalSum.toFixed(2)
+        let sortedCart = cart.sort((a, b) => a.id - b.id)
+        res.send({cart:sortedCart, totalCost: fixedSum})
     }catch(error) {
         console.error('There was an gerror getting the cart by user id', error)
         throw error

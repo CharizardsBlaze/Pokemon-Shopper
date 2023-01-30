@@ -17,6 +17,7 @@ import {
   About,
   Stripe,
   Admin,
+  AddProduct,
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -72,6 +73,8 @@ const App = () => {
         <Route path="/about" element={<About /> } />
         <Route className='checkout' path="/checkout" element={<Stripe />} />
         {user.isAdmin ? (<Route path="/admin" element={<Admin user={user} token={token} />} />) : null }
+        <Route path='/:addProduct' element={<AddProduct />} />
+        <Route path='/:editProduct' element={<AddProduct />} />
       </Routes>
       <Footer />
     </div>

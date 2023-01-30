@@ -16,3 +16,5 @@ export { default as Admin } from "./Admin";
 // export { default as AccountDetails } from "./AccountDetails";
 // export { default as AccountForm } from "./AccountForm";
 // export { default as Header } from "./Header";
+export { default as AddProduct } from './AddProduct'
+export {default as ProductForm} from './ProductForm'

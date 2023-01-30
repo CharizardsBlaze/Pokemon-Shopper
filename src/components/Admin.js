@@ -62,9 +62,6 @@ const Admin = ({token, user}) => {
                     <label>Submit</label>
                     <button type="submit">Submit new Product</button>
                 </form>
-            <h4>Edit a product.</h4>
-            <h4>View / edit users.</h4>
-
         </div>
         
     )

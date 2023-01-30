@@ -45,7 +45,9 @@ const Register = ({setToken, setUser}) => {
                 <label className='label'>Last Name:</label>
                 <input className='text-input' type='text' value={lastName} onChange={event => setLastName(event.target.value)}></input>
                 <label className='label'>Password:</label>
-                <input className='text-input' type='password' value={registerPassword} onChange={event => setRegisterPassword(event.target.value)}></input>
+                <input className='text-input' type='password' required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number, one uppercase, one lowercase, and 8 or more characters" 
+                value={registerPassword} onChange={event => setRegisterPassword(event.target.value)}></input>
                 <label className='label'>Email:</label>
                 <input className='text-input' type='text' value={registerEmail} onChange={event => setRegisterEmail(event.target.value)}></input>
                 <label className='label'>Phone Number:</label>

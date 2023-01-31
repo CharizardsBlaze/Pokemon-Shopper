@@ -33,9 +33,7 @@ const Register = ({setToken, setUser}) => {
         navigate('/')
     }
     return (
-        // add min length for password and confirm password
-        <div className="register">
-                                
+        <div className="register">                     
             <form className='user-forms' onSubmit={handleRegisterSubmit}>
                 {returnFromRegister.message ? <p>{returnFromRegister.message}</p> : null}
                 <label className='label'>Username:</label>

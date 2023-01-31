@@ -249,48 +249,74 @@ export const getAllConditions = async() => {
 }
 
 export const getAllRarities = async () => {
-    try {
-    const response = await fetch(`${BASE_URL}/cards/rarities`)
-    .then(result => result.json())
-    return response
-    }catch(error) {
-        console.error("There was an error fetching all the rarities in the src/api", error)
-        throw error
-    }
-}
-export const checkout = async({cart, address, state, city, zip, token}) => {
-    try {
-        const response = await fetch(`${BASE_URL}/orders/checkout`, {
-            method: 'POST',
-            headers : {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                cart:cart,
-                address,
-                state,
-                city,
-                zip
-            })
-        }).then(result => result.json())
-        return response
-    }catch(error) {
-        console.error("There was an error checking out in the src/api", error)
-        throw error
-    }
-}
-export const getOrderHistory = async(token) => {
-    try {
-        const response = await fetch(`${BASE_URL}/orders`, {
-            method: 'GET',
-            headers : {
-                'Authorizatoin': `Bearer ${token}`
-            }
-        }).then(result => result.json())
-        return response
-    }catch(error) {
-        console.error("There was an error getting the order history in src/api", error)
-        throw error
-    }
-}
+  try {
+    const response = await fetch(`${BASE_URL}/cards/rarities`).then((result) =>
+      result.json()
+    );
+    return response;
+  } catch (error) {
+    console.error(
+      "There was an error fetching all the rarities in the src/api",
+      error
+    );
+    throw error;
+  }
+};
+
+export const updateProfile = async (user, token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/me`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(user),
+    }).then((result) => result.json());
+    return response;
+  } catch (error) {
+    console.error("There was an error updating the user", error);
+    throw error;
+  }
+};
+
+export const checkout = async ({ cart, address, state, city, zip, token }) => {
+  try {
+    const response = await fetch(`${BASE_URL}/orders/checkout`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cart: cart,
+        address,
+        state,
+        city,
+        zip,
+      }),
+    }).then((result) => result.json());
+    return response;
+  } catch (error) {
+    console.error("There was an error checking out in the src/api", error);
+    throw error;
+  }
+};
+
+export const getOrderHistory = async (token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/orders`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((result) => result.json());
+    return response;
+  } catch (error) {
+    console.error(
+      "There was an error getting the order history in src/api",
+      error
+    );
+    throw error;
+  }
+};

@@ -26,19 +26,25 @@ const Cart = ({user, token}) => {
 
 
   return (
-    <div>
-      <h1 className='ui center aligned header'>Cart</h1>
-      {cart ? cart.map((eachCard) => 
+    <div className="cartPage">
+      <h1 className='cart-header'>Cart</h1>
+      <div  className="cart-container">
+      {cart.length ? cart.map((eachCard) => 
     <CartItem cartItems={cartItems} token={token} eachCard={eachCard} /> ) 
-      : null}
+      : <h3>Cart is empty.</h3>}
+      </div>
       <div className="container checkout">
+
         <h4>Your total cart cost: ${cost}</h4>
+        {cart.length ?
+        <><h2>Subtotal: <span className="subTotal">${cost}</span></h2>
         <button className="ui button"
+
           onClick={() => {
           handleCheckout();
           }}>
             Go to Checkout
-        </button>
+        </button></>: null}
       </div>
     </div>
   );

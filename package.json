@@ -13,6 +13,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "server": "node index.js",
     "server:dev": "nodemon index.js",
     "db:build": "node db/seed.js",
     "test": "jest -runInBand",

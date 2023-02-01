@@ -33,25 +33,26 @@ const Register = ({setToken, setUser}) => {
         navigate('/')
     }
     return (
-        // add min length for password and confirm password
-        <form className='user-forms' onSubmit={handleRegisterSubmit}>
-            {returnFromRegister.message ? <p>{returnFromRegister.message}</p> : null}
-            <label>Username:</label>
-            <input className='text-input' type='text' required value={username} onChange={event => setUsername(event.target.value)}></input>
-            <label>First Name:</label>
-            <input className='text-input' type='text' required value={firstName} onChange={event => setFirstName(event.target.value)}></input>
-            <label>Last Name:</label>
-            <input className='text-input' type='text' required value={lastName} onChange={event => setLastName(event.target.value)}></input>
-            <label>Password:</label>
-            <input className='text-input' type='password' required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+        <div className="register">                     
+            <form className='user-forms' onSubmit={handleRegisterSubmit}>
+                {returnFromRegister.message ? <p>{returnFromRegister.message}</p> : null}
+                <label className='label'>Username:</label>
+                <input className='text-input' type='text' value={username} onChange={event => setUsername(event.target.value)}></input>
+                <label className='label'>First Name:</label>
+                <input className='text-input' type='text' value={firstName} onChange={event => setFirstName(event.target.value)}></input>
+                <label className='label'>Last Name:</label>
+                <input className='text-input' type='text' value={lastName} onChange={event => setLastName(event.target.value)}></input>
+                <label className='label'>Password:</label>
+                <input className='text-input' type='password' required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number, one uppercase, one lowercase, and 8 or more characters" 
                 value={registerPassword} onChange={event => setRegisterPassword(event.target.value)}></input>
-            <label>Email:</label>
-            <input className='text-input' type='text' required value={registerEmail} onChange={event => setRegisterEmail(event.target.value)}></input>
-            <label>Phone Number:</label>
-            <input className='text-input' type='text' value={phoneNumber} onChange={event => setPhoneNumber(event.target.value)}></input>
-            <button id='register-button' className='form-button' type='submit'>Register</button>
-        </form>
+                <label className='label'>Email:</label>
+                <input className='text-input' type='text' value={registerEmail} onChange={event => setRegisterEmail(event.target.value)}></input>
+                <label className='label'>Phone Number:</label>
+                <input className='text-input' type='text' value={phoneNumber} onChange={event => setPhoneNumber(event.target.value)}></input>
+                <button id='register-button' className='ui button' type='submit'>Register</button>
+            </form>
+        </div>
     )
 }
 export default Register;

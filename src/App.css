@@ -362,32 +362,70 @@ footer li, p {
 
 .cart-container {
   display: flex;
-  padding: 3em;
-  border: 2px solid red;
-  border-radius: 13%;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
-
-.cart-container img {
+.card-cart-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: rgba(77, 77, 77, 0.9);
+  border-radius: 15px;
+  width:50%;
+  height: 250px;
+  padding: 10px;
+}
+.maininfo {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+}
+.card-cart-container img {
+  height: 220px;
+  width: auto;
   align-self: flex-start;
-  border-radius: 25px;
   box-shadow: 7px 7px 15px 0 black;
+}
+.imageContainer {
+  width: 20%
+}
+.info-container {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+.info-container input {
+  width: 40px
+}
+.costContainer {
+  width: 35%
+}
+.cardcost {
+  color: rgb(231, 73, 73)
 }
 
 .cart-name {
   font-size: 2rem;;
 }
 
-.info-container {
-  padding-left: 2em;
-}
 
 .checkout {
-  padding-bottom: 50px;
+  background-color: white;
+  width: 50%;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  box-shadow: 7px 7px 15px 0 black;
+  border-radius:20px ;
 }
-
+.subTotal {
+  color: red;
+}
 .cart-cost {
   font-weight: 900;
 }
@@ -425,8 +463,17 @@ footer li, p {
 
 .nav {
   position: sticky;
+  width: 100%;
   top: 0;
-  color: red;
+  background-color: red;
+  box-shadow: 0 0 20px 0 black;
+}
+.nav a {
+  background-color: red;
+  color: white
+} 
+.item {
+color: white;
 }
 
 .filter-search {
@@ -442,11 +489,15 @@ footer li, p {
 .filter-container {
   display: flex;
   justify-content: space-around;
-  margin-top: 10px;
   margin-bottom: 10px;
   width: 900px;
   position: sticky;
-  top: 70px;
+  top: 20px;
+  padding: 4px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #2185d0;
+
 }
 .filter-bar {
   display: flex;
@@ -505,6 +556,12 @@ width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+}
+.cartPage {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 .cardContainer {
   display: flex;
@@ -520,6 +577,50 @@ width: 100px;
 .cardContainer h1 {
   border-bottom: 2px solid rgb(96, 74, 74);
   width: auto;
+}
+
+.label {
+  color: black;
+  font-size: 25px;
+  padding-left: 10px;
+  font-family: "Comfortaa", cursive;
+  font-weight: 400;
+}
+
+.text-input {
+  border-radius: 20px;
+  height: 33px;
+  font-size: large;
+}
+
+.cart-header{
+  font-family: "Comfortaa", cursive;
+  color: white;
+}
+
+.login {
+display: flex;
+justify-content: center;
+margin-top: 30px;
+}
+
+.user-forms {
+  background-color: rgba(255, 255, 255, 0.503);
+  background-clip: 10000px;
+}
+
+#login-button{
+  margin-top: 10px;
+}
+
+#register-button {
+  margin-top: 10px;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .itemPrice {
@@ -557,10 +658,75 @@ transform : scale(1.2);
   display: flex;
   flex-direction: column;
 }
+.searchButton {
+  color: black;
+}
+.searchButton:hover {
+  color:red;
+}
+.container.about {
+  background-color: rgb(125, 14, 14);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+}
+.pokemonImg {
+  max-width: 280px;
+  max-height: 373px;
+}
+.cart-image {
+  max-width: 300px;
+  max-height: 400px;
+}
+#checkout-page{
+  display: flex;
+  justify-content: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding: 20px;
+}
+.checkout-form{
+  border: 1px solid black;
+  background-image: url('https://www.cartoonwatcher.com/pokemon/pokemon-wallpapers/pokemon-wallpaper-003.jpg');
+  background-color: white;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding: 10px;
+  margin: 30px;
+}
+#shipping-form{
+  display: flex;
+  flex-direction: column;
+}
+#shipping-city{
+  display: flex;
+}
+.shipping-block{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 100px;
+}
+.checkout-button{
+  font-family: "Righteous", cursive;
+  font-weight: 400;
+  padding: 5px;
+  margin: 2px;
+  width: 60px;
+}
 @media (min-width: 800px) and (max-width: 1500px){
 .all-cards-container {
   width: 800px;
 }
+.maininfo {
+  width: 400px;
+}
+}
+@media (max-width: 1180px) {
+  .maininfo {
+    width: 200px
+  }
 }
 
 @media (min-width: 300px) and (max-width: 750px){
@@ -570,4 +736,34 @@ transform : scale(1.2);
     flex-wrap: nowrap;
     align-items: center;
   }
+}
+
+@media(max-width: 900px) {
+.card-cart-container {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info-container {
+  width: 100%
+}
+.cart-name {
+  font-size: 90%;
+  width: 90px;
+}
+.imageContainer{
+  width: 40%;
+}
+.maininfo {
+  flex-direction: column;
+  width: 50%
+}
+.costContainer button {
+  width: 110px;
+  height: 60px
+}
+.imageContainer img {
+width: 160px;
+height: 210px;
+}
 }

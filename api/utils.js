@@ -4,7 +4,7 @@ const requireUser = (req, res, next) => {
     }else {
         res.send({
             error: "NoUser",
-            message: "This is no user set"
+            message: "There is no user set"
         })
     }
 } 

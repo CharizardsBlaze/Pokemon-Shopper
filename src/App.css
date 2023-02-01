@@ -651,6 +651,13 @@ transition: .3s;
 .ui.large.shopping.cart.icon:hover {
 transform : scale(1.2);
 }
+#admin-page{
+  display: flex;
+}
+#edit-list{
+  display: flex;
+  flex-direction: column;
+}
 .searchButton {
   color: black;
 }

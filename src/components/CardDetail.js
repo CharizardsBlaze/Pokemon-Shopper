@@ -42,8 +42,10 @@ const CardDetail = ({token, user}) => {
         }
     }
     const handleDelete = async () => {
+        if(confirm('Are you sure you want to delete this product?')){
         await deleteProduct(user, cardId, token)
         navigate('/cards')
+        }
     }
     // product: id, pokedexId:, name, cost, type1, type2, quality, rarity, img_url
     return (
@@ -80,7 +82,6 @@ const CardDetail = ({token, user}) => {
                                     {user.isAdmin ? <button className="ui button" onClick={handleDelete}>Delete</button> : null}
                                 </div>)
                             }
-
                         </div>
                     </div>
                 </div>

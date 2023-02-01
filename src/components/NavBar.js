@@ -10,9 +10,9 @@ import cart from "./images/cart.png";
 const NavBar = ({ token, setToken, user }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    setToken("");
-    localStorage.removeItem("pokemon-shopper-token");
     navigate("/");
+    localStorage.removeItem('pokemon-shopper-token');
+    setToken("");
     setUser(null);
   };
   return (

@@ -662,7 +662,8 @@ transform : scale(1.2);
   color: black;
 }
 .searchButton:hover {
-  color:red;
+  color:black;
+  background-color: rgb(255, 220, 48)
 }
 .container.about {
   background-color: rgb(125, 14, 14);

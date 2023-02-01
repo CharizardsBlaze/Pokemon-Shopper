@@ -9,12 +9,13 @@ const Cart = ({user, token}) => {
 
   const navigate = useNavigate()
   const cartItems = async () => {
-    const response = await getUserCart(token);
-    if (response) {
-      setCart(response.cart)
-      setCost(response.totalCost)
+    if(token){
+      const response = await getUserCart(token);
+      if (response) {
+        setCart(response.cart)
+        setCost(response.totalCost)
+      }
     }
-    return response;
   }
   
   const handleCheckout = () => {

@@ -26,17 +26,17 @@ const CheckoutForm = ({token, cart, setCart}) => {
             },
             redirect: 'if_required'
         })
-        cart.totalCost = totalCost;
-        await checkout({cart, address, state, city, zip, token})
-        setAddress('')
-        setCity('')
-        setState('')
-        setZip('')
-        navigate('/cards')
         if(result.error){
-            console.log(result.error.message)
+            alert(result.error.message)
         }else{
-            console.log('payment went through')
+            alert('Your payment was successful!')
+            cart.totalCost = totalCost;
+            await checkout({cart, address, state, city, zip, token})
+            setAddress('')
+            setCity('')
+            setState('')
+            setZip('')
+            navigate('/cards')
         }
     }
       useEffect(() => {

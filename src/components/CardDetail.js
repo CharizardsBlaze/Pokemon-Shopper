@@ -30,7 +30,7 @@ const CardDetail = ({token, user}) => {
         })
         if(response.error) {
             alert(response.message);
-            setQuantity(0)
+            setQuantity(1)
             setErrorMessage(response.message)
         }else {
         setErrorMessage('')

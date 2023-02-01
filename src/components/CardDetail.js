@@ -66,15 +66,21 @@ const CardDetail = ({token, user}) => {
                                 {!oneItem.type2 ? null : (<p>{oneItem.name} second type: {oneItem.type2}</p>)}
                                 <p>Quantity available: {oneItem.quantity}</p>
                             </div> 
-                            <div className='addToCartForm'>
-                                <input min="1" required className="quantity-input" value={quantity} onChange={(event) => setQuantity(event.target.value)} type='number'></input>
+                            {!token
+                            ? (<p>You must be logged in to add this to your cart</p>)
+                            :
+                                (
+                                <div className='addToCartForm'>
+                                    <input min="1" required className="quantity-input" value={quantity} onChange={(event) => setQuantity(event.target.value)} type='number'></input>
                                 <button 
-                                className="ui button"
-                                onClick={() => {
-                                handleAddToCart(cardId, token)
+                                    className="ui button"
+                                    onClick={() => {
+                                    handleAddToCart(cardId, token)
                                 }}>Add To Cart</button>
-                                {user.isAdmin ? <button className="ui button" onClick={handleDelete}>Delete</button> : null}
-                            </div>
+                                    {user.isAdmin ? <button className="ui button" onClick={handleDelete}>Delete</button> : null}
+                                </div>)
+                            }
+
                         </div>
                     </div>
                 </div>

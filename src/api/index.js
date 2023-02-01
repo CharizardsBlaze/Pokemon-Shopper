@@ -1,5 +1,4 @@
-const BASE_URL = 'http://localhost:3001/api'
-
+const {BASE_URL = 'http://localhost:3001/api' } = process.env
 export async function registerUser(username, firstName, lastName, password, emailAddress, phoneNumber = null) {
     try{
     const response = await fetch(`${BASE_URL}/users/register`, {

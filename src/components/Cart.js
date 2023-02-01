@@ -31,7 +31,12 @@ const Cart = ({user, token}) => {
       <div  className="cart-container">
       {cart.length ? cart.map((eachCard) => 
     <CartItem cartItems={cartItems} token={token} eachCard={eachCard} /> ) 
-      : <h3>Cart is empty.</h3>}
+      : 
+      <div className="emptyCart">
+      <h1>Uh oh! Your cart is empty!</h1>
+    <img src='https://www.giantbomb.com/a/uploads/scale_small/13/135472/1892134-054psyduck.png'/>
+  </div>
+      }
       </div>
       <div className="container checkout">
 

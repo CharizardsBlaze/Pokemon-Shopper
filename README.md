@@ -10,7 +10,7 @@ Deployed site: <URL>
 
 ## Installation
 
-Before you get started, you will have to have [Postico](https://eggerapps.at/postico2/), [Postgres](https://postgresapp.com/), and [Node](https://nodejs.org/en/) installed. 
+Before you get started, you will have to have [Postico](https://eggerapps.at/postico2/) (For Mac Users Only), [Postgres](https://postgresapp.com/), and [Node](https://nodejs.org/en/) installed. 
 
 [Postman](https://www.postman.com/) is not required, but it is helpful for testing API calls.
 
@@ -31,7 +31,8 @@ JWT_SECRET="{{secret string}}"
 You cannot register a new user without the JWT secret. 
 
 ### Database
-After you have created an .env file, you will have to initialize the database and fill it with seed data. Make sure you are connected to the database in Postico through the url in the `db/index.js` file. 
+After you have created an .env file, you will have to initialize the database and fill it with seed data. (For Mac Users Only) Make sure you are connected to the database in Postico through the url in the `db/index.js` file. 
+
 
 Then the following script will fill the database with some dummy users and about 50 seed Pokemon cards.
 

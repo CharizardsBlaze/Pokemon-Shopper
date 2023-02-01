@@ -73,8 +73,8 @@ const App = () => {
         <Route path="/about" element={<About /> } />
         <Route className='checkout' path="/checkout" element={<Stripe />} />
         {user.isAdmin ? (<Route path="/admin" element={<Admin user={user} token={token} />} />) : null }
-        <Route path='/:addProduct' element={<AddProduct />} />
-        <Route path='/:editProduct' element={<AddProduct />} />
+        <Route path='/:addProduct' element={<AddProduct token={token}/>} />
+        <Route path='/:editProduct' element={<AddProduct token={token}/>} />
       </Routes>
       <Footer />
     </div>

@@ -18,7 +18,7 @@ const createProduct = async({pokedexId, name, price, type1, type2, condition, ra
 const getAllProducts = async() => {
     try {
         const {rows: allProducts} = await client.query(`
-        SELECT products."imageUrl", products.name, products.price, products.id, products.quantity, product_condition.name AS condition
+        SELECT products."pokedexId", products."imageUrl", products.name, products.price, products.id, products.type1, products.type2, products.quantity, product_condition.name AS condition
         FROM products
         JOIN product_condition 
         ON products.condition = product_condition.id;
@@ -91,11 +91,26 @@ const deleteProduct = async (productId) => {
         throw error
     }
 }
+const updateProduct = async ({pokedexId, name, price, type1, type2, condition, quantity, imageUrl, productId}) => {
+    try{
+        const {rows: [updatedProduct]} = await client.query(`
+            UPDATE products
+            set "pokedexId" = $1, name = $2, price = $3, type1 = $4, type2 = $5, condition = $6, quantity = $7, "imageUrl" = $8
+            WHERE id = $9
+            RETURNING *
+            ;
+        `, [pokedexId, name, price, type1, type2, condition, quantity, imageUrl, productId])
+        return updatedProduct
+    }catch(error){
+        throw error
+    }
+}
 module.exports = {
     getAllProducts,
     getOneProduct,
     createProduct,
     updateProductQuantity,
     getProductByCondition,
-    deleteProduct
+    deleteProduct,
+    updateProduct
 }

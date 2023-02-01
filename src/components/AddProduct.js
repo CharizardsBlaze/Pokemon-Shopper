@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { createNewProduct, getAllProducts } from "../api";
 import {ProductForm} from './index'
-const AddProduct = () => {
+const AddProduct = ({token}) => {
     const [newName, setNewName] = useState("")
     const [pokedex, setPokedex] = useState(0)
     const [firstType, setFirstType] = useState("")
@@ -38,8 +38,8 @@ const AddProduct = () => {
     return(
         <>
         <div id="admin-page" className="container">
-        {params.addProduct === 'addProduct' ? <><h3>Add a product:</h3><ProductForm /></> : <><h3>Edit a product</h3>
-        {editProduct ? <><ProductForm editProduct={editProduct}/></> : <div id="edit-list">{products.map((product, index) => {
+        {params.addProduct === 'addProduct' ? <><h3>Add a product:</h3><ProductForm token={token}/></> : <><h3>Edit a product</h3>
+        {editProduct ? <><ProductForm token={token} editProduct={editProduct}/></> : <div id="edit-list">{products.map((product, index) => {
            return <p key={index} onClick={() => setEditProduct(product)}>{product.name}</p>
         })}</div>}</>}
         

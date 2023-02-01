@@ -236,3 +236,28 @@ export const createNewProduct = async (pokedexId, name, price, type1, type2, con
         throw error
     }
 }
+export const adminEditProduct = async (pokemonId, pokedexId, name, price, type1, type2, condition, quantity, imageUrl, token) => {
+    try{
+        const response = await fetch(`${BASE_URL}/cards/update/${pokemonId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                pokedexId,
+                name,
+                price,
+                type1,
+                type2,
+                condition,
+                quantity,
+                imageUrl,
+            })
+        })
+        const result = response.json();
+        return result;
+    } catch(error){
+        throw error
+    }
+}

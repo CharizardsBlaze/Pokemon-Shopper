@@ -1,5 +1,5 @@
 import React from "react";
-
+import AdminDropdown from "./AdminDropdown";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import cart from "./images/cart.png";
 
@@ -24,11 +24,7 @@ const NavBar = ({ token, setToken, user }) => {
         <NavLink to='/cards' className='item'>
           Cards
         </NavLink>
-        {user.isAdmin ? (
-          <NavLink className='item' to='/admin'>
-            Admin
-          </NavLink>
-        ) : null}
+        {user.isAdmin ? (<AdminDropdown className='item'/>) : null }
         {token ? (
           <>
             <Link className='item' onClick={handleLogout}>

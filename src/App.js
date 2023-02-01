@@ -17,6 +17,7 @@ import {
   About,
   Stripe,
   Admin,
+  AddProduct,
   Account,
 } from "./components";
 
@@ -74,6 +75,8 @@ const App = () => {
           path='/cart'
           element={<Cart user={user} token={token} />}
         />
+        <Route path='/:addProduct' element={<AddProduct token={token}/>} />
+        <Route path='/:editProduct' element={<AddProduct token={token}/>} />
         <Route path='/about' element={<About />} />
         <Route
           className='checkout'

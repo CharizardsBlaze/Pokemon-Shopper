@@ -4,7 +4,6 @@ import { createNewProduct } from "../api";
 
 const Admin = ({token, user}) => {
 
-    // const [newProduct, setNewProduct] = useState({newName: "", pokedex: 0, firstType: "", secondType: "", cost: 0, condition: "", rarity: "", quantity: 0, imageUrl: ""})
     const [newName, setNewName] = useState("")
     const [pokedex, setPokedex] = useState(0)
     const [firstType, setFirstType] = useState("")
@@ -62,9 +61,6 @@ const Admin = ({token, user}) => {
                     <label>Submit</label>
                     <button type="submit">Submit new Product</button>
                 </form>
-            <h4>Edit a product.</h4>
-            <h4>View / edit users.</h4>
-
         </div>
         
     )

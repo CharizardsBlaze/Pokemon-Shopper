@@ -653,10 +653,22 @@ transform : scale(1.2);
 }
 #admin-page{
   display: flex;
+  flex-direction: column;
 }
 #edit-list{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-image: url('https://c4.wallpaperflare.com/wallpaper/975/625/142/pokemon-dratini-pokemon-minimalist-wallpaper-preview.jpg');
+  border-radius: 20px;
+}
+.edit-product{
+  width: fit-content;
+  padding: 10px;
+}
+.edit-product:hover{
+  color: #7f7f7f;
+  cursor: pointer;
 }
 .searchButton {
   color: black;

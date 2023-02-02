@@ -38,9 +38,12 @@ const AddProduct = ({token}) => {
     return(
         <>
         <div id="admin-page" className="container">
-        {params.addProduct === 'addProduct' ? <><h3>Add a product:</h3><ProductForm token={token}/></> : <><h3>Edit a product</h3>
+        {params.addProduct === 'addProduct' ? 
+            <><h3>Add a product:</h3><ProductForm token={token}/></>
+        :
+        <><h3>Choose which product to edit</h3>
         {editProduct ? <><ProductForm token={token} editProduct={editProduct}/></> : <div id="edit-list">{products.map((product, index) => {
-           return <p key={index} onClick={() => setEditProduct(product)}>{product.name}</p>
+           return <p className="edit-product" key={index} onClick={() => setEditProduct(product)}>{product.name}</p>
         })}</div>}</>}
         
     </div></>

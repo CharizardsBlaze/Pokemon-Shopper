@@ -1,23 +1,36 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+
+import { Link } from 'react-router-dom'
 const AdminDropdown = () => {
-    const [dropDown, setDropDown] = useState(false)
     return (
-        <div>
-            <p className='item' onClick={() => setDropDown(!dropDown)}>
+        <div id='dropdown-a'>
+            <Link id='dropdown-button' className='item'>
                 Admin
-            </p>
-            {
-                dropDown ? <>
-                    <NavLink to='/addProduct'>
+            </Link>
+                <div className='dropdown-nav'>
+                    <Link className='dropdown-links' to='/addProduct'>
                         Add Product
-                    </NavLink><br></br>
-                    <NavLink to='/editProduct'>
+                    </Link>
+                    <Link className='dropdown-links' to='/editProduct'>
                         Edit Product
-                    </NavLink>
-                </>: null
-            }
+                    </Link>
+                </div>
         </div>
     )
 }
 export default AdminDropdown
+
+{/* <div>
+<p className='item' onClick={() => setDropDown(!dropDown)}>
+    Admin
+</p>
+{
+    dropDown ? <>
+        <NavLink to='/addProduct'>
+            Add Product
+        </NavLink><br></br>
+        <NavLink to='/editProduct'>
+            Edit Product
+        </NavLink>
+    </>: null
+}
+</div> */}

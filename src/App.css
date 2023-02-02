@@ -469,7 +469,7 @@ footer li, p {
   box-shadow: 0 0 20px 0 black;
 }
 .nav a {
-  background-color: red;
+  /* background-color: red; */
   color: white
 } 
 .item {
@@ -715,6 +715,31 @@ transform : scale(1.2);
   padding: 5px;
   margin: 2px;
   width: 60px;
+}
+#dropdown-button{
+  padding: 21px;
+  padding: none;
+  border: none;
+  height: 100%;
+}
+.dropdown-nav{
+  display: none;
+  position: absolute;
+  background-color: #2185d0;
+  z-index: 1;
+}
+.dropdown-links{
+  float: none;
+  padding: 2px;
+  background-color: #2185d0;
+  display: block;
+  text-align: center;
+}
+/* #dropdown-button:hover{
+  background-color: darkblue;
+} */
+#dropdown-a:hover .dropdown-nav{
+  display: block;
 }
 @media (min-width: 800px) and (max-width: 1500px){
 .all-cards-container {

@@ -11,7 +11,6 @@ const createUser = async ({
 }) => {
   const cryptedPassword = await bcrypt.hash(password, 10);
   try {
-    // add error handling for dup username and add id to returning
     const {
       rows: [user],
     } = await client.query(
@@ -94,8 +93,6 @@ const getUserByUsername = async ({ username }) => {
 };
 const verifyUser = async ({ emailAddress, password }) => {
   try {
-    // if no user is returned the try should fail and the error should be handled
-    // handle no user here not in the api
     const {
       rows: [userPassword],
     } = await client.query(
@@ -136,7 +133,6 @@ const updateUser = async ({ id, ...fields }) => {
         `,
       Object.values(fields)
     );
-
     return user;
   } catch (error) {
     console.error("Error updating user user.js DB: ", error);

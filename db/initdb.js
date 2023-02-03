@@ -89,12 +89,3 @@ module.exports = {
   dropTables,
   createTables,
 };
-
-//Potential look at the tables for order items
-//Create order_items
-// CREATE TABLE order_item (
-//     id SERIAL PRIMARY KEY,
-//     order_id INTEGER REFERENCES order_details(id),
-//     item_id INTEGER REFERENCES product(id) NOT NULL,
-//     quantity INTEGER REFERENCES cart_item(quantity) NOT NULL
-// );

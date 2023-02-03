@@ -1,5 +1,4 @@
 import React from "react";
-import waving from "./images/waving_pikachu_by_omegablaziken104-dbrub2r.webp"
 
 const About = () => {
     return (
@@ -24,8 +23,8 @@ const About = () => {
                 <p>70570</p>
             </div>
             <p>You can reach the Alexandria office at (318) 276-3133</p>
-            <p>It was created by Justin Syrett, Jaron Chretien, Pierce Babineaux, and Marcus Moritz.</p>
-            <p>You may not contact them.</p>
+            <p>It was created by <a href="https://www.linkedin.com/in/justin-syrett/">Justin Syrett</a>, <a href="https://www.linkedin.com/in/jaron-chretien/">Jaron Chretien</a>, <a href="https://www.linkedin.com/in/pierce-babineaux/">Pierce Babineaux</a>, and <a href="https://www.linkedin.com/in/marcusmoritz/">Marcus Moritz</a>.</p>
+            <p>They look forward to working with you!</p>
         </div>
     )
 }

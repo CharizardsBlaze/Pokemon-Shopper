@@ -1,11 +1,9 @@
-import React, {ReactDOM}  from "react";
-import { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SearchBar = ({allProducts}) => {
-
     const [search, setSearch] = useState("");
-
     return (
         <div>
             <input 

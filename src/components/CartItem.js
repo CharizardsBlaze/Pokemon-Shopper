@@ -3,10 +3,7 @@ import { removeFromCart, editQuantityOnCart } from "../api";
 
 const CartItem = ({eachCard, token, cartItems}) => {
 
-  
-  
   const handleRemoveFromCart = async(cardId) => {
-    // cartId and token
     const response = await removeFromCart({cart_id: cardId, token: token});
     if (response.error) {
       return;

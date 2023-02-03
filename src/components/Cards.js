@@ -10,7 +10,6 @@ const Cards = () => {
     const [conditionOption, setConditionOption] = useState('')
     const [rarityOption, setRarityOption] = useState('')
     // eachProduct: id, pokedexId:, name, cost, type1, type2, quality, rarity, img_url
-
     const gettingAllProducts = async() => {
         const allProducts = await getAllProducts();
         const allConditions = await getAllConditions()
@@ -37,15 +36,15 @@ const Cards = () => {
                     <SearchBar allProducts={allProducts}/>
                         <div className='filter-bar'>
                                 <select className='select-quality'onChange={(event) => setConditionOption(event.target.value)}>
-                                <option value=''>All</option>
+                                <option value=''>All Condition</option>
                                 {conditions.map(con => 
-                                <option value={con.id}>{con.name}</option>
+                                <option key={con.id} value={con.id}>{con.name}</option>
                                 )}
                                 </select>
                                 <select className='select-quality'onChange={(event) => setRarityOption(event.target.value)}>
-                                <option value=''>All</option>
+                                <option value=''>All Rarities</option>
                                 {rarities.map(rare => 
-                                <option value={rare.id}>{rare.name}</option>
+                                <option key={rare.id} value={rare.id}>{rare.name}</option>
                                 )}
                                 </select>
                                 <button className='searchButton' onClick={handleFilter}>Search</button>
@@ -60,16 +59,11 @@ const Cards = () => {
                         <img className='pokemonImg' src={eachProduct.imageUrl} />
                         <h5>Card name: {eachProduct.name}</h5>
                         <p>Price: {eachProduct.price}</p>
-                       
                             <Link className='viewLink' to={`/cards/${eachProduct.id}`}>
                             <button 
                             className="ui button"
-                            // onClick={(event) => {
-                            //     event.preventDefault();
-                            //     handleSeeDetails(eachProduct.id)
                             >
                             See more </button></Link>
-                        {/* <CardDetail product={eachProduct}/>  */}
                     </div>
                 )}
             </div>

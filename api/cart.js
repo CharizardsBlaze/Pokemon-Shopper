@@ -1,7 +1,7 @@
 const express = require('express')
 const cartRouter = express.Router()
 const requireUser = require('./utils')
-const {getOneProduct, updateProductQuantity} = require('../db/products')
+const {getOneProduct} = require('../db/products')
 const {createCartItem, getCartItemsByUserId, getCartItemById, removeCartItem, updateCartItem, deleteCartItemsByUserId, getUserCartItem} = require('../db/cart')
 
 //Create Cart Item

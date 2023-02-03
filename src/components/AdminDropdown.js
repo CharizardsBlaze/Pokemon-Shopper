@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom'
 const AdminDropdown = () => {
     return (
@@ -18,19 +17,3 @@ const AdminDropdown = () => {
     )
 }
 export default AdminDropdown
-
-{/* <div>
-<p className='item' onClick={() => setDropDown(!dropDown)}>
-    Admin
-</p>
-{
-    dropDown ? <>
-        <NavLink to='/addProduct'>
-            Add Product
-        </NavLink><br></br>
-        <NavLink to='/editProduct'>
-            Edit Product
-        </NavLink>
-    </>: null
-}
-</div> */}

@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getOrderHistory } from "../api";
 
-// TODO - Style the order history page better. Add a link to the account page to go to the order history page.
-
 const OrderHistory = ({ token }) => {
   const [orders, setOrders] = useState([]);
-  console.log("ORDERS ", orders);
-
   useEffect(() => {
     const fetchOrders = async () => {
       const orderHistory = await getOrderHistory(token);
@@ -14,10 +10,9 @@ const OrderHistory = ({ token }) => {
     };
     fetchOrders();
   }, [token]);
-
   return (
-    <div class='ui center aligned fluid container'>
-      <h2 class='ui inverted horizontal divider header'>Order History</h2>
+    <div className='ui center aligned fluid container'>
+      <h2 className='ui inverted horizontal divider header'>Order History</h2>
       <div className='ui centered raised cards'>
         {orders.map((order) => {
           return (
@@ -40,7 +35,7 @@ const OrderHistory = ({ token }) => {
                               key={product.product_id}>
                               <div className='ui teal label'>
                                 {product.name}
-                                <div class='detail'>{product.quantity}</div>
+                                <div className='detail'>{product.quantity}</div>
                               </div>
                             </li>
                           );
@@ -60,22 +55,22 @@ const OrderHistory = ({ token }) => {
                 <div className='description'>
                   <div className='ui padded vertical segment'>
                     <h4 className='ui horizontal divider header'>Shipped To</h4>
-                    <table class='ui definition table'>
+                    <table className='ui definition table'>
                       <tbody>
                         <tr>
-                          <td class='two wide column'>Address</td>
+                          <td className='two wide column'>Address</td>
                           <td>{order.shippingAddress}</td>
                         </tr>
                         <tr>
-                          <td class='two wide column'>City</td>
+                          <td className='two wide column'>City</td>
                           <td>{order.city}</td>
                         </tr>
                         <tr>
-                          <td class='two wide column'>State</td>
+                          <td className='two wide column'>State</td>
                           <td>{order.state}</td>
                         </tr>
                         <tr>
-                          <td class='two wide column'>Zip</td>
+                          <td className='two wide column'>Zip</td>
                           <td>{order.zip}</td>
                         </tr>
                       </tbody>
@@ -84,7 +79,7 @@ const OrderHistory = ({ token }) => {
                 </div>
               </div>
               <div className='ui bottom meta attached'>
-                <span className='content'>Order Date: {order.date}</span>
+                <span className='content'>Order Date: {new Date(order.date).toLocaleDateString('en-US', { year: "numeric", month: "long", weekday: "long", day: "numeric"})}</span>
               </div>
             </div>
           );

@@ -1,4 +1,3 @@
-const e = require('cors')
 const client = require('./index')
 
 const createOrderDetail = async({address, orderTotal, userId, date, zip, city, state}) => {

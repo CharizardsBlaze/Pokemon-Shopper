@@ -3,7 +3,6 @@ import React, {useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getOneProduct, addToCart, deleteProduct} from '../api';
 // import fetchUser from '../App'
-
 const CardDetail = ({token, user}) => {
     const navigate = useNavigate()
     const [oneItem, setOneItem] = useState({})
@@ -11,12 +10,10 @@ const CardDetail = ({token, user}) => {
     const [errorMessaage, setErrorMessage] = useState('')
     // /cards/:cardId is our params
     const {cardId} = useParams();
-
     const getOneItem = async() => {
         const oneItem = await getOneProduct(cardId);
         setOneItem(oneItem);
     };
-
     useEffect(() => {
         // get one product from params and load it into use state
         getOneItem();

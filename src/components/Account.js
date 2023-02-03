@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { updateProfile } from "../api";
 
-// TODO - Handle the success and error messages correctly. Login before access?
-// TODO - Add and edit the extra styling to the form, success messages, and the error messages from semantic UI in other branch.
-// TODO - Implement the button/link here to go to order history page.
-
 const Account = ({ token, user, setUser }) => {
   const [username, setUsername] = useState(user.username);
   const [firstName, setFirstName] = useState(user.firstName);
@@ -72,7 +68,6 @@ const Account = ({ token, user, setUser }) => {
               />
             </div>
           </div>
-          {/* <h4 className='ui dividing header'>User Info</h4> */}
           <div className='field'>
             <label htmlFor='username'>Username</label>
             <input

@@ -18,6 +18,7 @@ import {
   Stripe,
   Admin,
   Account,
+  OrderHistory,
 } from "./components";
 
 // TODO - Refactor into needed components, props to pass to them, and routes.
@@ -50,6 +51,7 @@ const App = () => {
     }
   }, [token]);
 
+  // REVIEW - Look at the OrderHistory component to see what props are needed to pass to it.
   return (
     <div>
       <NavBar token={token} setToken={setToken} user={user} setUser={setUser} />
@@ -80,6 +82,7 @@ const App = () => {
           path='/checkout'
           element={<Stripe token={token} />}
         />
+        <Route path='/orders' element={<OrderHistory token={token} />} />
         {user.isAdmin ? (
           <Route path='/admin' element={<Admin user={user} token={token} />} />
         ) : null}

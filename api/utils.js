@@ -8,8 +8,4 @@ const requireUser = (req, res, next) => {
         })
     }
 } 
-// remember the stuff kiavash said.
-const verifyUser = (checkAdmin) => {
-  return requireUser
-}
 module.exports =  requireUser

@@ -27,8 +27,6 @@ const Admin = ({token, user}) => {
         setQuantity(0)
         setImageUrl("")
     }
-    // checks for admin status (set on login)
-    // in case someone just tries to go to /admin in the browser
     return (
         <div className="container">
             <h3>Admin:</h3>

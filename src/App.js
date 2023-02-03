@@ -3,8 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { getUser } from "./api";
 import "./App.css";
 import {
-  // AccountDetails,
-  // AccountForm,
   CardDetail,
   Cards,
   Cart,
@@ -12,7 +10,6 @@ import {
   NavBar,
   Register,
   Login,
-  // SearchBar,
   Footer,
   About,
   Stripe,
@@ -21,8 +18,6 @@ import {
   Account,
   OrderHistory,
 } from "./components";
-
-// TODO - Refactor into needed components, props to pass to them, and routes.
 
 const App = () => {
   //------------------- State --------------------
@@ -41,11 +36,9 @@ const App = () => {
     }
   }, [token]);
 
-  // REVIEW - Look at the OrderHistory component to see what props are needed to pass to it.
   return (
     <div>
       <NavBar token={token} setToken={setToken} user={user} setUser={setUser} />
-
       <Routes>
         <Route path='/' element={<Home />} />
         <Route className='item' path='/cards' element={<Cards />} />

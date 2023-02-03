@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import { registerUser } from '../api'
 import { useNavigate } from 'react-router-dom'
-const Register = ({setToken, setUser}) => {
+const Register = ({setToken}) => {
     const [username, setUsername] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')

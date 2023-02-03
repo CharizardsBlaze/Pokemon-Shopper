@@ -31,6 +31,9 @@ const NavBar = ({ token, setToken, user }) => {
         ) : null}
         {token ? (
           <>
+            <NavLink to='/orders' className='item'>
+              Order History
+            </NavLink>
             <Link className='item' onClick={handleLogout}>
               Logout
             </Link>

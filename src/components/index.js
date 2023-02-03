@@ -14,3 +14,4 @@ export { default as Admin } from "./Admin";
 export { default as AddProduct } from './AddProduct'
 export { default as ProductForm } from './ProductForm'
 export { default as Account } from "./Account";
+export { default as OrderHistory } from "./OrderHistory";

@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3001/api'
-
+const {REACT_APP_BASE_URL = 'http://localhost:3001/api' } = process.env
+const BASE_URL = REACT_APP_BASE_URL
 export async function registerUser(username, firstName, lastName, password, emailAddress, phoneNumber = null) {
     try{
     const response = await fetch(`${BASE_URL}/users/register`, {
@@ -210,7 +210,7 @@ export const deleteProduct = async (user, productId, token) => {
         throw error
     }
 }
-export const createNewProduct = async (pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl, token, user) => {
+export const createNewProduct = async (pokedexId, name, price, type1, type2, condition, rarity, quantity, imageUrl, token) => {
     try{
         const response = await fetch(`${BASE_URL}/cards`, {
             method: "POST",
@@ -228,7 +228,31 @@ export const createNewProduct = async (pokedexId, name, price, type1, type2, con
                 rarity,
                 quantity,
                 imageUrl,
-                user
+            })
+        })
+        const result = response.json();
+        return result;
+    } catch(error){
+        throw error
+    }
+}
+export const adminEditProduct = async (pokemonId, pokedexId, name, price, type1, type2, condition, quantity, imageUrl, token) => {
+    try{
+        const response = await fetch(`${BASE_URL}/cards/update/${pokemonId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                pokedexId,
+                name,
+                price,
+                type1,
+                type2,
+                condition,
+                quantity,
+                imageUrl,
             })
         })
         const result = response.json();

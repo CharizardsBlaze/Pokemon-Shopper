@@ -651,11 +651,19 @@ transition: .3s;
 .ui.large.shopping.cart.icon:hover {
 transform : scale(1.2);
 }
+#admin-page{
+  display: flex;
+}
+#edit-list{
+  display: flex;
+  flex-direction: column;
+}
 .searchButton {
   color: black;
 }
 .searchButton:hover {
-  color:red;
+  color:black;
+  background-color: rgb(255, 220, 48)
 }
 .container.about {
   background-color: rgb(125, 14, 14);

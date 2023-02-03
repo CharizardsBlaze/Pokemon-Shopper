@@ -1,6 +1,6 @@
 const express = require('express')
 const productRouter = express.Router()
-const { getAllProducts, getOneProduct, getProductsByQuery, deleteProduct, createProduct} = require("../db/products");
+const { getAllProducts, getOneProduct, getProductsByQuery, deleteProduct, createProduct, updateProduct} = require("../db/products");
 const {getAllConditions} = require('../db/condition')
 const {getAllRarities} = require('../db/rarity')
 const requireUser = require('./utils')
@@ -63,8 +63,7 @@ productRouter.get("/", async (request, response, next) => {
 
  
   productRouter.post('/', requireUser, async (req, res, next) => {
-    const {user} = req.body
-    if(!user.isAdmin){
+    if(!req.user.isAdmin){
       res.status(401).send({
         error: "Unauthorized",
         message: "You do not have admin functions"
@@ -82,8 +81,7 @@ productRouter.get("/", async (request, response, next) => {
   }})
   productRouter.delete('/:productId', requireUser, async (req, res, next) => {
     const productId = req.params.productId
-    const {user} = req.body
-    if(!user.isAdmin){
+    if(!req.user.isAdmin){
       res.status(401).send({
         error: "Unauthorized",
         message: "You do not have admin functions"
@@ -98,7 +96,20 @@ productRouter.get("/", async (request, response, next) => {
       throw error
     }
   }})
-
-  
-
+  productRouter.patch('/update/:productId', requireUser, async (req, res, next) => {
+    const productId = req.params.productId
+    const {pokedexId, name, price, type1, type2, condition, quantity, imageUrl} = req.body
+    console.log(productId)
+  if(!req.user.isAdmin){
+    res.status(401).send({
+      error: "Unauthorized",
+      message: "You do not have admin functions"
+    })
+  }else{
+    const updatedProduct = await updateProduct({pokedexId, name, price, type1, type2, condition, quantity, imageUrl, productId})
+    res.send(
+      updatedProduct
+    )
+  }
+})
   module.exports = productRouter

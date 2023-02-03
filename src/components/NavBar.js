@@ -1,5 +1,5 @@
 import React from "react";
-
+import AdminDropdown from "./AdminDropdown";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import cart from "./images/cart.png";
 
@@ -10,9 +10,9 @@ import cart from "./images/cart.png";
 const NavBar = ({ token, setToken, user }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    setToken("");
-    localStorage.removeItem("pokemon-shopper-token");
     navigate("/");
+    localStorage.removeItem('pokemon-shopper-token');
+    setToken("");
     setUser(null);
   };
   return (
@@ -24,11 +24,7 @@ const NavBar = ({ token, setToken, user }) => {
         <NavLink to='/cards' className='item'>
           Cards
         </NavLink>
-        {user.isAdmin ? (
-          <NavLink className='item' to='/admin'>
-            Admin
-          </NavLink>
-        ) : null}
+        {user.isAdmin ? (<AdminDropdown className='item'/>) : null }
         {token ? (
           <>
             <NavLink to='/orders' className='item'>

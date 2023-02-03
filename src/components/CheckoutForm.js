@@ -3,9 +3,12 @@ import {useNavigate} from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { checkout } from '../api'
 const CheckoutForm = ({token, cart, setCart}) => {
+    const states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA"
+        , "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI"
+        , "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
     const [totalCost, setTotalCost] = useState('')
     const [address, setAddress] = useState('')
-    const [state, setState] = useState('CO')
+    const [state, setState] = useState('AL')
     const [city, setCity] = useState('')
     const [zip, setZip] = useState('')
     const stripe = useStripe()
@@ -26,17 +29,17 @@ const CheckoutForm = ({token, cart, setCart}) => {
             },
             redirect: 'if_required'
         })
-        cart.totalCost = totalCost;
-        await checkout({cart, address, state, city, zip, token})
-        setAddress('')
-        setCity('')
-        setState('')
-        setZip('')
-        navigate('/cards')
         if(result.error){
-            console.log(result.error.message)
+            alert(result.error.message)
         }else{
-            console.log('payment went through')
+            alert('Your payment was successful!')
+            cart.totalCost = totalCost;
+            await checkout({cart, address, state, city, zip, token})
+            setAddress('')
+            setCity('')
+            setState('')
+            setZip('')
+            navigate('/cards')
         }
     }
       useEffect(() => {
@@ -55,7 +58,9 @@ const CheckoutForm = ({token, cart, setCart}) => {
                 <div className='shipping-block'><label>City</label>
                 <input className='text-input' type='text' value={city} onChange={(e) => setCity(e.target.value)}></input></div>
                 <div className='shipping-block'><label>State</label>
-                <select className='select-quality' value={state} onChange={(e) => setState(e.target.value)}></select></div>
+                <select className='select-quality' value={state} onChange={(e) => setState(e.target.value)}>{states.map((state, index) => {
+                    return <option key={index} value={state}>{state}</option>
+                })}</select></div>
                 <div className='shipping-block'><label>Zip Code</label>
                 <input className='text-input' type='text' value={zip} onChange={(e) => setZip(Number(e.target.value))}></input></div>
                 </div>

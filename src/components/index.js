@@ -12,3 +12,4 @@ export { default as Stripe } from "./Stripe";
 export { default as CheckoutForm } from "./CheckoutForm";
 export { default as Admin } from "./Admin";
 export { default as Account } from "./Account";
+export { default as OrderHistory } from "./OrderHistory";

@@ -5,8 +5,6 @@ import { updateProfile } from "../api";
 // TODO - Add and edit the extra styling to the form, success messages, and the error messages from semantic UI in other branch.
 // TODO - Implement the button/link here to go to order history page.
 
-// REVIEW - Look into "Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component."
-
 const Account = ({ token, user, setUser }) => {
   const [username, setUsername] = useState(user.username);
   const [firstName, setFirstName] = useState(user.firstName);
@@ -101,7 +99,7 @@ const Account = ({ token, user, setUser }) => {
               type='text'
               name='phoneNumber'
               id='phoneNumber'
-              value={phoneNumber}
+              value={phoneNumber || ""}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>

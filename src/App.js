@@ -30,17 +30,6 @@ const App = () => {
   );
   const [user, setUser] = useState({});
   //----------------- useEffects -----------------
-
-  // const useEffectGetUser = async (token) => {
-  //   const currentUser = await getUser(token);
-  //   setUser(currentUser);
-  // };
-  // useEffect(() => {
-  //   if (token) {
-  //     useEffectGetUser(token);
-  //   }
-  // }, [token]);
-
   useEffect(() => {
     if (token) {
       async function GetUserInfo(token) {

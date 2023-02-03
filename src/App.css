@@ -479,8 +479,8 @@ color: white;
 .filter-search {
   padding-left: 45px;
   background-image: url('./components/images/search.png');
-  background-size: 39px;
-  background-position: 1px -5px;
+  background-size: 30px;
+  background-position: 6px -1px;
   background-repeat: no-repeat;
   border-radius: 20px;
   width: 300px;

@@ -8,7 +8,7 @@ const Account = ({ token, user, setUser }) => {
   const [emailAddress, setEmailAddress] = useState(user.emailAddress);
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     setUsername(user.username);
@@ -37,7 +37,7 @@ const Account = ({ token, user, setUser }) => {
     } else {
       setUser(updatedUser);
       setError("");
-      setSuccess("Account updated successfully!");
+      setSuccess(true);
     }
   };
 
@@ -105,7 +105,9 @@ const Account = ({ token, user, setUser }) => {
             <div className='ui bottom attached error message'>{error}</div>
           )}
           {success && (
-            <div className='ui bottom attached success message'>{success}</div>
+            <div className='ui center aligned inverted green segment'>
+              "Account updated successfully!"
+            </div>
           )}
         </form>
       </div>
